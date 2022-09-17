@@ -11,6 +11,7 @@ namespace GigaVistor.Models
         public UsuarioModel Criador { get; set; } = new UsuarioModel();
         public DateTime criacao { get; set; }
         public long status { get; set; }
+        public List<AuditoriaModel> Auditorias { get; set; } = new List<AuditoriaModel>();
 
     }
 }

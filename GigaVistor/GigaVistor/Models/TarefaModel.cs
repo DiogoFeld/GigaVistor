@@ -10,7 +10,7 @@
         public SetorModel Setor { get; set; } = new SetorModel();
         public AuditoriaModel auditoria { get; set; } = new AuditoriaModel();
         public long Status { get; set; }
-        public string Notas { get; set; }
+        public string NotasQualidade { get; set; }
         
     }
 }

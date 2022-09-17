@@ -15,5 +15,6 @@ namespace GigaVistor.Models
         public string Email { get; set; }
         public long IdSuperVisor { get; set; }
         public string Setor { get; set; }
+        public int Permissao { get; set; }
     }
 }

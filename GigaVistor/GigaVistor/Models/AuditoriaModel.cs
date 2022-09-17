@@ -8,5 +8,6 @@
         public UsuarioModel Criador { get; set; } = new UsuarioModel();
         public DateTime AuditoriaDate { get; set; }
         public ProjetoModel IdProjeto { get; set; } = new ProjetoModel();
+        public List<TarefaModel> tarefas { get; set; } = new List<TarefaModel>();
     }
 }
