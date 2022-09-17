@@ -1,0 +1,59 @@
+﻿@page
+@model GigaVistor.Views.Usuario.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>UsuarioModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.Nome" class="control-label"></label>
+                <input asp-for="UsuarioModel.Nome" class="form-control" />
+                <span asp-validation-for="UsuarioModel.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.Logon" class="control-label"></label>
+                <input asp-for="UsuarioModel.Logon" class="form-control" />
+                <span asp-validation-for="UsuarioModel.Logon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.Cargo" class="control-label"></label>
+                <input asp-for="UsuarioModel.Cargo" class="form-control" />
+                <span asp-validation-for="UsuarioModel.Cargo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.Email" class="control-label"></label>
+                <input asp-for="UsuarioModel.Email" class="form-control" />
+                <span asp-validation-for="UsuarioModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.IdSuperVisor" class="control-label"></label>
+                <input asp-for="UsuarioModel.IdSuperVisor" class="form-control" />
+                <span asp-validation-for="UsuarioModel.IdSuperVisor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuarioModel.Setor" class="control-label"></label>
+                <input asp-for="UsuarioModel.Setor" class="form-control" />
+                <span asp-validation-for="UsuarioModel.Setor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
