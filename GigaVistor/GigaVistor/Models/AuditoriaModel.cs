@@ -2,12 +2,11 @@
 {
     public class AuditoriaModel
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
-        public string Descricao { get; set; } 
-        public UsuarioModel Criador { get; set; } = new UsuarioModel();
+        public string Descricao { get; set; }
+        public long IdCriador { get; set; }
         public DateTime AuditoriaDate { get; set; }
-        public ProjetoModel IdProjeto { get; set; } = new ProjetoModel();
-        public List<TarefaModel> tarefas { get; set; } = new List<TarefaModel>();
+        public long IdProjeto { get; set; }
     }
 }

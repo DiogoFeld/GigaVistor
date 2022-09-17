@@ -5,10 +5,10 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Descricao { get; set; }
-        public UsuarioModel responsavel { get; set; } = new UsuarioModel();
-        public UsuarioModel Criador { get; set; } = new UsuarioModel();
-        public SetorModel Setor { get; set; } = new SetorModel();
-        public AuditoriaModel auditoria { get; set; } = new AuditoriaModel();
+        public long IdResponsavel { get; set; }
+        public long IdCriador { get; set; }
+        public long IdSetor { get; set; } 
+        public long IdAuditoria { get; set; }
         public long Status { get; set; }
         public string NotasQualidade { get; set; }
         

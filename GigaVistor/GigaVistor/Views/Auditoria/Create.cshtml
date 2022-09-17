@@ -1,0 +1,54 @@
+﻿@page
+@model GigaVistor.Views.Auditoria.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>AuditoriaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AuditoriaModel.Name" class="control-label"></label>
+                <input asp-for="AuditoriaModel.Name" class="form-control" />
+                <span asp-validation-for="AuditoriaModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuditoriaModel.Descricao" class="control-label"></label>
+                <input asp-for="AuditoriaModel.Descricao" class="form-control" />
+                <span asp-validation-for="AuditoriaModel.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuditoriaModel.IdCriador" class="control-label"></label>
+                <input asp-for="AuditoriaModel.IdCriador" class="form-control" />
+                <span asp-validation-for="AuditoriaModel.IdCriador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuditoriaModel.AuditoriaDate" class="control-label"></label>
+                <input asp-for="AuditoriaModel.AuditoriaDate" class="form-control" />
+                <span asp-validation-for="AuditoriaModel.AuditoriaDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuditoriaModel.IdProjeto" class="control-label"></label>
+                <input asp-for="AuditoriaModel.IdProjeto" class="form-control" />
+                <span asp-validation-for="AuditoriaModel.IdProjeto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

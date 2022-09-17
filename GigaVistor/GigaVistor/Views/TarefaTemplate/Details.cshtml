@@ -1,0 +1,49 @@
+﻿@page
+@model GigaVistor.Views.TarefaTemplate.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TarefaTemplateModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TarefaTemplateModel.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TarefaTemplateModel.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TarefaTemplateModel.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TarefaTemplateModel.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TarefaTemplateModel.IdSetor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TarefaTemplateModel.IdSetor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TarefaTemplateModel.IdCriador)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TarefaTemplateModel.IdCriador)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TarefaTemplateModel.IdAuditoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TarefaTemplateModel.IdAuditoria)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.TarefaTemplateModel?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

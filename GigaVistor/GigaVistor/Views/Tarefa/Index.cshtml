@@ -1,0 +1,78 @@
+﻿@page
+@model GigaVistor.Views.Tarefa.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].IdResponsavel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].IdCriador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].IdSetor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].IdAuditoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TarefaModel[0].NotasQualidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TarefaModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdResponsavel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCriador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSetor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAuditoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotasQualidade)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@page
+@model GigaVistor.Views.Projeto.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProjetoModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProjetoModel.Id" />
+            <div class="form-group">
+                <label asp-for="ProjetoModel.Name" class="control-label"></label>
+                <input asp-for="ProjetoModel.Name" class="form-control" />
+                <span asp-validation-for="ProjetoModel.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjetoModel.IdCriador" class="control-label"></label>
+                <input asp-for="ProjetoModel.IdCriador" class="form-control" />
+                <span asp-validation-for="ProjetoModel.IdCriador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjetoModel.criacao" class="control-label"></label>
+                <input asp-for="ProjetoModel.criacao" class="form-control" />
+                <span asp-validation-for="ProjetoModel.criacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjetoModel.status" class="control-label"></label>
+                <input asp-for="ProjetoModel.status" class="form-control" />
+                <span asp-validation-for="ProjetoModel.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -8,10 +8,8 @@ namespace GigaVistor.Models
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public UsuarioModel Criador { get; set; } = new UsuarioModel();
+        public long IdCriador { get; set; }
         public DateTime criacao { get; set; }
         public long status { get; set; }
-        public List<AuditoriaModel> Auditorias { get; set; } = new List<AuditoriaModel>();
-
     }
 }
