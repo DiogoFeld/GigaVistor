@@ -10,13 +10,24 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    </PackageReference> 
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\AgendamentoServices\" />
+    <Folder Include="Services\AuditoriaServices\" />
+    <Folder Include="Services\UsuarioServices\" />
+    <Folder Include="Services\TemplateServices\" />
+    <Folder Include="Services\TarefaTemplateServices\" />
+    <Folder Include="Services\TarefaServices\" />
+    <Folder Include="Services\SetorServices\" />
+    <Folder Include="Services\ProjetoServices\" />
   </ItemGroup>
 
 </Project>
