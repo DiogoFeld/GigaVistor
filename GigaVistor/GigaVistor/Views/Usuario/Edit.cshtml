@@ -1,5 +1,4 @@
-﻿@page
-@model GigaVistor.Views.Usuario.EditModel
+﻿@model GigaVistor.Models.UsuarioModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,38 +10,43 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="UsuarioModel.Id" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="UsuarioModel.Nome" class="control-label"></label>
-                <input asp-for="UsuarioModel.Nome" class="form-control" />
-                <span asp-validation-for="UsuarioModel.Nome" class="text-danger"></span>
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioModel.Logon" class="control-label"></label>
-                <input asp-for="UsuarioModel.Logon" class="form-control" />
-                <span asp-validation-for="UsuarioModel.Logon" class="text-danger"></span>
+                <label asp-for="Logon" class="control-label"></label>
+                <input asp-for="Logon" class="form-control" />
+                <span asp-validation-for="Logon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioModel.Cargo" class="control-label"></label>
-                <input asp-for="UsuarioModel.Cargo" class="form-control" />
-                <span asp-validation-for="UsuarioModel.Cargo" class="text-danger"></span>
+                <label asp-for="Cargo" class="control-label"></label>
+                <input asp-for="Cargo" class="form-control" />
+                <span asp-validation-for="Cargo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioModel.Email" class="control-label"></label>
-                <input asp-for="UsuarioModel.Email" class="form-control" />
-                <span asp-validation-for="UsuarioModel.Email" class="text-danger"></span>
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioModel.IdSuperVisor" class="control-label"></label>
-                <input asp-for="UsuarioModel.IdSuperVisor" class="form-control" />
-                <span asp-validation-for="UsuarioModel.IdSuperVisor" class="text-danger"></span>
+                <label asp-for="IdSuperVisor" class="control-label"></label>
+                <input asp-for="IdSuperVisor" class="form-control" />
+                <span asp-validation-for="IdSuperVisor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioModel.Setor" class="control-label"></label>
-                <input asp-for="UsuarioModel.Setor" class="form-control" />
-                <span asp-validation-for="UsuarioModel.Setor" class="text-danger"></span>
+                <label asp-for="Setor" class="control-label"></label>
+                <input asp-for="Setor" class="form-control" />
+                <span asp-validation-for="Setor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Permissao" class="control-label"></label>
+                <input asp-for="Permissao" class="form-control" />
+                <span asp-validation-for="Permissao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -52,7 +56,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

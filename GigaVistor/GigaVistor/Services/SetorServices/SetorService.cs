@@ -34,6 +34,12 @@ namespace GigaVistor.Services.SetorServices
             }
         }
 
+        public SetorModel DeletePage(int id)
+        {
+            SetorModel setor = db.Setores.FirstOrDefault(s => s.Id == id);
+            return setor;
+        }
+
         public SetorModel Edit(int id)
         {
             SetorModel setor = db.Setores.FirstOrDefault(s => s.Id == id);

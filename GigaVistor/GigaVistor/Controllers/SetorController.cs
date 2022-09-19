@@ -44,6 +44,10 @@ namespace GigaVistor.Controllers
             setor.CreateAction(_setor);
             return RedirectToAction("Index");            
         }
+        public IActionResult DeletePage(int id)
+        {
+            return View(setor.DeletePage(id));
+        }
 
         public IActionResult Create()
         {
