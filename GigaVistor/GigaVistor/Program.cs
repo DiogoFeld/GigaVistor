@@ -1,5 +1,6 @@
 using GigaVistor.Data;
 using GigaVistor.Models;
+using GigaVistor.Services.SetorServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<GigaVistorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("EFConnection"));
 
 });
+
+builder.Services.AddScoped<ISetorService, SetorService>();
 
 var app = builder.Build();
 

@@ -20,13 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\AgendamentoServices\" />
     <Folder Include="Services\AuditoriaServices\" />
     <Folder Include="Services\UsuarioServices\" />
     <Folder Include="Services\TemplateServices\" />
     <Folder Include="Services\TarefaTemplateServices\" />
     <Folder Include="Services\TarefaServices\" />
-    <Folder Include="Services\SetorServices\" />
     <Folder Include="Services\ProjetoServices\" />
   </ItemGroup>
 

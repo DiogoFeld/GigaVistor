@@ -1,22 +1,53 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using GigaVistor.Services.SetorServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GigaVistor.Controllers
 {
     public class SetorController : Controller
     {
-
-        GigaVistorContext context;
-        public SetorController(GigaVistorContext _context)
+        ISetorService setor;
+        public SetorController(ISetorService _setor)
         {
-            context = _context;
+            setor = _setor;
         }
+               
 
         public IActionResult Index()
         {
-            IEnumerable<SetorModel> setores = context.Setores.Select(s => s).ToList();
-            return View(setores);            
+            ViewData["Title"] = "Index";
+            return View(setor.getAllSetores());
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            setor.DeleteASetor(id);
+            return RedirectToAction("Index");
+
+        }
+
+        public IActionResult Edit(int id)
+        {
+            return View(setor.Edit(id));
+        }
+
+        public IActionResult EditAction(SetorModel _setor)
+        {
+            setor.EditAction(_setor);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CreateAction(SetorModel _setor)
+        {
+            setor.CreateAction(_setor);
+            return RedirectToAction("Index");            
+        }
+
+        public IActionResult Create()
+        {
+            return View();           
         }
 
 
