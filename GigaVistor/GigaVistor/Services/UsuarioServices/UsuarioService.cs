@@ -15,6 +15,7 @@ namespace GigaVistor.Services.UsuarioServices
             if (_usuario.Id == 0)
             {
                 UsuarioModel usuario = new UsuarioModel();
+                usuario.Nome = _usuario.Nome;
                 usuario.Setor = _usuario.Setor;
                 usuario.Logon = _usuario.Logon;
                 usuario.Cargo = _usuario.Cargo;
