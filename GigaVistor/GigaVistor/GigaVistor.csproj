@@ -24,7 +24,6 @@
     <Folder Include="Services\TemplateServices\" />
     <Folder Include="Services\TarefaTemplateServices\" />
     <Folder Include="Services\TarefaServices\" />
-    <Folder Include="Services\ProjetoServices\" />
   </ItemGroup>
 
 </Project>
