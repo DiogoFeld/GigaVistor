@@ -1,5 +1,6 @@
 using GigaVistor.Data;
 using GigaVistor.Models;
+using GigaVistor.Services.AgendamentoServices;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.SetorServices;
@@ -22,6 +23,7 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IProjetoService, ProjetoService>();
 builder.Services.AddScoped<IAuditoriaService, AuditoriaService>();
 builder.Services.AddScoped<ITarefaService,TarefaService>();
+builder.Services.AddScoped<IAgendamentoService,AgendamentoService>();
 
 var app = builder.Build();
 

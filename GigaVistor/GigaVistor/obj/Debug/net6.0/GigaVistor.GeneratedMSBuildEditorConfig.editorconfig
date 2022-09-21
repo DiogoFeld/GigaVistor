@@ -19,24 +19,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/AgendaAuditoria/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhQXVkaXRvcmlhXENyZWF0ZS5jc2h0bWw=
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Agendamento/CreatePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhbWVudG9cQ3JlYXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/AgendaAuditoria/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhQXVkaXRvcmlhXERlbGV0ZS5jc2h0bWw=
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Agendamento/DeletePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhbWVudG9cRGVsZXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/AgendaAuditoria/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhQXVkaXRvcmlhXERldGFpbHMuY3NodG1s
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Agendamento/EditPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhbWVudG9cRWRpdFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/AgendaAuditoria/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhQXVkaXRvcmlhXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/AgendaAuditoria/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhQXVkaXRvcmlhXEluZGV4LmNzaHRtbA==
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Agendamento/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmRhbWVudG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Auditoria/CreatePage.cshtml]
