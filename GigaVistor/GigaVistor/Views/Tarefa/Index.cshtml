@@ -1,5 +1,4 @@
-﻿@page
-@model GigaVistor.Views.Tarefa.IndexModel
+﻿@model IEnumerable<GigaVistor.Models.TarefaModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -8,40 +7,40 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-action="CreatePage">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].Name)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].Descricao)
+                @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].IdResponsavel)
+                @Html.DisplayNameFor(model => model.IdResponsavel)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].IdCriador)
+                @Html.DisplayNameFor(model => model.IdCriador)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].IdSetor)
+                @Html.DisplayNameFor(model => model.IdSetor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].IdAuditoria)
+                @Html.DisplayNameFor(model => model.IdAuditoria)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].Status)
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TarefaModel[0].NotasQualidade)
+                @Html.DisplayNameFor(model => model.NotasQualidade)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.TarefaModel) {
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -68,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.NotasQualidade)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="EditPage" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DetailsPage" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeletePage" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

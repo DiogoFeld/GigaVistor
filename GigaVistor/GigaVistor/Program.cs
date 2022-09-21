@@ -1,7 +1,9 @@
 using GigaVistor.Data;
 using GigaVistor.Models;
+using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.SetorServices;
+using GigaVistor.Services.TarefaServices;
 using GigaVistor.Services.UsuarioServices;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,8 @@ builder.Services.AddDbContext<GigaVistorContext>(options =>
 builder.Services.AddScoped<ISetorService, SetorService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IProjetoService, ProjetoService>();
+builder.Services.AddScoped<IAuditoriaService, AuditoriaService>();
+builder.Services.AddScoped<ITarefaService,TarefaService>();
 
 var app = builder.Build();
 

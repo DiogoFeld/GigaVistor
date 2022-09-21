@@ -24,7 +24,6 @@ namespace GigaVistor.Services.AuditoriaServices
                 auditoria.AuditoriaDate = _auditoria.AuditoriaDate;
                 auditoria.IdProjeto = _auditoria.IdProjeto;
 
-
                 db.Auditorias.Add(auditoria);
                 db.SaveChanges();
             }
