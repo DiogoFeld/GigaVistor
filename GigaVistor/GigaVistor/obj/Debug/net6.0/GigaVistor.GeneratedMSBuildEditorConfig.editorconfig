@@ -99,20 +99,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcQ3JlYXRlLmNzaHRtbA==
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/CreatePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcQ3JlYXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcRGVsZXRlLmNzaHRtbA==
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/DeletePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcRGVsZXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcRWRpdC5jc2h0bWw=
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/EditPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhVGVtcGxhdGVcRWRpdFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/TarefaTemplate/Index.cshtml]
@@ -135,20 +131,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWZhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcQ3JlYXRlLmNzaHRtbA==
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/CreatePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcQ3JlYXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRGVsZXRlLmNzaHRtbA==
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/DeletePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRGVsZXRlUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRWRpdC5jc2h0bWw=
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/EditPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcRWRpdFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/Index.cshtml]

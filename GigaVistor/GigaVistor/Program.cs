@@ -5,6 +5,8 @@ using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.SetorServices;
 using GigaVistor.Services.TarefaServices;
+using GigaVistor.Services.TarefaTemplateServices;
+using GigaVistor.Services.TemplateServices;
 using GigaVistor.Services.UsuarioServices;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +26,8 @@ builder.Services.AddScoped<IProjetoService, ProjetoService>();
 builder.Services.AddScoped<IAuditoriaService, AuditoriaService>();
 builder.Services.AddScoped<ITarefaService,TarefaService>();
 builder.Services.AddScoped<IAgendamentoService,AgendamentoService>();
+builder.Services.AddScoped<ITarefaTemplateService, TarefaTemplateService>();
+builder.Services.AddScoped<ITemplateService, TemplateService>();
 
 var app = builder.Build();
 
