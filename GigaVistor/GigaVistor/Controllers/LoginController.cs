@@ -19,14 +19,15 @@ namespace GigaVistor.Controllers
 
         public IActionResult LoginValidation(string logon, string email)
         {
+            if (true)
+            {
+                return RedirectToAction("Index", "Home");
 
-            //if (login.LoginValidation(logon,email))
-            //{
-            //}
-            //else
-            //{
-            //}
-            return RedirectToAction("Login");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
 
