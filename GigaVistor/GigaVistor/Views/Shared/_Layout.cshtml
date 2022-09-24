@@ -4,9 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GigaVistor</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GigaVistor.styles.css" asp-append-version="true" />
+
+    </style>
 </head>
 <body>
     <header>
@@ -30,6 +34,51 @@
             </div>
         </nav>
     </header>
+
+
+    <div id="sideBar" style="
+         position: fixed;
+         top: 58px;
+         bottom: 60px;
+         left: 0;
+         box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+         width: 180px;
+         z-index: 600;"
+         ">
+        <div id="innerSideBar">
+
+            <a class="nav-link aColor" asp-area="" asp-controller="Agendamento" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Agendamento</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Auditoria" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Auditoria</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Projeto" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Projeto</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Setor" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Setor</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Tarefa" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Tarefa</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="TarefaTemplate" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>TarefaTemplate</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Template" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Template</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Usuario" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Usuario</span>
+            </a>
+
+        </div>
+    </div>
+
+
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -44,7 +93,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
