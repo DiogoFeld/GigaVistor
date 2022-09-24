@@ -19,7 +19,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult LoginValidation(string logon, string email)
         {
-            if (true)
+            if (login.LoginValidation(logon,email))
             {
                 return RedirectToAction("Index", "Home");
 
