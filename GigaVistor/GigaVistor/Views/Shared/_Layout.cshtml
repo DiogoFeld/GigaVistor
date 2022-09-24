@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GigaVistor</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GigaVistor.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -30,11 +32,43 @@
             </div>
         </nav>
     </header>
+
+    <div id="sideBar">
+        <div id="innerSideBar">
+
+            <a class="nav-link aColor" asp-area="" asp-controller="Agendamento" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Agendamento</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Auditoria" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Auditoria</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Projeto" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Projeto</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Setor" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Setor</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Tarefa" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Tarefa</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="TarefaTemplate" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>TarefaTemplate</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Template" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Template</span>
+            </a>
+            <a class="nav-link aColor" asp-area="" asp-controller="Usuario" asp-action="Index">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>Usuario</span>
+            </a>
+
+        </div>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
