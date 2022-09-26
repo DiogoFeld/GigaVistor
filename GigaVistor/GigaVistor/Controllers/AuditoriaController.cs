@@ -13,7 +13,6 @@ namespace GigaVistor.Controllers
             auditoria = _auditoria;
         }
 
-
         public IActionResult Index()
         {
             ViewData["Title"] = "Index";
@@ -51,8 +50,7 @@ namespace GigaVistor.Controllers
         public IActionResult DeletePage(int id)
         {
             return View(auditoria.DeletePage(id));
-        }
-
+        } 
 
     }
 }

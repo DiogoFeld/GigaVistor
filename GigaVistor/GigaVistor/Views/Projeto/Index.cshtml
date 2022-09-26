@@ -6,49 +6,30 @@
 
 <h1>Index</h1>
 
+
 <p>
-    <a asp-action="CreatePage">Create New</a>
+    <b>
+        <a class="btn buttonFooterElement" asp-action="CreatePage">Criar Novo Projeto</a>
+    </b>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCriador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.criacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdCriador)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.criacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.status)
-                </td>
-                <td>
-                    <a asp-action="EditPage" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="DeletePage" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+
+
+<div class="mainDivContent">
+
+    @foreach (var item in Model)
+    {
+        <div class="mainElementSelection">
+            <h3>
+                @item.Name
+            </h3>
+
+            <div class="mainElementFooter">
+                <p>Status: @item.status</p>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn buttonFooterElement">
+                    Selecionar
+                </a>
+            </div>
+        </div>
+    }
+</div>

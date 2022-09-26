@@ -10,5 +10,6 @@ namespace GigaVistor.Services.AuditoriaServices
         public AuditoriaModel DeletePage(int id);
         public void Edit(AuditoriaModel auditoria);
         public AuditoriaModel EditPage(int id);
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GigaVistor.Models;
+using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.UsuarioServices;
 using Microsoft.AspNetCore.Mvc;
@@ -52,5 +53,13 @@ namespace GigaVistor.Controllers
         {
             return View(projeto.DeletePage(id));
         }
+
+        public IActionResult Details(int id)
+        {
+            ViewBag.Criador = projeto.getCriadorId(id);
+            ViewBag.Auditorias = projeto.getAuditoriaByProject(id);
+            return View(projeto.Details(id));
+        }
+
     }
 }
