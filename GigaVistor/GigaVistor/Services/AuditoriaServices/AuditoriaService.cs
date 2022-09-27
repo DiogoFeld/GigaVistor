@@ -36,14 +36,20 @@ namespace GigaVistor.Services.AuditoriaServices
             {
                 db.Remove(auditoria);
                 db.SaveChanges();
-            }            
+            }
         }
 
         public AuditoriaModel DeletePage(int id)
         {
-            AuditoriaModel auditoria = db.Auditorias.FirstOrDefault(s => s.Id == id);                       
+            AuditoriaModel auditoria = db.Auditorias.FirstOrDefault(s => s.Id == id);
             return auditoria;
 
+        }
+
+        public AuditoriaModel Details(int id)
+        {
+            AuditoriaModel auditoria = db.Auditorias.FirstOrDefault(s => s.Id == id);
+            return auditoria;
         }
 
         public void Edit(AuditoriaModel _auditoria)
@@ -64,14 +70,62 @@ namespace GigaVistor.Services.AuditoriaServices
         public AuditoriaModel EditPage(int id)
         {
             AuditoriaModel auditoria = db.Auditorias.FirstOrDefault(s => s.Id == id);
-            return auditoria;            
+            return auditoria;
         }
 
         public IEnumerable<AuditoriaModel> getAllAuditoria()
         {
             IEnumerable<AuditoriaModel> auditoria = db.Auditorias.Select(s => s).ToList();
             return auditoria;
-            
+
         }
+
+        public UsuarioModel getCriadorId(long idCriador)
+        {
+            UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Id == idCriador);
+            return usuario;
+        }
+
+        public ProjetoModel getProjetoId(long idProjeto)
+        {
+            ProjetoModel projeto = db.Projetos.FirstOrDefault(s => s.Id == idProjeto);
+            return projeto;
+        }
+
+        public IEnumerable<TarefaModel> getTarefasByAuditoria(int id)
+        {
+
+            var query = from tarefa in db.Tarefas
+                        where tarefa.IdAuditoria == id
+                        select tarefa;
+
+            return query.ToList();
+        }
+
+        public List<double> processAuditoria(IEnumerable<TarefaModel> tarefas)
+        {
+            double total = tarefas.ToList().Count;
+            int zerado = 0;
+            int incompleto = 0;
+            int completo = 0;
+            foreach (TarefaModel tarefa in tarefas)
+            {
+                if (tarefa.Status == 0)
+                {
+                    zerado++;
+                }
+                if (tarefa.Status == 1)
+                {
+                    incompleto++;
+                }
+                if (tarefa.Status == 2)
+                {
+                    completo++;
+                }
+            }
+            return new List<double>() { zerado, incompleto, completo };
+        }
+
+
     }
 }

@@ -52,5 +52,18 @@ namespace GigaVistor.Controllers
             return View(auditoria.DeletePage(id));
         } 
 
+        public IActionResult Details(int id)
+        {
+            AuditoriaModel auditoriaModel = auditoria.Details(id);
+            ViewBag.Criador = auditoria.getCriadorId(auditoriaModel.IdCriador).Nome;
+            ViewBag.Projeto = auditoria.getProjetoId(auditoriaModel.IdProjeto).Name;
+
+            IEnumerable<TarefaModel> tarefas = auditoria.getTarefasByAuditoria(id);
+            ViewBag.auditoriaResultado = auditoria.processAuditoria(tarefas);
+            ViewBag.Tarefas = tarefas;
+
+            return View(auditoriaModel);
+        }
+
     }
 }

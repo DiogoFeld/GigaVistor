@@ -1,0 +1,103 @@
+﻿@model GigaVistor.Models.AuditoriaModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detail</h1>
+
+<div>
+    <hr />
+    <div style="display:flex;justify-content: center;">
+        <h4>Resultados</h4>
+    </div>
+
+    <div class="resultAuditoria">
+        <form>
+            <label>Sem realizar</label>
+            <p>@ViewBag.auditoriaResultado[0]</p>
+        </form>
+        <form>
+            <label>Incompleto</label>
+            <p>@ViewBag.auditoriaResultado[1]</p>
+        </form>
+        <form>
+            <label>Completo</label>
+            <p>@ViewBag.auditoriaResultado[2]</p>
+        </form>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nome
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Descrição
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            Criador
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.Criador
+        </dd>
+        <dt class="col-sm-2">
+            Data Da Auditoria
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuditoriaDate)
+        </dd>
+        <dt class="col-sm-2">
+            Projeto
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.Projeto
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a class="btn buttonFooterElement" asp-action="EditPage" asp-route-id="@Model.Id">Editar</a>
+    <a class="btn buttonFooterElement" asp-action="DeletePage" asp-route-id="@Model.Id">Deletar</a>
+    <a class="btn buttonFooterElement" asp-controller="Projeto" asp-action="Index">Retornar aos projetos</a>
+</div>
+
+
+<div style="height:20px"></div>
+
+
+<div style="display: flex;
+    flex-direction: row;
+    gap: 100px;">
+    <h2>
+        Tarefas Realizadas
+    </h2>
+    <b>
+        <a class="btn buttonFooterElement" asp-area="" asp-controller="Tarefa" asp-action="CreatePage">Criar Tarefa</a>
+    </b>
+</div>
+
+
+<div class="mainDivContent">
+    @foreach (var item in ViewBag.Tarefas)
+    {
+        <div class="mainElementSelection" style="height:180px">
+            <h3 class="titleSection">
+                @item.Name
+            </h3>
+
+            <span class="auditoriaSection">
+                @item.Descricao
+            </span>
+
+            <div class="mainElementFooter">
+                <a class="btn buttonFooterElement" asp-controller="Tarefa" asp-action="EditPage" asp-route-id="@item.Id">Selecionar</a>
+            </div>
+        </div>
+    }
+</div>

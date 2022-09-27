@@ -78,7 +78,6 @@ namespace GigaVistor.Services.ProjetoServices
 
         public IEnumerable<AuditoriaModel> getAuditoriaByProject(long id)
         {
-
             var query = from auditorias in db.Auditorias
                         where auditorias.IdProjeto == id
                         select auditorias;
