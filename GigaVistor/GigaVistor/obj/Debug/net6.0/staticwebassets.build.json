@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NRKreivCiBC4sUx4MRpNFO4zIVESDqVBvfIqZgY2k+A=",
+  "Hash": "UwAuL/hDLcT30uP6KLPD75lUR8u6XEvX/KNRcBBvCCM=",
   "Source": "GigaVistor",
   "BasePath": "_content/GigaVistor",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\mainColors.css"
+    },
+    {
+      "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\css\\mainElement - Copy.css",
+      "SourceId": "GigaVistor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\",
+      "BasePath": "_content/GigaVistor",
+      "RelativePath": "css/mainElement - Copy.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\mainElement - Copy.css"
+    },
+    {
+      "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\css\\mainElement.css",
+      "SourceId": "GigaVistor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\",
+      "BasePath": "_content/GigaVistor",
+      "RelativePath": "css/mainElement.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\mainElement.css"
     },
     {
       "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\css\\site.css",

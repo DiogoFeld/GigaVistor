@@ -1,5 +1,7 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using Microsoft.CodeAnalysis;
+using System;
 
 namespace GigaVistor.Services.ProjetoServices
 {
@@ -42,6 +44,12 @@ namespace GigaVistor.Services.ProjetoServices
             return projeto;
         }
 
+        public ProjetoModel Details(int id)
+        {
+            ProjetoModel projeto = db.Projetos.FirstOrDefault(s => s.Id == id);
+            return projeto;
+        }
+
         public void Edit(ProjetoModel _projeto)
         {
             if (_projeto != null)
@@ -67,6 +75,25 @@ namespace GigaVistor.Services.ProjetoServices
             IEnumerable<ProjetoModel> projetos = db.Projetos.Select(s => s).ToList();
             return projetos;
         }
+
+        public IEnumerable<AuditoriaModel> getAuditoriaByProject(long id)
+        {
+            var query = from auditorias in db.Auditorias
+                        where auditorias.IdProjeto == id
+                        select auditorias;
+
+            return query.ToList();
+        }
+
+        public string getCriadorId(int idProjeto)
+        {
+            ProjetoModel projeto = db.Projetos.FirstOrDefault(s => s.Id == idProjeto);
+            long idUser = projeto.Id;
+            string nameResult = db.Usuarios.FirstOrDefault(s => s.Id == idUser).Nome;
+
+            return nameResult;
+        }
+
 
 
     }

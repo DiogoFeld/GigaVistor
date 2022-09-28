@@ -1,0 +1,85 @@
+.mainElementSelection {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 130px;
+    justify-content: space-between;
+    background-color: hsl(40deg 57% 82% / 30%);
+    padding: 7px;
+    width: 300px;
+    border: 1px solid #ede3ca;
+}
+
+.mainDivContent {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.mainElement {
+    margin-left: 200px;
+    margin-right: 10%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.mainElementFooter {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonFooterElement {
+    margin-right: 10px;
+    background-color: #ddcfb185;
+    border: 0.6px solid #c9bc9b;
+}
+
+.auditoriaSection {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.titleSection {
+    display: flex;
+    justify-content: center;
+}
+
+
+.resultAuditoria {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    height: 120px;
+}
+
+
+    .resultAuditoria > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    }
+
+    .resultAuditoria label {
+        font-size: 1.8em;
+        font-weight: 500;
+    }
+
+    .resultAuditoria p {
+        font-size:2em;
+        font-weight: 700;
+    }
+
+
+    .resultAuditoria p:hover {
+        font-size: 2.2em;
+        font-weight: 700;
+    }

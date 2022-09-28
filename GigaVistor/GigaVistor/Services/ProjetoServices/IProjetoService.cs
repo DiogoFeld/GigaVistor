@@ -10,5 +10,9 @@ namespace GigaVistor.Services.ProjetoServices
         public ProjetoModel DeletePage(int id);
         public void Edit(ProjetoModel projeto);
         public ProjetoModel EditPage(int id);
+        public ProjetoModel Details(int id);
+        public IEnumerable<AuditoriaModel> getAuditoriaByProject(long id);
+        public string getCriadorId(int idProjeto);
+
     }
 }
