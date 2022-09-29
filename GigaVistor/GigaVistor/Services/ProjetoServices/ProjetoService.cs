@@ -20,7 +20,7 @@ namespace GigaVistor.Services.ProjetoServices
                 ProjetoModel projeto = new ProjetoModel();
                 projeto.Name = _projeto.Name;
                 projeto.IdCriador = _projeto.IdCriador;
-                projeto.criacao = _projeto.criacao;
+                projeto.criacao = DateTime.Now;
                 projeto.status = _projeto.status;
 
                 db.Projetos.Add(projeto);
@@ -88,7 +88,7 @@ namespace GigaVistor.Services.ProjetoServices
         public string getCriadorId(int idProjeto)
         {
             ProjetoModel projeto = db.Projetos.FirstOrDefault(s => s.Id == idProjeto);
-            long idUser = projeto.Id;
+            long idUser = projeto.IdCriador;
             string nameResult = db.Usuarios.FirstOrDefault(s => s.Id == idUser).Nome;
 
             return nameResult;

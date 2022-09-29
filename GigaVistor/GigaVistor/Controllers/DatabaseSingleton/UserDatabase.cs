@@ -37,6 +37,19 @@ namespace GigaVistor.Controllers.DatabaseSingleton
 
         public UsuarioModel getUsuario()
         {
+            //test case
+            if(this.UsuarioModelActive == null)
+            {   
+                UsuarioModel u = new UsuarioModel();
+                u.Nome = "Tiago";
+                u.Id = 2;
+
+                return u;
+            }
+
+            //delete on real  App
+
+
             return this.UsuarioModelActive;
         }
 

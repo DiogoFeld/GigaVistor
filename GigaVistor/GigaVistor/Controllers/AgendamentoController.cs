@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.AgendamentoServices;
 using GigaVistor.Services.AuditoriaServices;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult CreatePage()
         {
+            ViewBag.IdAutor = UserDatabase.Instance.getUsuario();
             return View();
         }
 
