@@ -23,34 +23,29 @@
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdResponsavel" class="control-label"></label>
-                <input asp-for="IdResponsavel" class="form-control" />
+                <label asp-for="IdResponsavel" class="control-label">Reponsável Pela Tarefa</label>
+                <select asp-for="IdResponsavel" class="form-control">
+                    @foreach (var item in ViewBag.Funcionarios)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
                 <span asp-validation-for="IdResponsavel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCriador" class="control-label"></label>
-                <input asp-for="IdCriador" class="form-control" />
-                <span asp-validation-for="IdCriador" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdSetor" class="control-label"></label>
-                <input asp-for="IdSetor" class="form-control" />
+                <label asp-for="IdSetor" class="control-label">Setor</label>
+                <select asp-for="IdSetor" class="form-control">
+                    @foreach (var item in ViewBag.Setores)
+                    {
+                        <option value="@item.Id">@item.Nome</option>
+                    }
+                </select>
                 <span asp-validation-for="IdSetor" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdAuditoria" class="control-label"></label>
-                <input asp-for="IdAuditoria" class="form-control" />
+                <input asp-for="IdAuditoria" class="form-control" value="@ViewBag.AuditoriaId" />
                 <span asp-validation-for="IdAuditoria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NotasQualidade" class="control-label"></label>
-                <input asp-for="NotasQualidade" class="form-control" />
-                <span asp-validation-for="NotasQualidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -64,5 +59,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

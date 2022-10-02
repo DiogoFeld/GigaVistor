@@ -1,4 +1,5 @@
-﻿using GigaVistor.Data;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Data;
 using GigaVistor.Models;
 
 namespace GigaVistor.Services.AuditoriaServices
@@ -20,14 +21,15 @@ namespace GigaVistor.Services.AuditoriaServices
                 AuditoriaModel auditoria = new AuditoriaModel();
                 auditoria.Name = _auditoria.Name;
                 auditoria.Descricao = _auditoria.Descricao;
-                auditoria.IdCriador = _auditoria.IdCriador;
-                auditoria.AuditoriaDate = _auditoria.AuditoriaDate;
+                auditoria.IdCriador = UserDatabase.Instance.getUsuario().Id;
+                auditoria.AuditoriaDate = DateTime.Now;
                 auditoria.IdProjeto = _auditoria.IdProjeto;
 
                 db.Auditorias.Add(auditoria);
                 db.SaveChanges();
             }
         }
+
 
         public void Delete(int id)
         {

@@ -22,8 +22,8 @@
     margin-left: 200px;
     margin-right: 10%;
     width: 100%;
-    max-width: 100%;
-    min-width: 100%;
+    max-width: calc(100%-180px);
+    min-width: calc(100%-180px);    
 }
 
 .mainElementFooter {

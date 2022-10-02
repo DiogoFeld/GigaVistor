@@ -1,4 +1,5 @@
-﻿using GigaVistor.Data;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Data;
 using GigaVistor.Models;
 
 namespace GigaVistor.Services.TarefaServices
@@ -20,13 +21,11 @@ namespace GigaVistor.Services.TarefaServices
                 tarefa.Name = _tarefa.Name;
                 tarefa.Descricao = _tarefa.Descricao;
                 tarefa.IdResponsavel = _tarefa.IdResponsavel;
-                tarefa.IdCriador = _tarefa.IdCriador;
+                tarefa.IdCriador = UserDatabase.Instance.getUsuario().Id;
                 tarefa.IdSetor = _tarefa.IdSetor;
                 tarefa.IdAuditoria = _tarefa.IdAuditoria;
-                tarefa.Status = _tarefa.Status;
-                tarefa.NotasQualidade = _tarefa.NotasQualidade;
-
-
+                tarefa.Status = 0;
+                tarefa.NotasQualidade = "";
 
                 db.Tarefas.Add(tarefa);
                 db.SaveChanges();
@@ -78,6 +77,24 @@ namespace GigaVistor.Services.TarefaServices
             IEnumerable<TarefaModel> tarefas = db.Tarefas.Select(s => s).ToList();
             return tarefas;            
         }
+
+        public IEnumerable<SetorModel> getSetores()
+        {
+            IEnumerable<SetorModel> setores = db.Setores.Select(s => s).ToList();
+            return setores;
+        }
+
+        public IEnumerable<UsuarioModel> getFuncionarios()
+        {
+            var query = from usuarios in db.Usuarios
+                        where usuarios.Id != 2
+                        select usuarios;
+            //usuario mestre
+
+            return query.ToList();
+        }
+
+
 
 
     }

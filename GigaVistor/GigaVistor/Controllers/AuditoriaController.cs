@@ -39,18 +39,19 @@ namespace GigaVistor.Controllers
         public IActionResult Create(AuditoriaModel _auditoria)
         {
             auditoria.Create(_auditoria);
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Projeto", new { id = _auditoria.IdProjeto });
         }
 
-        public IActionResult CreatePage()
+        public IActionResult CreatePage(int id)
         {
+            ViewBag.ProjetoId = id;
             return View();
         }
 
         public IActionResult DeletePage(int id)
         {
             return View(auditoria.DeletePage(id));
-        } 
+        }
 
         public IActionResult Details(int id)
         {
