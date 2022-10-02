@@ -40,12 +40,15 @@ namespace GigaVistor.Controllers
 
         public IActionResult Create(TarefaModel _tarefa)
         {
-            tarefa.Create(_tarefa);
-            return RedirectToAction("Index");
+            tarefa.Create(_tarefa);         
+            return RedirectToAction("Details", "Auditoria", new { id = _tarefa.IdAuditoria });
         }
 
-        public IActionResult CreatePage()
+        public IActionResult CreatePage(long id)
         {
+            ViewBag.Funcionarios = tarefa.getFuncionarios();
+            ViewBag.Setores = tarefa.getSetores();
+            ViewBag.AuditoriaId = id;                      
             return View();
         }
 

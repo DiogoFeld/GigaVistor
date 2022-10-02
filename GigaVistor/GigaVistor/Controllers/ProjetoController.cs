@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.UsuarioServices;
@@ -40,12 +41,14 @@ namespace GigaVistor.Controllers
 
         public IActionResult Create(ProjetoModel _projeto)
         {
+
             projeto.Create(_projeto);
             return RedirectToAction("Index");
         }
 
         public IActionResult CreatePage()
         {
+            ViewBag.IdAutor = UserDatabase.Instance.getUsuario();
             return View();
         }
 

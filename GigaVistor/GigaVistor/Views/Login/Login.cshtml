@@ -3,15 +3,85 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        .MainLogin {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0px;
+            padding-bottom: 20%;
+            top: 40px;
+            margin-top: 100px;
+        }
+
+        h3 {
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        .formLogin {
+            display: flex;
+            flex-direction: column;
+            width: 290px;
+            gap: 5px;
+            letter-spacing:2px;
+        }
+
+            .formLogin > div {
+                display: flex;
+                flex-direction: row;
+                gap: 3px;
+                width: 100%;
+            }
+
+        .divButton {
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        button {
+            height: 35px;
+            width: 100px;
+            font-size: 1.1em;
+            background: black;
+            color: #dfd4d4;
+            border-radius: 10px;
+            box-shadow: 2px 2px 1px 1px #bdbdbd;
+        }
+
+            button:hover{
+                color: #FFF;
+                font-size:1.2em;
+            }
+
+            button:active {
+                background: #dfd4d4;
+                color: black;
+            }
+
+
+        div > label {
+            width: 130px;
+            font-size: 1.3em;
+        }
+    </style>
+
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
 </head>
 <body>
-    <div class="mb-3">
-        <form asp-area="" asp-controller="Login" asp-action="LoginValidation">
+    <div class="mb-3 MainLogin">
+        <form asp-area="" asp-controller="GIGAVISTOR" asp-action="LoginValidation" class="formLogin">
             <h3>Login</h3>
             <div>
                 <label for="logon">Logon</label>
@@ -22,7 +92,7 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" />
             </div>
-            <div>
+            <div class="divButton">
                 <button type="submit" class="btn btn-primary btn-block">Entrar</button>
             </div>
         </form>
