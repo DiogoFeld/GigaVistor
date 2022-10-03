@@ -47,11 +47,33 @@
                 <input asp-for="IdAuditoria" class="form-control" value="@ViewBag.AuditoriaId" />
                 <span asp-validation-for="IdAuditoria" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
+</div>
+
+<btn class="btn">
+    Importar Templates
+</btn>
+
+<div>
+    <h3>Templates</h3>
+    <div id="Templates">
+    </div>
+
+    <h4>Tarefas Do Template</h4>
+    <div id="TemplatesTarefas">
+
+    </div>
+
+
+    <button>
+        Aceitar
+    </button>
+
 </div>
 
 <div>
