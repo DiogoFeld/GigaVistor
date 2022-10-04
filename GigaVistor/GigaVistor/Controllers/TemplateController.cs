@@ -54,5 +54,13 @@ namespace GigaVistor.Controllers
         }
 
 
+
+        public JsonResult getTemplates()
+        {
+            IEnumerable<TemplateModel> templates = template.getAllTemplates();
+            return new JsonResult(templates);
+        }
+
+
     }
 }

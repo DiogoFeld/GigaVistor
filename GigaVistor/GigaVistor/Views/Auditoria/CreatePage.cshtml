@@ -38,6 +38,29 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<br />
+
+<btn class="btn buttonFooterElement" onclick="showTemplate()">
+    Importar Templates
+</btn>
+
+<br />
+<div id="templateDiv" hidden>
+    <h3>Templates</h3>
+    <div id="Templates" class="templatesDiv">
+
+    </div>
+
+    <h4>Tarefas Do Template</h4>
+    <div id="TemplatesTarefas">
+    </div>
+
+
+    <button>
+        Aceitar
+    </button>
+
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
