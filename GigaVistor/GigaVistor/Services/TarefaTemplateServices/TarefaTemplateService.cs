@@ -70,5 +70,13 @@ namespace GigaVistor.Services.TarefaTemplateServices
             return tarefas;
         }
 
+        public IEnumerable<TarefaTemplateModel> getAllTarefasByAuditoria(int id)
+        {
+            var query = from tarefa in db.TarefasTemplate
+                        where tarefa.IdAuditoria == id
+                        select tarefa;
+
+            return query.ToList();
+        }
     }
 }

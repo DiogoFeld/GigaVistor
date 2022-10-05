@@ -69,11 +69,44 @@ function loadtemplates() {
 
 function clearDiv(element) {
     while (element.childNodes.length > 1) {
-        element.removeChild(element.childNodes(element.childNodes.length-1));
+        element.removeChild(element.childNodes(element.childNodes.length - 1));
     }
 }
 
 
 function loadTasks(id) {
+    let TemplatesTarefas = document.getElementById("TemplatesTarefas");
+    clearDiv(TemplatesTarefas);
 
+    $.ajax({
+        type: "GET",
+        url: "/Tarefatemplate/getTarefa",
+        data: {
+            id: id
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+            let json = result.responseJSON
+            for (let i in json) {
+                let mainDiv = document.createElement("div");
+                mainDiv.className = "mainElementSelection";
+                mainDiv.style.width = "180px";
+                TemplatesTarefas.appendChild(mainDiv);
+
+                let title = document.createElement("h3");
+                title.className = "titleSection";
+                title.innerHTML = json[i].name;
+                mainDiv.appendChild(title);
+
+                let span = document.createElement("span");
+                span.className = "auditoriaSection";
+                span.innerHTML = json[i].descricao;
+                mainDiv.appendChild(span);
+            }
+        },
+        error: function (response) {
+
+        },
+    });
 }

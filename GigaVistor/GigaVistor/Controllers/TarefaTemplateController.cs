@@ -52,6 +52,10 @@ namespace GigaVistor.Controllers
             return View(tarefa.DeletePage(id));
         }
 
-
+        public JsonResult getTarefa(int id)
+        {
+            IEnumerable<TarefaTemplateModel> tarefas = tarefa.getAllTarefasByAuditoria(id);
+            return new JsonResult(tarefas);
+        }
     }
 }
