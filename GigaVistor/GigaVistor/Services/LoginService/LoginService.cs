@@ -18,11 +18,11 @@ namespace GigaVistor.Services.LoginService
             UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Logon == logon && s.Email == email);
             if(usuario != null){
                 UserDatabase.Instance.CarregarUsuario(usuario);
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
