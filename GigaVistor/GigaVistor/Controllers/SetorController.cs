@@ -28,6 +28,16 @@ namespace GigaVistor.Controllers
 
         }
 
+
+        public IActionResult Details(int id)
+        {
+            SetorModel setor_ = setor.Edit(id);
+            ViewBag.Supervisor = setor.GetSupervisor(setor_.SupervisorId.ToString());
+            ViewBag.Usuarios = setor.GetUsuarios(id.ToString());
+            return View(setor_);
+        }
+        
+
         public IActionResult Edit(int id)
         {
             return View(setor.Edit(id));

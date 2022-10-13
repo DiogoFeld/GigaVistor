@@ -63,6 +63,24 @@ namespace GigaVistor.Services.SetorServices
             return setores;
         }
 
+        public IEnumerable<UsuarioModel> GetUsuarios(string idSetor)
+        {
+
+            var query = from usuario in db.Usuarios
+                        where usuario.Setor == idSetor
+                        select usuario;
+
+            return query.ToList();
+        }
+
+
+        public UsuarioModel GetSupervisor(string idSetor)            
+        { 
+            UsuarioModel usuarioModel = db.Usuarios.FirstOrDefault(s => s.Setor == idSetor);
+
+            return usuarioModel;
+        }
+
 
     }
 }
