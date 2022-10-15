@@ -45,8 +45,9 @@ namespace GigaVistor.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
+            ViewBag.idSetor = id;            
             return View();
         }
 

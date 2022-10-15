@@ -25,9 +25,16 @@
 <div style="height:20px"></div>
 
 <div class="funcionariosDiv">
-    <h2 style="margin-bottom: 20px;">
-        Lista de Funcionarios do setor
-    </h2>
+
+    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <h2 style="margin-bottom: 20px;">
+            Lista de Funcionarios do setor
+        </h2>
+
+        <a class="btn createGrayBtn" asp-area="" asp-route-id="@Model.Id" asp-controller="Usuario" asp-action="Create">Novo Funcionario</a>
+    </div>
+
+
 
     <div class="funcionariosDivMain">
         @foreach (var item in ViewBag.Usuarios)
