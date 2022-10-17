@@ -82,6 +82,12 @@ namespace GigaVistor.Services.AuditoriaServices
 
         }
 
+        public IEnumerable<UsuarioModel> getAllUsuarios()
+        {
+            IEnumerable<UsuarioModel> Usuarios = db.Usuarios.Select(s => s).ToList();
+            return Usuarios;
+        }
+
         public UsuarioModel getCriadorId(long idCriador)
         {
             UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Id == idCriador);

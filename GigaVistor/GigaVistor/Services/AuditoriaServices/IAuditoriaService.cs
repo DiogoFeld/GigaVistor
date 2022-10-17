@@ -15,5 +15,6 @@ namespace GigaVistor.Services.AuditoriaServices
         public ProjetoModel getProjetoId(long idProjeto);
         public IEnumerable<TarefaModel> getTarefasByAuditoria(int id);
         public List<double> processAuditoria(IEnumerable<TarefaModel> tarefas);
+        public IEnumerable<UsuarioModel> getAllUsuarios();
     }
 }

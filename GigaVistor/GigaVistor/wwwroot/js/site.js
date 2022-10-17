@@ -110,3 +110,9 @@ function loadTasks(id) {
         },
     });
 }
+
+
+function TarefaAuditoriaShow(id) {
+    let notas = document.getElementById("").innerHTML;
+    let check = document.getElementById("").innerHTML; 
+}
