@@ -22,7 +22,7 @@
 
             <div class="taskStatusField">
                 <p>Status:</p>
-                <select>
+                <select id="status_@item.Id">
                     @if (item.Status == 0)
                     {
                         <option value="0" selected>Não Realizada</option>
@@ -52,17 +52,17 @@
 
             <div class="taskNotesField">
                 <p>Notas:</p>
-                <span>
-                    @item.NotasQualidade
-                </span>
+                <input id="notes_@item.Id" value="@item.NotasQualidade">
+                    
+                
             </div>
 
             <div class="taskResponsiblebutton">
                 <p>Responsável:</p>
-                <select>
+                <select id="user_@item.Id">
                     @foreach (var user in ViewBag.Usuarios)
                     {
-                        @if (user.Id == item.Id)
+                        @if (user.Id == item.IdResponsavel)
                         {
                             <option selected value="@user.Id">@user.Nome</option>
                         }
@@ -80,7 +80,7 @@
                 </button>
 
                 <button onclick="TarefaAuditoriaShow(@item.Id)" class="btn buttonFooterElement">
-                    Finalizar
+                    Atualizar
                 </button>
             </div>
         </div>

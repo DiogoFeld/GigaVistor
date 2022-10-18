@@ -222,6 +222,8 @@
             overflow-x: hidden;
             overflow-y: scroll;
             line-break: normal;
+            background-color: #f9f4e9;
+            border: 2px solid #eae1cb;
         }
 
 .taskStatusField {

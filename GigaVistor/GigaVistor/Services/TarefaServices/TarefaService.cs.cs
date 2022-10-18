@@ -66,6 +66,25 @@ namespace GigaVistor.Services.TarefaServices
             }
         }
 
+        public void EditTaskShow(TarefaModel _tarefa)
+        {
+            if (_tarefa != null)
+            {
+                try
+                {
+                    TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == _tarefa.Id);
+                    tarefa.IdResponsavel = _tarefa.IdResponsavel;
+                    tarefa.Status = _tarefa.Status;
+                    tarefa.NotasQualidade = _tarefa.NotasQualidade;
+                    db.SaveChanges();
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         public TarefaModel EditPage(int id)
         {
             TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == id);

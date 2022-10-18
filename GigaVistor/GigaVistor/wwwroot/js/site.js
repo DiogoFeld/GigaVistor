@@ -113,6 +113,31 @@ function loadTasks(id) {
 
 
 function TarefaAuditoriaShow(id) {
-    let notas = document.getElementById("").innerHTML;
-    let check = document.getElementById("").innerHTML; 
+    console.log("Arriving");
+    let statusSelector = document.getElementById("status_" + id);
+    let userSelector = document.getElementById("user_" + id);
+
+    let status = parseInt(statusSelector.options[statusSelector.selectedIndex].value);
+    let user = parseInt(userSelector.options[userSelector.selectedIndex].value);
+    let notes = document.getElementById("notes_" + id).value;
+
+
+    $.ajax({
+        type: "GET",
+        url: "/Tarefa/updateTaskShow",
+        data: {
+            status: status,
+            user: user,
+            notes: notes,
+            id: id
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {           
+           
+        },
+        error: function (response) {
+
+        },
+    });
 }

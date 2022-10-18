@@ -65,5 +65,19 @@ namespace GigaVistor.Controllers
         }
 
 
+        public JsonResult updateTaskShow(string notes, int user, int status, int id)
+        {
+            TarefaModel newTarefa = new TarefaModel();
+            newTarefa.Id = id;
+            newTarefa.NotasQualidade = notes;
+            newTarefa.IdResponsavel = user;
+            newTarefa.Status = status;
+
+            tarefa.EditTaskShow(newTarefa);            
+            return Json(new());
+
+        }
+
+
     }
 }
