@@ -61,6 +61,16 @@ namespace GigaVistor.Controllers
             return new JsonResult(templates);
         }
 
+        public IActionResult CreatePageTemplate(int id)
+        {
+            //auditoriaID
+            IEnumerable<TarefaModel> tarefas = template.getTarefasByAuditoria(id);
+            ViewBag.Tarefas = tarefas;
+
+            return View();
+        }
+
+
 
     }
 }

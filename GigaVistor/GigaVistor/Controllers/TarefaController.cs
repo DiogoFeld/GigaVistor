@@ -18,7 +18,7 @@ namespace GigaVistor.Controllers
         public IActionResult Index()
         {
             ViewData["Title"] = "Index";
-            return View(tarefa.getAllTarefas());            
+            return View(tarefa.getAllTarefas());
         }
 
         public IActionResult Delete(int id)
@@ -40,7 +40,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult Create(TarefaModel _tarefa)
         {
-            tarefa.Create(_tarefa);         
+            tarefa.Create(_tarefa);
             return RedirectToAction("Details", "Auditoria", new { id = _tarefa.IdAuditoria });
         }
 
@@ -48,7 +48,7 @@ namespace GigaVistor.Controllers
         {
             ViewBag.Funcionarios = tarefa.getFuncionarios();
             ViewBag.Setores = tarefa.getSetores();
-            ViewBag.AuditoriaId = id;                      
+            ViewBag.AuditoriaId = id;
             return View();
         }
 
@@ -73,11 +73,10 @@ namespace GigaVistor.Controllers
             newTarefa.IdResponsavel = user;
             newTarefa.Status = status;
 
-            tarefa.EditTaskShow(newTarefa);            
+            tarefa.EditTaskShow(newTarefa);
             return Json(new());
+        }    
 
-        }
-
-
+        
     }
 }

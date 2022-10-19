@@ -141,3 +141,43 @@ function TarefaAuditoriaShow(id) {
         },
     });
 }
+
+
+function addTarefatemplate() {
+    let tarefaTemplateDiv = document.getElementById("TarefaTemplateDiv");
+
+    let mainDiv = document.createElement("div");    
+    mainDiv.setAttribute("tipo", "tarefaTemplate");
+    mainDiv.className = "mainElementSelection";
+    mainDiv.style.height = "180px";
+    tarefaTemplateDiv.appendChild(mainDiv);
+
+    let title = document.createElement("input");
+    title.placeholder = "Nome";
+    title.setAttribute("tipo", "tarefaNome");
+    title.className = "titleSection inputTarefaTemplateT";
+    mainDiv.appendChild(title);
+
+    let span = document.createElement("input");
+    span.placeholder = "descricao";
+    span.className = "auditoriaSection inputTarefaTemplateDesc";
+    span.setAttribute("tipo", "tarefaDescricao");
+    mainDiv.appendChild(span);
+
+
+    let div = document.createElement("div");
+    div.className = "centerIten";
+    mainDiv.appendChild(div);
+
+    let i = document.createElement("i");
+    i.className = "fas fa-solid fa-trash";
+    i.onclick = function () { deleteTaskTemplate(i) }
+    div.appendChild(i);
+
+    tarefaTemplateDiv.appendChild(mainDiv);
+}
+
+function deleteTaskTemplate(element) {
+    let parentElement = element.parentElement.parentElement;
+    parentElement.remove();
+}

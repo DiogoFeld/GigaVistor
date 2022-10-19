@@ -200,31 +200,35 @@
     gap: 45px;
     align-items: flex-start;
 }
+
     .taskResponsiblebutton select {
         background: #f9f4e9;
         border: 3px solid #c9bc9b;
     }
-    .taskResponsiblebutton p{
-        font-weight:500;
+
+    .taskResponsiblebutton p {
+        font-weight: 500;
     }
 
-    .taskNotesField {
-        display: flex;
-        flex-direction: column;
+.taskNotesField {
+    display: flex;
+    flex-direction: column;
+}
+
+    .taskNotesField p {
+        font-weight: 500;
     }
-        .taskNotesField p{
-            font-weight:500;
-        }
-        .taskNotesField :nth-child(2) {
-            height: 75px;
-            font-size: 12px;
-            overflow: auto;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            line-break: normal;
-            background-color: #f9f4e9;
-            border: 2px solid #eae1cb;
-        }
+
+    .taskNotesField :nth-child(2) {
+        height: 75px;
+        font-size: 12px;
+        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        line-break: normal;
+        background-color: #f9f4e9;
+        border: 2px solid #eae1cb;
+    }
 
 .taskStatusField {
     display: flex;
@@ -252,3 +256,22 @@
     .taskDescripField span {
         height: 50px;
     }
+
+
+.centerIten {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+.inputTarefaTemplateT {    
+    text-align: center;
+    background: #f9f4e9;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.inputTarefaTemplateDesc {    
+    background: #f9f4e9; 
+}

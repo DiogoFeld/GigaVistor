@@ -79,8 +79,5 @@ namespace GigaVistor.Controllers
         }
 
 
-
-
-
     }
 }
