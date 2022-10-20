@@ -133,8 +133,8 @@ function TarefaAuditoriaShow(id) {
         },
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        complete: function (result) {           
-           
+        complete: function (result) {
+
         },
         error: function (response) {
 
@@ -146,7 +146,7 @@ function TarefaAuditoriaShow(id) {
 function addTarefatemplate() {
     let tarefaTemplateDiv = document.getElementById("TarefaTemplateDiv");
 
-    let mainDiv = document.createElement("div");    
+    let mainDiv = document.createElement("div");
     mainDiv.setAttribute("tipo", "tarefaTemplate");
     mainDiv.className = "mainElementSelection";
     mainDiv.style.height = "180px";
@@ -180,4 +180,45 @@ function addTarefatemplate() {
 function deleteTaskTemplate(element) {
     let parentElement = element.parentElement.parentElement;
     parentElement.remove();
+}
+
+function createTemplateImport() {
+    let nomeTemplate = document.getElementById("templateName").value;
+    let descrTemplate = document.getElementById("templateDescript").value;
+
+    let stringNames = '';
+    let stringDescritis = '';
+
+    let tasks = document.querySelectorAll("[tipo='tarefaTemplate']");
+    for (let task in tasks) {
+        if (typeof tasks[task] === 'object') {            
+
+            let name = tasks[task].getElementsByTagName("input")[0].value;
+            let descric = tasks[task].getElementsByTagName("input")[1].value;
+
+
+            stringNames += name + "//";
+            stringDescritis += descric + "//";
+        }
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "/Template/CreateTemplateExport",
+        data: {
+            nome: nomeTemplate,
+            descricao: descrTemplate,
+            listNames: stringNames,
+            listDescription: stringDescritis 
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+
+          
+        },
+        error: function (response) {
+
+        },
+    });
 }

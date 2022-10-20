@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.TarefaTemplateServices;
 using GigaVistor.Services.TemplateServices;
 using Microsoft.AspNetCore.Mvc;
@@ -70,7 +71,38 @@ namespace GigaVistor.Controllers
             return View();
         }
 
+        public JsonResult CreateTemplateExport(string nome, string descricao, string listNames, string listDescription)
+        {
+            string[] listNameArray = listNames.Split("//");
+            string[] listDescriptionArray = listDescription.Split("//");
+            List<TarefaTemplateModel> listTarefas = new List<TarefaTemplateModel>();
+            long idUser = UserDatabase.Instance.getUsuario().Id;
 
+            for (int i = 0; i < listDescriptionArray.Length; i++)
+            {
+                if (listDescriptionArray[i] != "")
+                {
+                    TarefaTemplateModel newTarefa = new TarefaTemplateModel();
+                    newTarefa.Descricao = listDescriptionArray[i];
+                    newTarefa.Name = listNameArray[i];
+                    newTarefa.IdSetor = 0;
+                    newTarefa.IdCriador = idUser;
 
+                    listTarefas.Add(newTarefa);
+                }
+            }
+
+            TemplateModel templateModel = new TemplateModel();
+            templateModel.Name = nome;
+            templateModel.Description = descricao;
+            templateModel.IdCriador = idUser;
+            templateModel.DateTime = DateTime.Now;
+
+            template.CreateTemplateExport(listTarefas, templateModel);
+
+            var result = new JsonResult("");
+
+            return result;
+        }
     }
 }
