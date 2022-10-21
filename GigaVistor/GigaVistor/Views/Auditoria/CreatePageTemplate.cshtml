@@ -1,0 +1,65 @@
+﻿@model GigaVistor.Models.AuditoriaModel
+
+@{
+    ViewData["Title"] = "CreatePageTemplate";
+}
+
+
+@*create Audiotria From from template*@
+
+<h1>CreatePageTemplate</h1>
+
+<h4>AuditoriaModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="IdProjeto" class="control-label"></label>
+                <input asp-for="IdProjeto" class="form-control" value="@ViewBag.ProjetoId" />
+                <span asp-validation-for="IdProjeto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="height:20px"></div>
+
+<h2>Templates:</h2>
+<div class="mainDivContent">
+
+    @foreach (var item in ViewBag.Templates)
+    {
+        <div class="mainElementSelection" style="height:180px" tipo="tarefaTemplate">
+
+            <input class="titleSection inputTarefaTemplateT" tipo="tarefaNome" value="@item.Name" placeholder="Nome">
+            <input class="auditoriaSection inputTarefaTemplateDesc" tipo="tarefaDescricao" value="@item.Description" placeholder="Descricao">
+            <div class="centerIten">
+                <i class="fas fa-solid fa-check" onclick="selectTemplate(@item.Id)" style="background-color: #f3e6ca;padding: 4px;"></i>
+            </div>
+        </div>
+    }
+</div>
+
+<div style="height:10px"></div>
+
+
+<div id="tarefasTemplate" hidden>
+    <h4>Tarefas</h4>
+    <div id="tarefasTemplateDiv" class="mainDivContentShow">
+    </div>
+</div>

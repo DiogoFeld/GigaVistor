@@ -122,7 +122,7 @@ namespace GigaVistor.Services.TarefaServices
 
             return query.ToList();
         }
-
-
+                
+    
     }
 }

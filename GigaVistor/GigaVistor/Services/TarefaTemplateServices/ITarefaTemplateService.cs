@@ -11,5 +11,9 @@ namespace GigaVistor.Services.TarefaTemplateServices
         public TarefaTemplateModel DeletePage(int id);
         public void Edit(TarefaTemplateModel tarefa);
         public TarefaTemplateModel EditPage(int id);
+        public IEnumerable<SetorModel> getSetores();
+        public IEnumerable<UsuarioModel> getAllUsuarios();
+        
+
     }
 }

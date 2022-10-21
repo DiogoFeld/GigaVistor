@@ -134,6 +134,10 @@ namespace GigaVistor.Services.AuditoriaServices
             return new List<double>() { zerado, incompleto, completo };
         }
 
-
+        public IEnumerable<TemplateModel> getAllTemplates()
+        {
+            IEnumerable<TemplateModel> templates = db.Templates.Select(s => s).ToList();
+            return templates;
+        }
     }
 }

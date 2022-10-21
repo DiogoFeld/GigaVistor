@@ -57,5 +57,18 @@ namespace GigaVistor.Controllers
             IEnumerable<TarefaTemplateModel> tarefas = tarefa.getAllTarefasByAuditoria(id);
             return new JsonResult(tarefas);
         }
+
+        public JsonResult getTarefaForImport(int id)
+        {
+            IEnumerable<TarefaTemplateModel> tarefas = tarefa.getAllTarefasByAuditoria(id);
+            IEnumerable<SetorModel> setores = tarefa.getSetores();
+            IEnumerable<UsuarioModel> users = tarefa.getAllUsuarios();
+
+
+            return Json(new { tarefas,setores,users });
+        }
+
+
+
     }
 }

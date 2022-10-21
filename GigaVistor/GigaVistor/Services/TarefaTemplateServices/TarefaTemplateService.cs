@@ -78,5 +78,21 @@ namespace GigaVistor.Services.TarefaTemplateServices
 
             return query.ToList();
         }
+
+        public IEnumerable<SetorModel> getSetores()
+        {
+            IEnumerable<SetorModel> setores = db.Setores.Select(s => s).ToList();
+            return setores;
+        }
+
+        public IEnumerable<UsuarioModel> getAllUsuarios()
+        {
+            IEnumerable<UsuarioModel> Usuarios = db.Usuarios.Select(s => s).ToList();
+            return Usuarios;
+        }
+
+
+
+
     }
 }

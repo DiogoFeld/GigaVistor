@@ -73,7 +73,6 @@ function clearDiv(element) {
     }
 }
 
-
 function loadTasks(id) {
     let TemplatesTarefas = document.getElementById("TemplatesTarefas");
     clearDiv(TemplatesTarefas);
@@ -111,7 +110,6 @@ function loadTasks(id) {
     });
 }
 
-
 function TarefaAuditoriaShow(id) {
     console.log("Arriving");
     let statusSelector = document.getElementById("status_" + id);
@@ -141,7 +139,6 @@ function TarefaAuditoriaShow(id) {
         },
     });
 }
-
 
 function addTarefatemplate() {
     let tarefaTemplateDiv = document.getElementById("TarefaTemplateDiv");
@@ -191,7 +188,7 @@ function createTemplateImport() {
 
     let tasks = document.querySelectorAll("[tipo='tarefaTemplate']");
     for (let task in tasks) {
-        if (typeof tasks[task] === 'object') {            
+        if (typeof tasks[task] === 'object') {
 
             let name = tasks[task].getElementsByTagName("input")[0].value;
             let descric = tasks[task].getElementsByTagName("input")[1].value;
@@ -209,16 +206,120 @@ function createTemplateImport() {
             nome: nomeTemplate,
             descricao: descrTemplate,
             listNames: stringNames,
-            listDescription: stringDescritis 
+            listDescription: stringDescritis
         },
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         complete: function (result) {
 
-          
+
         },
         error: function (response) {
 
         },
     });
+}
+
+function selectTemplate(id) {
+    let templateId = document.getElementById("tarefasTemplate");
+    templateId.hidden = false;
+
+    let templateDiv = document.getElementById("tarefasTemplateDiv");
+    templateDiv.innerHTML = "";
+
+    setTimeout(() => {
+        LoadTarefaTemplate(id, templateDiv);
+    }, "200");
+}
+
+
+function LoadTarefaTemplate(id, templateDiv) {
+    $.ajax({
+        type: "GET",
+        url: "/TarefaTemplate/getTarefaForImport",
+        data: {
+            id: id
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+            console.log(result);
+            let resultJson = result.responseJSON;
+            let tarefas = resultJson.tarefas;
+            let users = resultJson.users;
+            let setores = resultJson.setores;
+            users = users.filter(noAdmin);
+
+            for (let t in tarefas) {
+                let divTarefa = document.createElement("div");
+                divTarefa.className = "mainElementSelection taskShow";
+                divTarefa.style.height = "400px";
+                templateDiv.appendChild(divTarefa);
+
+
+                let title = document.createElement("h3");
+                title.className = "titleSection";
+                title.innerHTML = tarefas[t].name;
+                divTarefa.appendChild(title);
+
+                //descr
+                let divDescr = document.createElement("div");
+                divDescr.className = "taskDescripField";
+                divTarefa.appendChild(divDescr);
+
+                let p = document.createElement("p");
+                p.innerHTML = "Descrição da Tarefa:";
+                divDescr.appendChild(p);
+
+                let span = document.createElement("span");
+                span.className = "auditoriaSection";
+                span.innerHTML = tarefas[t].descricao;
+                divDescr.appendChild(span);
+
+                //user
+                let divUser = document.createElement("div");
+                divUser.className = "taskResponsiblebutton";
+                divTarefa.appendChild(divUser);
+
+                let p2 = document.createElement("p");
+                p2.innerHTML = "Responsável :";
+                divUser.appendChild(p2);
+
+                let selectorUser = document.createElement("select");
+                for (let u in users) {
+                    let optionUser = document.createElement("option");
+                    optionUser.innerHTML = users[u].nome;
+                    optionUser.value = users[u].id;
+                    selectorUser.appendChild(optionUser);
+                }
+                divUser.appendChild(selectorUser);
+
+                //setor
+                let divSetor = document.createElement("div");
+                divSetor.className = "taskResponsiblebutton";
+                divTarefa.appendChild(divSetor);
+
+                let p3 = document.createElement("p");
+                p3.innerHTML = "Setor :";
+                divSetor.appendChild(p3);
+
+                let selectorSetor = document.createElement("select");
+                for (let s in setores) {
+                    let optionSetor = document.createElement("option");
+                    optionSetor.innerHTML = setores[s].nome;
+                    optionSetor.value = setores[s].id;
+                    selectorSetor.appendChild(optionSetor);
+                }
+                divSetor.appendChild(selectorSetor);
+            }
+        },
+        error: function (response) {
+
+        },
+    });
+}
+
+
+function noAdmin(entry) {
+    return entry.nome != "Admin";
 }
