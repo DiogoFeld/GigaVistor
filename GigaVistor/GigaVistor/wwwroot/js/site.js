@@ -411,3 +411,23 @@ function CreateAudiriaByTemplate() {
         alert("preencha todos os campos de Auditoria")
     }
 }
+
+function SendEmail() {    
+    let emailTitle = document.getElementById("emailTitle").value;
+    let emailDescrip = document.getElementById("emailDescrip").value;
+}
+
+
+function SendEmail() {
+
+}
+
+function ShowEmail() {
+    let emailDiv = document.getElementById("emailDiv");
+    emailDiv.hidden = false;
+}
+
+function closeEmail() {
+    let emailDiv = document.getElementById("emailDiv");
+    emailDiv.hidden = true;
+}
