@@ -27,6 +27,14 @@
         </form>
     </div>
 
+    <div class="auditoriaElementButton">
+        <button class="buttonFooterElement">
+            <a asp-controller="Auditoria" asp-action="ShowAuditoria" asp-route-id="@Model.Id">
+                REALIZAR AUDITORIA
+            </a>
+        </button>
+    </div>
+
     <dl class="row">
         <dt class="col-sm-2">
             Nome
@@ -96,6 +104,24 @@
             <span class="auditoriaSection">
                 @item.Descricao
             </span>
+
+
+            <div>
+                <span>Status</span>
+                @if (@item.Status == 2)
+                {
+                    <i class="fas fa-solid fa-check"></i>
+                }
+                else if (@item.Status == 1)
+                {
+                    <i class="fas fa-sharp fa-solid fa-spinner"></i>
+                }
+                else
+                {
+                    <i class="fas fa-solid fa-ban"></i>
+                }
+            </div>
+
 
             <div class="mainElementFooter">
                 <a class="btn buttonFooterElement" asp-controller="Tarefa" asp-action="EditPage" asp-route-id="@item.Id">Selecionar</a>

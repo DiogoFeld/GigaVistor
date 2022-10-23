@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "ShowAuditoria";
+}
+
+<h1>Realizar Auditoria</h1>
+
+<div class="mainDivContentShow">
+    @foreach (var item in ViewBag.Tarefas)
+    {
+        <div class="mainElementSelection taskShow" style="height:400px">
+            <h3 class="titleSection">
+                @item.Name
+            </h3>
+
+            <div class="taskDescripField">
+                <p>Descrição da tarefa:</p>
+                <span class="auditoriaSection">
+                    @item.Descricao
+                </span>
+            </div>
+
+
+            <div class="taskStatusField">
+                <p>Status:</p>
+                <select id="status_@item.Id">
+                    @if (item.Status == 0)
+                    {
+                        <option value="0" selected>Não Realizada</option>
+                    }
+                    else
+                    {
+                        <option value="0">Não Realizada</option>
+                    }
+                    @if (item.Status == 1)
+                    {
+                        <option value="1" selected>Incompleta</option>
+                    }
+                    else
+                    {
+                        <option value="1">Incompleta</option>
+                    }
+                    @if (item.Status == 2)
+                    {
+                        <option selected value="2">Completada</option>
+                    }
+                    else
+                    {
+                        <option value="2">Completada</option>
+                    }
+                </select>
+            </div>
+
+            <div class="taskNotesField">
+                <p>Notas:</p>
+                <input id="notes_@item.Id" value="@item.NotasQualidade">
+                    
+                
+            </div>
+
+            <div class="taskResponsiblebutton">
+                <p>Responsável:</p>
+                <select id="user_@item.Id">
+                    @foreach (var user in ViewBag.Usuarios)
+                    {
+                        @if (user.Id == item.IdResponsavel)
+                        {
+                            <option selected value="@user.Id">@user.Nome</option>
+                        }
+                        else
+                        {
+                            <option value="@user.Id">@user.Nome</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="btnFoooterTask">
+                <button class="btn buttonFooterElement">
+                    Escalar
+                </button>
+
+                <button onclick="TarefaAuditoriaShow(@item.Id)" class="btn buttonFooterElement">
+                    Atualizar
+                </button>
+            </div>
+        </div>
+    }
+</div>
+

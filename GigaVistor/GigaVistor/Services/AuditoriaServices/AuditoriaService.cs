@@ -82,6 +82,12 @@ namespace GigaVistor.Services.AuditoriaServices
 
         }
 
+        public IEnumerable<UsuarioModel> getAllUsuarios()
+        {
+            IEnumerable<UsuarioModel> Usuarios = db.Usuarios.Select(s => s).ToList();
+            return Usuarios;
+        }
+
         public UsuarioModel getCriadorId(long idCriador)
         {
             UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Id == idCriador);
@@ -128,6 +134,53 @@ namespace GigaVistor.Services.AuditoriaServices
             return new List<double>() { zerado, incompleto, completo };
         }
 
+        public IEnumerable<TemplateModel> getAllTemplates()
+        {
+            IEnumerable<TemplateModel> templates = db.Templates.Select(s => s).ToList();
+            return templates;
+        }
+
+        public bool CreateAuditoriaByTemplate(AuditoriaModel auditoriaModel, List<TarefaModel> tarefas)
+        {
+            bool result = false;
+            int idAuditoria = 0;
+
+            if (auditoriaModel.Id == 0)
+            {
+                if (auditoriaModel.Name == null)
+                    auditoriaModel.Name = "nulo";
+                if (auditoriaModel.Descricao == null)
+                    auditoriaModel.Descricao = "nulo";
+
+                auditoriaModel.AuditoriaDate = DateTime.Now;
+                auditoriaModel.IdCriador = UserDatabase.Instance.getUsuario().Id;
+
+                db.Auditorias.Add(auditoriaModel);
+                db.SaveChanges();
+
+                idAuditoria = (int)auditoriaModel.Id;
+
+                foreach (TarefaModel tarefa in tarefas)
+                {
+                    tarefa.IdAuditoria = idAuditoria;
+                    if (tarefa.Descricao == null)
+                        tarefa.Descricao = "null";
+                    if (tarefa.Name == null)
+                        tarefa.Name = "null";
+
+                    tarefa.IdCriador = UserDatabase.Instance.getUsuario().Id;
+                    tarefa.IdAuditoria = idAuditoria;
+                    tarefa.Status = 0;
+                    tarefa.NotasQualidade = "";
+
+                    db.Tarefas.Add(tarefa);
+                    db.SaveChanges();
+
+                    result = true;
+                }
+            }
+            return result;
+        }
 
     }
 }

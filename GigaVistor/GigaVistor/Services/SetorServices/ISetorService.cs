@@ -10,6 +10,9 @@ namespace GigaVistor.Services.SetorServices
         public SetorModel Edit(int id);
         public void EditAction(SetorModel setorModel);
         public SetorModel DeletePage(int id);
+        public IEnumerable<UsuarioModel> GetUsuarios(string idSetor);
+        public UsuarioModel GetSupervisor(string idSetor);
+
 
     }
 }

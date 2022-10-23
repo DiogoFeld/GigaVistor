@@ -33,7 +33,7 @@ namespace GigaVistor.Services.TemplateServices
             {
                 db.Remove(template);
                 db.SaveChanges();
-            }            
+            }
         }
 
         public TemplateModel DeletePage(int id)
@@ -50,7 +50,7 @@ namespace GigaVistor.Services.TemplateServices
                 template.Name = _template.Name;
                 template.Description = _template.Description;
                 template.IdCriador = _template.IdCriador;
-                template.DateTime = _template.DateTime;                
+                template.DateTime = _template.DateTime;
 
                 db.SaveChanges();
             }
@@ -58,14 +58,61 @@ namespace GigaVistor.Services.TemplateServices
         public TemplateModel EditPage(int id)
         {
             TemplateModel template = db.Templates.FirstOrDefault(s => s.Id == id);
-            return template;            
-        }        
+            return template;
+        }
         public IEnumerable<TemplateModel> getAllTemplates()
         {
 
-            IEnumerable<TemplateModel> templates= db.Templates.Select(s => s).ToList();
+            IEnumerable<TemplateModel> templates = db.Templates.Select(s => s).ToList();
             return templates;
         }
+
+        public IEnumerable<TarefaModel> getTarefasByAuditoria(int id)
+        {
+
+            var query = from tarefa in db.Tarefas
+                        where tarefa.IdAuditoria == id
+                        select tarefa;
+
+            return query.ToList();
+        }
+
+
+        public bool CreateTemplateExport(List<TarefaTemplateModel> tarefas, TemplateModel template)
+        {
+            bool result = false;
+            int idAuditoria = 0;
+
+
+            if (template.Id == 0)
+            {
+                if (template.Name == null)
+                    template.Name = "nulo";
+                if (template.Description == null)
+                    template.Description = "nulo";
+
+                db.Templates.Add(template);
+                db.SaveChanges();
+
+                idAuditoria = template.Id;
+            }
+
+            foreach (TarefaTemplateModel tarefa in tarefas)
+            {
+                tarefa.IdAuditoria = idAuditoria;
+                if (tarefa.Descricao == null)
+                    tarefa.Descricao = "null";
+                if (tarefa.Name == null)
+                    tarefa.Name = "null";
+
+
+                db.TarefasTemplate.Add(tarefa);
+                db.SaveChanges();
+            }
+
+            return result;
+        }
+
 
 
     }

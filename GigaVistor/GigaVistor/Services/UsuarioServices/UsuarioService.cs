@@ -1,5 +1,6 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace GigaVistor.Services.UsuarioServices
 {
@@ -20,7 +21,7 @@ namespace GigaVistor.Services.UsuarioServices
                 usuario.Logon = _usuario.Logon;
                 usuario.Cargo = _usuario.Cargo;
                 usuario.Email = _usuario.Email;
-                usuario.IdSuperVisor = _usuario.IdSuperVisor;
+                usuario.IdSuperVisor = getSuperVisorId(_usuario.Setor);
                 usuario.Permissao = _usuario.Permissao;
 
 
@@ -28,6 +29,19 @@ namespace GigaVistor.Services.UsuarioServices
                 db.SaveChanges();
             }
         }
+
+        private long getSuperVisorId(string idSetor)
+        {
+
+            int idSetorlong = int.Parse(idSetor);
+
+            long result = 0;
+            SetorModel setor = db.Setores.FirstOrDefault(s => s.Id == idSetorlong);
+            result = setor.SupervisorId;
+
+            return result;
+        }
+                
 
         public void DeleteAUsuario(int id)
         {

@@ -39,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXENyZWF0ZVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Auditoria/CreatePageTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXENyZWF0ZVBhZ2VUZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Auditoria/DeletePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXERlbGV0ZVBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +57,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Auditoria/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Auditoria/ShowAuditoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXFNob3dBdWRpdG9yaWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Home/Index.cshtml]
@@ -93,6 +101,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Setor/DeletePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JcRGVsZXRlUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Setor/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0b3JcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Setor/Edit.cshtml]
@@ -145,6 +157,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/CreatePage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcQ3JlYXRlUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/CreatePageTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVtcGxhdGVcQ3JlYXRlUGFnZVRlbXBsYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Template/DeletePage.cshtml]

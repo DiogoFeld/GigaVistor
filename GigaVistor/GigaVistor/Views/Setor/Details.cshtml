@@ -1,0 +1,93 @@
+﻿@model GigaVistor.Models.SetorModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Nome</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SupervisorId)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.Supervisor.Nome
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Retornar a Listas</a>
+</div>
+
+
+<div style="height:20px"></div>
+
+<div class="funcionariosDiv">
+
+    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <h2 style="margin-bottom: 20px;">
+            Lista de Funcionarios do setor
+        </h2>
+
+        <a class="btn createGrayBtn" asp-area="" asp-route-id="@Model.Id" asp-controller="Usuario" asp-action="Create">Novo Funcionario</a>
+    </div>
+
+
+
+    <div class="funcionariosDivMain">
+        @foreach (var item in ViewBag.Usuarios)
+        {
+            <a asp-action="Index">
+                <div class="funcionariosDivUni">
+
+                    <h3>
+                        @item.Nome
+                    </h3>
+
+                    <div>
+                        <label>Cargo:</label>
+                        <p>
+                            @item.Cargo
+                        </p>
+                    </div>
+
+                    <div>
+                        <label>Email:</label>
+                        <p>
+                            @item.Email
+                        </p>
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a asp-action="Index">
+                <div class="funcionariosDivUni">
+
+                    <h3>
+                        @item.Nome
+                    </h3>
+
+                    <div>
+                        <label>Cargo:</label>
+                        <p>
+                            @item.Cargo
+                        </p>
+                    </div>
+
+                    <div>
+                        <label>Email:</label>
+                        <p>
+                            @item.Email
+                        </p>
+                    </div>
+
+                </div>
+            </a>
+
+        }
+    </div>
+</div>

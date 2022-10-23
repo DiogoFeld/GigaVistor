@@ -17,13 +17,25 @@
     flex-wrap: wrap;
 }
 
+.mainDivContentShow {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.taskShow {
+    width: 49%;
+    min-width: 300px;
+}
+
 
 .mainElement {
     margin-left: 200px;
     margin-right: 10%;
     width: 100%;
     max-width: calc(100%-180px);
-    min-width: calc(100%-180px);    
+    min-width: calc(100%-180px);
 }
 
 .mainElementFooter {
@@ -52,6 +64,34 @@
     justify-content: center;
 }
 
+.auditoriaElementButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+
+
+.fas {
+    margin-left: 5px;
+}
+
+.auditoriaElementButton button {
+    padding: 10px;
+    font-weight: 600;
+    background-color: #f3282885;
+    color: #FFF;
+}
+
+.auditoriaElementButton a {
+    color: #FFF
+}
+
+.auditoriaElementButton button:hover {
+    background-color: #ed121285;
+}
 
 .resultAuditoria {
     display: flex;
@@ -65,7 +105,7 @@
     .resultAuditoria > form {
         display: flex;
         flex-direction: column;
-        align-items: center;    
+        align-items: center;
     }
 
     .resultAuditoria label {
@@ -74,12 +114,164 @@
     }
 
     .resultAuditoria p {
-        font-size:2em;
+        font-size: 2em;
         font-weight: 700;
     }
 
 
-    .resultAuditoria p:hover {
-        font-size: 2.2em;
-        font-weight: 700;
+        .resultAuditoria p:hover {
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+.templatesDiv {
+    min-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #ffd880b3;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.funcionariosDivUni {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
+    padding-right: 5px;
+    padding-left: 5px;
+    background: #dfdfdf;
+}
+
+    .funcionariosDivUni:hover {
+        background-color: #cfcdcd;
     }
+
+    .funcionariosDivUni div {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        font-size: 1.5em;
+    }
+
+    .funcionariosDivUni label {
+        font-weight: 600;
+    }
+
+.funcionariosDiv {
+    background: #89898936;
+    padding: 10px;
+}
+
+.funcionariosDivMain {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.createGrayBtn {
+    background-color: lightgrey;
+    float: right;
+    margin-right: 15px;
+    padding: 5px;
+    font-weight: 500;
+    height: 45px;
+}
+
+    .createGrayBtn:hover {
+        background-color: black;
+        color: #fff;
+    }
+
+.btnFoooterTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+    .btnFoooterTask :nth-child(1) {
+        background: indianred;
+        color: #FFF;
+    }
+
+.taskResponsiblebutton {
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+    align-items: flex-start;
+}
+
+    .taskResponsiblebutton select {
+        background: #f9f4e9;
+        border: 3px solid #c9bc9b;
+    }
+
+    .taskResponsiblebutton p {
+        font-weight: 500;
+    }
+
+.taskNotesField {
+    display: flex;
+    flex-direction: column;
+}
+
+    .taskNotesField p {
+        font-weight: 500;
+    }
+
+    .taskNotesField :nth-child(2) {
+        height: 75px;
+        font-size: 12px;
+        overflow: auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        line-break: normal;
+        background-color: #f9f4e9;
+        border: 2px solid #eae1cb;
+    }
+
+.taskStatusField {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: flex-start;
+}
+
+    .taskStatusField p {
+        font-weight: 500;
+    }
+
+    .taskStatusField select {
+        background: #f9f4e9;
+        border: 0px;
+    }
+
+.taskDescripField {
+    display: flex;
+    flex-direction: column;
+}
+
+    .taskDescripField span {
+        height: 50px;
+    }
+
+
+.centerIten {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+.inputTarefaTemplateT {    
+    text-align: center;
+    background: #f9f4e9;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.inputTarefaTemplateDesc {    
+    background: #f9f4e9; 
+}

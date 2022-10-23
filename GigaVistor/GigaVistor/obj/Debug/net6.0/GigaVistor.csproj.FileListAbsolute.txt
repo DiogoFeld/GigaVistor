@@ -2,6 +2,10 @@ D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\appsettings.Developme
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\appsettings.json
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.staticwebassets.runtime.json
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.exe
+D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.deps.json
+D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.runtimeconfig.json
+D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.dll
+D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.pdb
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\Humanizer.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\MessagePack.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\MessagePack.Annotations.dll
@@ -255,9 +259,5 @@ D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\GigaVistor.csproj.Cop
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\GigaVistor.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\refint\GigaVistor.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\GigaVistor.pdb
-D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.deps.json
-D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.runtimeconfig.json
-D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.dll
-D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.pdb
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\GigaVistor.genruntimeconfig.cache
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\obj\Debug\net6.0\ref\GigaVistor.dll

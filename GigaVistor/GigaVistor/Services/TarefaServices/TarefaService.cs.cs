@@ -52,7 +52,7 @@ namespace GigaVistor.Services.TarefaServices
         {
             if (_tarefa != null)
             {
-                TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == _tarefa.Id);                
+                TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == _tarefa.Id);
                 tarefa.Name = _tarefa.Name;
                 tarefa.Descricao = _tarefa.Descricao;
                 tarefa.IdResponsavel = _tarefa.IdResponsavel;
@@ -61,21 +61,40 @@ namespace GigaVistor.Services.TarefaServices
                 tarefa.IdAuditoria = _tarefa.IdAuditoria;
                 tarefa.Status = _tarefa.Status;
                 tarefa.NotasQualidade = _tarefa.NotasQualidade;
-                
+
                 db.SaveChanges();
+            }
+        }
+
+        public void EditTaskShow(TarefaModel _tarefa)
+        {
+            if (_tarefa != null)
+            {
+                try
+                {
+                    TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == _tarefa.Id);
+                    tarefa.IdResponsavel = _tarefa.IdResponsavel;
+                    tarefa.Status = _tarefa.Status;
+                    tarefa.NotasQualidade = _tarefa.NotasQualidade;
+                    db.SaveChanges();
+                }
+                catch
+                {
+
+                }
             }
         }
 
         public TarefaModel EditPage(int id)
         {
             TarefaModel tarefa = db.Tarefas.FirstOrDefault(s => s.Id == id);
-            return tarefa;            
+            return tarefa;
         }
 
         public IEnumerable<TarefaModel> getAllTarefas()
         {
             IEnumerable<TarefaModel> tarefas = db.Tarefas.Select(s => s).ToList();
-            return tarefas;            
+            return tarefas;
         }
 
         public IEnumerable<SetorModel> getSetores()
@@ -94,8 +113,16 @@ namespace GigaVistor.Services.TarefaServices
             return query.ToList();
         }
 
+        public IEnumerable<TarefaModel> getAllTarefasByAuditoria(int id)
+        {
 
+            var query = from tarefa in db.Tarefas
+                        where tarefa.IdAuditoria == id
+                        select tarefa;
 
-
+            return query.ToList();
+        }
+                
+    
     }
 }

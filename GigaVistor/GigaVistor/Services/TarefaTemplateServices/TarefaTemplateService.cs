@@ -70,5 +70,29 @@ namespace GigaVistor.Services.TarefaTemplateServices
             return tarefas;
         }
 
+        public IEnumerable<TarefaTemplateModel> getAllTarefasByAuditoria(int id)
+        {
+            var query = from tarefa in db.TarefasTemplate
+                        where tarefa.IdAuditoria == id
+                        select tarefa;
+
+            return query.ToList();
+        }
+
+        public IEnumerable<SetorModel> getSetores()
+        {
+            IEnumerable<SetorModel> setores = db.Setores.Select(s => s).ToList();
+            return setores;
+        }
+
+        public IEnumerable<UsuarioModel> getAllUsuarios()
+        {
+            IEnumerable<UsuarioModel> Usuarios = db.Usuarios.Select(s => s).ToList();
+            return Usuarios;
+        }
+
+
+
+
     }
 }
