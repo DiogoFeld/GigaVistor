@@ -6,6 +6,7 @@ D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.deps.json
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.runtimeconfig.json
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\GigaVistor.pdb
+D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\FluentEmail.Core.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\Humanizer.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\MessagePack.dll
 D:\PUCPR\GigaVistor\GigaVistor\GigaVistor\bin\Debug\net6.0\MessagePack.Annotations.dll

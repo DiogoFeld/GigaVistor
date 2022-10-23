@@ -411,3 +411,65 @@ function CreateAudiriaByTemplate() {
         alert("preencha todos os campos de Auditoria")
     }
 }
+
+function SendEmail(id) {
+    if (id != null) {
+        let selector = document.getElementById("user_" + id);        
+        let userId = selector.options[selector.selectedIndex].value;
+
+        let emailTitle = document.getElementById("emailTitle").value;
+        let emailDescrip = document.getElementById("emailDescrip").value;
+
+        $.ajax({
+            type: "GET",
+            url: "/Auditoria/SendEmail",
+            data: {
+                body: emailDescrip,
+                idUser: userId,
+                header: emailTitle
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            complete: function (result) {
+                if (result.responseJSON) {
+                    closeEmail();
+                    alert("Sucesso no envio");
+                }
+                else
+                    alert("Falha no envio");
+            },
+            error: function (response) {
+
+            },
+        });
+    }
+}
+
+function ShowEmail(id) {
+    let emailDiv = document.getElementById("emailDiv");
+    let emailSender = document.getElementById("emailSender");
+
+    //improve email Div
+    let selectorUser = document.getElementById("user_" + id);
+    let name = selectorUser.options[selectorUser.selectedIndex].innerHTML;
+    document.getElementById("userEmail").innerHTML = name;
+
+
+
+    let nameTask = document.getElementById("name_" + id).innerHTML;
+    document.getElementById("taskEmail").innerHTML = nameTask;
+
+    emailSender.onclick = function () { SendEmail(id) };
+    emailDiv.hidden = false;
+}
+
+function closeEmail() {
+    document.getElementById("emailTitle").value = ""; 
+    document.getElementById("emailDescrip").value = ""; 
+
+    document.getElementById("userEmail").innerHTML = "";
+    document.getElementById("taskEmail").innerHTML = "";
+
+    let emailDiv = document.getElementById("emailDiv");
+    emailDiv.hidden = true;
+}

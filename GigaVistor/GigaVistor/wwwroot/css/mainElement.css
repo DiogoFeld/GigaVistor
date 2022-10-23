@@ -265,13 +265,106 @@
 }
 
 
-.inputTarefaTemplateT {    
+.inputTarefaTemplateT {
     text-align: center;
     background: #f9f4e9;
     font-size: 1.3em;
     font-weight: 500;
 }
 
-.inputTarefaTemplateDesc {    
-    background: #f9f4e9; 
+.inputTarefaTemplateDesc {
+    background: #f9f4e9;
 }
+
+.emailDiv {
+    z-index: 8;
+    position: fixed;
+    height: 300px;
+    top: 40%;
+    background-color: #f5ddb2;
+    color: wheat;
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    left: 35%;
+    gap: 3px;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 1.4em;
+}
+
+.emailDivMain {
+    background-color: darksalmon;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.emailTitle {
+    font-weight: 600;
+}
+
+.emailDivMain > * {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.emailDivMain div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    opacity: 0.8;
+}
+
+.emailDivMain div:nth-child(5) {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.emailDiv h3 {
+    text-align: center;
+}
+
+.emailDiv input {
+    background-color: darksalmon;
+    width: 100%;
+    margin-bottom: 2px;
+    border: 1px solid #f5ddb2;
+    color: #FFF;
+}
+
+
+.emailDescrip {
+    height: 60px;
+}
+
+
+.emailButton {
+    background: indianred;
+    color: #FFF;
+    margin-top: 2px;
+    border-radius: 5px;
+    border: 1px solid #eddfc6;
+}
+
+    .emailButton:hover {
+        background-color: firebrick;
+    }
+
+.sendEmail {
+    background: indianred;
+    margin-top: 2px;
+    border-radius: 5px;
+    border: 1px solid #eddfc6;
+    background-color: green;
+    color: #FFF;
+}
+
+    .sendEmail:hover {
+        background-color: darkgreen;
+    }
