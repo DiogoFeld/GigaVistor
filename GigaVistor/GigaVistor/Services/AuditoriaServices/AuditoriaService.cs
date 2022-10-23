@@ -182,5 +182,13 @@ namespace GigaVistor.Services.AuditoriaServices
             return result;
         }
 
+        public UsuarioModel getUsuarioById(int id)
+        {
+            UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Id == id);
+            
+            return usuario;
+        }
+
+
     }
 }

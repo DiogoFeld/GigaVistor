@@ -279,12 +279,12 @@
 .emailDiv {
     z-index: 8;
     position: fixed;
-    height: 226px;
+    height: 300px;
     top: 40%;
     background-color: #f5ddb2;
     color: wheat;
     display: flex;
-    width: 440px;
+    width: 600px;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-between;
@@ -292,6 +292,7 @@
     gap: 3px;
     padding: 5px;
     border-radius: 10px;
+    font-size: 1.4em;
 }
 
 .emailDivMain {
@@ -302,8 +303,8 @@
     border-radius: 10px;
 }
 
-.emailTitle{
-    font-weight:600;
+.emailTitle {
+    font-weight: 600;
 }
 
 .emailDivMain > * {
@@ -311,18 +312,19 @@
     margin-right: 2px;
 }
 
-    .emailDivMain div:nth-child(2) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        opacity: 0.8;
-    }
+.emailDivMain div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    opacity: 0.8;
+}
 
-    .emailDivMain div:nth-child(5) {
-        display:flex;
-        justify-content:center;
-        gap:8px;
-    }
+.emailDivMain div:nth-child(5) {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
 
 .emailDiv h3 {
     text-align: center;
@@ -350,17 +352,17 @@
     border: 1px solid #eddfc6;
 }
 
-.emailButton:hover{
-    background-color:firebrick;
-}
+    .emailButton:hover {
+        background-color: firebrick;
+    }
 
 .sendEmail {
-    background: indianred;    
+    background: indianred;
     margin-top: 2px;
     border-radius: 5px;
     border: 1px solid #eddfc6;
     background-color: green;
-    color:#FFF;
+    color: #FFF;
 }
 
     .sendEmail:hover {

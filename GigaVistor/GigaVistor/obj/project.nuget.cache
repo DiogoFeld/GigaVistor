@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "h08EsqJXDOXMWNbtPUh7SCO1ltTh/vHI1hW1VrF2TewdoUVi4coe8NZC/uEheeuzVPD43rp/FEPTj5ojHeXwEw==",
+  "dgSpecHash": "9q5d80c9v6MGqA2btewbeHRsQlBghdMDoNRPjqlJMcK0rdTkKvLQUrnvDceoQMyxQIdbdjqKSj1JWNiN+M0xog==",
   "success": true,
   "projectFilePath": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\GigaVistor.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Diogo\\.nuget\\packages\\fluentemail.core\\3.0.2\\fluentemail.core.3.0.2.nupkg.sha512",
     "C:\\Users\\Diogo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Diogo\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Diogo\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",

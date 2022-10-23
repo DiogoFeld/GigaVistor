@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.SetorServices;
 using Microsoft.AspNetCore.Mvc;
@@ -85,8 +86,8 @@ namespace GigaVistor.Controllers
         }
 
 
-        public JsonResult CreateAuditoriaByTemplate(string nameAuditoria = "nulo",string idProjeto = "", string descricAuditoria = "nulo",
-            string listNames = "",string listDescric = "", string listReponsavel = "",string listSetores = "")
+        public JsonResult CreateAuditoriaByTemplate(string nameAuditoria = "nulo", string idProjeto = "", string descricAuditoria = "nulo",
+            string listNames = "", string listDescric = "", string listReponsavel = "", string listSetores = "")
         {
             AuditoriaModel auditoriaNew = new AuditoriaModel();
             auditoriaNew.IdProjeto = int.Parse(idProjeto);
@@ -112,7 +113,7 @@ namespace GigaVistor.Controllers
                     tarefa.IdSetor = int.Parse(setores[i]);
 
                     tarefas.Add(tarefa);
-                } 
+                }
             }
 
             auditoria.CreateAuditoriaByTemplate(auditoriaNew, tarefas);
@@ -120,6 +121,14 @@ namespace GigaVistor.Controllers
             return Json(new());
         }
 
+        public JsonResult SendEmail(string body, string idUser, string header)
+        {
+            int userId = int.Parse(idUser);
+            string EmailTo = auditoria.getUsuarioById(userId).Email;
+
+            var result = EmailController.Instance.SendEmail(body, EmailTo, header);
+            return result;
+        }
 
 
     }

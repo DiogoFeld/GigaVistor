@@ -8,7 +8,7 @@
     @foreach (var item in ViewBag.Tarefas)
     {
         <div class="mainElementSelection taskShow" style="height:400px">
-            <h3 class="titleSection">
+            <h3 id="name_@item.Id" class="titleSection">
                 @item.Name
             </h3>
 
@@ -75,7 +75,7 @@
             </div>
 
             <div class="btnFoooterTask">
-                <button class="btn buttonFooterElement" onclick="ShowEmail()">
+                <button class="btn buttonFooterElement" onclick="ShowEmail(@item.Id)">
                     Enviar Email
                 </button>
 
@@ -108,7 +108,7 @@
         <input class="emailDescrip" id="emailDescrip" placeholder="Descrição do Email" />
 
         <div>
-            <button class="sendEmail" onclick="SendEmail()">Enviar</button>
+            <button id="emailSender" class="sendEmail" onclick="SendEmail()">Enviar</button>
             <button class="emailButton" onclick="closeEmail()">Fechar</button>
         </div>
 
