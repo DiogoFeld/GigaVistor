@@ -252,14 +252,17 @@ function LoadTarefaTemplate(id, templateDiv) {
 
             for (let t in tarefas) {
                 let divTarefa = document.createElement("div");
+                divTarefa.setAttribute("tipo", "tarefaTemplate");
+                divTarefa.id = tarefas[t].id;
                 divTarefa.className = "mainElementSelection taskShow";
                 divTarefa.style.height = "400px";
                 templateDiv.appendChild(divTarefa);
 
-
                 let title = document.createElement("h3");
                 title.className = "titleSection";
                 title.innerHTML = tarefas[t].name;
+                title.id = "nome_" + tarefas[t].id;
+                divTarefa.setAttribute("tipo", "tarefaTemplate");
                 divTarefa.appendChild(title);
 
                 //descr
@@ -274,6 +277,7 @@ function LoadTarefaTemplate(id, templateDiv) {
                 let span = document.createElement("span");
                 span.className = "auditoriaSection";
                 span.innerHTML = tarefas[t].descricao;
+                span.id = "descricao_" + tarefas[t].id;
                 divDescr.appendChild(span);
 
                 //user
@@ -286,6 +290,8 @@ function LoadTarefaTemplate(id, templateDiv) {
                 divUser.appendChild(p2);
 
                 let selectorUser = document.createElement("select");
+                selectorUser.id = "user_" + tarefas[t].id;
+
                 for (let u in users) {
                     let optionUser = document.createElement("option");
                     optionUser.innerHTML = users[u].nome;
@@ -304,6 +310,8 @@ function LoadTarefaTemplate(id, templateDiv) {
                 divSetor.appendChild(p3);
 
                 let selectorSetor = document.createElement("select");
+                selectorSetor.id = "setor_" + tarefas[t].id;
+
                 for (let s in setores) {
                     let optionSetor = document.createElement("option");
                     optionSetor.innerHTML = setores[s].nome;
@@ -322,4 +330,84 @@ function LoadTarefaTemplate(id, templateDiv) {
 
 function noAdmin(entry) {
     return entry.nome != "Admin";
+}
+
+function CreateAudiriaByTemplate() {
+
+    let nomeAuditoria = document.getElementById("idNome").value;
+    let descricAditoria = document.getElementById("idDescri").value;
+    let projetoId = document.getElementById("idProjeto").value;
+
+    let result = true;
+
+    //if (nome != "" || nome == null) {
+
+    //    result = false;
+    //    alert("insira um nome");
+    //}
+
+    //if (descric != "" || descric == null) {
+    //    result = false;
+    //    alert("insira uma descrição");
+    //}
+
+    if (result) {
+        let stringNames = "";
+        let stringDescricoes = "";
+        let stringResponsaveis = "";
+        let stringSetores = "";
+
+        let name = "";
+        let descri = "";
+
+        let responsavel = "";;
+        let responsavelSelect;
+
+        let setor = "";
+        let setorSelect;
+
+        let tasks = document.querySelectorAll("[tipo='tarefaTemplate']");
+
+        for (let task in tasks) {
+            if (typeof tasks[task] === 'object') {
+                let idTask = tasks[task].id;
+
+                if (idTask != "") {
+                    name += document.getElementById("nome_" + idTask).innerHTML + "//";
+                    descri += document.getElementById("descricao_" + idTask).innerHTML + "//";
+
+                    responsavelSelect = document.getElementById("user_" + idTask);
+                    responsavel += responsavelSelect.options[responsavelSelect.selectedIndex].value + "//";
+
+                    setorSelect = document.getElementById("setor_" + idTask);
+                    setor += setorSelect.options[setorSelect.selectedIndex].value + "//";
+                }
+            }
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "/Auditoria/CreateAuditoriaByTemplate",
+            data: {
+                nameAuditoria: nomeAuditoria,
+                idProjeto: projetoId,
+                descricAuditoria: descricAditoria,
+                listNames: name,
+                listDescric: descri,
+                listReponsavel: responsavel,
+                listSetores: setor
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            complete: function (result) {
+
+            },
+            error: function (response) {
+
+            },
+        });
+    }
+    else {
+        alert("preencha todos os campos de Auditoria")
+    }
 }

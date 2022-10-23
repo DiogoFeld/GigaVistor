@@ -84,5 +84,43 @@ namespace GigaVistor.Controllers
             return View();
         }
 
+
+        public JsonResult CreateAuditoriaByTemplate(string nameAuditoria = "nulo",string idProjeto = "", string descricAuditoria = "nulo",
+            string listNames = "",string listDescric = "", string listReponsavel = "",string listSetores = "")
+        {
+            AuditoriaModel auditoriaNew = new AuditoriaModel();
+            auditoriaNew.IdProjeto = int.Parse(idProjeto);
+            auditoriaNew.Name = nameAuditoria;
+            auditoriaNew.Descricao = descricAuditoria;
+            auditoriaNew.Id = 0;
+
+
+            List<TarefaModel> tarefas = new List<TarefaModel>();
+            string[] nomes = listNames.Split("//");
+            string[] descricao = listDescric.Split("//");
+            string[] responsaveis = listReponsavel.Split("//");
+            string[] setores = listSetores.Split("//");
+
+            for (int i = 0; i < nomes.Length; i++)
+            {
+                if (nomes[i] != "")
+                {
+                    TarefaModel tarefa = new TarefaModel();
+                    tarefa.Name = nomes[i];
+                    tarefa.Descricao = descricao[i];
+                    tarefa.IdResponsavel = int.Parse(responsaveis[i]);
+                    tarefa.IdSetor = int.Parse(setores[i]);
+
+                    tarefas.Add(tarefa);
+                } 
+            }
+
+            auditoria.CreateAuditoriaByTemplate(auditoriaNew, tarefas);
+
+            return Json(new());
+        }
+
+
+
     }
 }

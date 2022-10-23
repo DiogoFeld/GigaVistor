@@ -100,8 +100,7 @@ namespace GigaVistor.Controllers
 
             template.CreateTemplateExport(listTarefas, templateModel);
 
-            var result = new JsonResult("");
-
+            var result = new JsonResult("Sucess");
             return result;
         }
     }

@@ -17,22 +17,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" id="idNome" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
+                <input asp-for="Descricao" id="idDescri" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group" hidden>
                 <label asp-for="IdProjeto" class="control-label"></label>
-                <input asp-for="IdProjeto" class="form-control" value="@ViewBag.ProjetoId" />
+                <input asp-for="IdProjeto" id="idProjeto" class="form-control" value="@ViewBag.idProjeto" />
                 <span asp-validation-for="IdProjeto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            </div>          
         </form>
     </div>
 </div>
@@ -44,7 +41,7 @@
 
     @foreach (var item in ViewBag.Templates)
     {
-        <div class="mainElementSelection" style="height:180px" tipo="tarefaTemplate">
+        <div class="mainElementSelection" style="height:180px">
 
             <input class="titleSection inputTarefaTemplateT" tipo="tarefaNome" value="@item.Name" placeholder="Nome">
             <input class="auditoriaSection inputTarefaTemplateDesc" tipo="tarefaDescricao" value="@item.Description" placeholder="Descricao">
@@ -62,4 +59,12 @@
     <h4>Tarefas</h4>
     <div id="tarefasTemplateDiv" class="mainDivContentShow">
     </div>
+</div>
+
+
+
+<div style="height:10px"></div>
+
+<div>
+    <button class="btn buttonFooterElement" onclick="CreateAudiriaByTemplate()">Criar Auditoria Com base no template</button>
 </div>

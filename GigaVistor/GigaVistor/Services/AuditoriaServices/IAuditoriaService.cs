@@ -17,5 +17,6 @@ namespace GigaVistor.Services.AuditoriaServices
         public List<double> processAuditoria(IEnumerable<TarefaModel> tarefas);
         public IEnumerable<UsuarioModel> getAllUsuarios();
         public IEnumerable<TemplateModel> getAllTemplates();
+        public bool CreateAuditoriaByTemplate(AuditoriaModel model, List<TarefaModel> tarefas);
     }
 }
