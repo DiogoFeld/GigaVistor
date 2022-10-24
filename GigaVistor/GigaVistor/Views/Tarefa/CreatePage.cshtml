@@ -1,12 +1,11 @@
 ﻿@model GigaVistor.Models.TarefaModel
 
 @{
-    ViewData["Title"] = "CreatePage";
+    ViewData["Title"] = "Criar Pagina";
 }
 
-<h1>CreatePage</h1>
+<h1>Criar Tarefa</h1>
 
-<h4>TarefaModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -49,15 +48,16 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+<div style="height:10px"></div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn buttonFooterElement" asp-controller="Auditoria" asp-action="Details" asp-route-id="@ViewBag.AuditoriaId">Retornar a auditoria</a>
 </div>
 
 @section Scripts {

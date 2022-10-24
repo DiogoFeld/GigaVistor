@@ -10,7 +10,7 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SupervisorId)
+            Supervisor :            
         </dt>
         <dd class="col-sm-10">
             @ViewBag.Supervisor.Nome
@@ -18,7 +18,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Retornar a Listas</a>
+    <a asp-action="Index" class="btn buttonFooterElement">Retornar a Listas</a>
 </div>
 
 
@@ -39,7 +39,7 @@
     <div class="funcionariosDivMain">
         @foreach (var item in ViewBag.Usuarios)
         {
-            <a asp-action="Index">
+            <a asp-controller="Usuario" asp-action="Details" asp-route-id="@item.Id">
                 <div class="funcionariosDivUni">
 
                     <h3>
@@ -59,34 +59,8 @@
                             @item.Email
                         </p>
                     </div>
-
                 </div>
-            </a>
-
-
-            <a asp-action="Index">
-                <div class="funcionariosDivUni">
-
-                    <h3>
-                        @item.Nome
-                    </h3>
-
-                    <div>
-                        <label>Cargo:</label>
-                        <p>
-                            @item.Cargo
-                        </p>
-                    </div>
-
-                    <div>
-                        <label>Email:</label>
-                        <p>
-                            @item.Email
-                        </p>
-                    </div>
-
-                </div>
-            </a>
+            </a>         
 
         }
     </div>

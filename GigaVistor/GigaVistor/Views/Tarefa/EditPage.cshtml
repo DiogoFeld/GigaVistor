@@ -4,9 +4,8 @@
     ViewData["Title"] = "EditPage";
 }
 
-<h1>EditPage</h1>
+<h1>Ediat Tarefa</h1>
 
-<h4>TarefaModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,27 +22,27 @@
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdResponsavel" class="control-label"></label>
                 <input asp-for="IdResponsavel" class="form-control" />
                 <span asp-validation-for="IdResponsavel" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdCriador" class="control-label"></label>
                 <input asp-for="IdCriador" class="form-control" />
                 <span asp-validation-for="IdCriador" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdSetor" class="control-label"></label>
                 <input asp-for="IdSetor" class="form-control" />
                 <span asp-validation-for="IdSetor" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="IdAuditoria" class="control-label"></label>
                 <input asp-for="IdAuditoria" class="form-control" />
                 <span asp-validation-for="IdAuditoria" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="Status" class="control-label"></label>
                 <input asp-for="Status" class="form-control" />
                 <span asp-validation-for="Status" class="text-danger"></span>
@@ -53,15 +52,17 @@
                 <input asp-for="NotasQualidade" class="form-control" />
                 <span asp-validation-for="NotasQualidade" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<br />
+<div>    
+    <a class="btn buttonFooterElement" asp-controller="Auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Retornar a auditoria</a>
 </div>
 
 @section Scripts {

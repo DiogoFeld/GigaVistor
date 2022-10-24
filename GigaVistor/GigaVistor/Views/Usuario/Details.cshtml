@@ -1,10 +1,10 @@
 ﻿@model GigaVistor.Models.UsuarioModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Deletar</h1>
+<h1>Details</h1>
 
 <div>
     <h4>UsuarioModel</h4>
@@ -53,10 +53,10 @@
             @Html.DisplayFor(model => model.Permissao)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |        
-        <a asp-controller="Setor" asp-action="Details" asp-route-id="@int.Parse(Model.Setor)">Retornar ao Setor</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
+    <a asp-action="DeletePage" asp-route-id="@Model?.Id">Deletar</a> |
+    <a asp-controller="Setor" asp-action="Details" asp-route-id="@int.Parse(Model.Setor)">Retornar ao Setor</a>
+
 </div>

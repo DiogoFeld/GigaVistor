@@ -78,10 +78,11 @@ namespace GigaVistor.Controllers
 
             return View(auditoriaModel);
         }
-        public IActionResult CreatePageTemplate(long id)
+        public IActionResult CreatePageTemplate(int idAuditoria)
         {
-            ViewBag.idProjeto = id;
-            ViewBag.Templates = auditoria.getAllTemplates();
+            ViewBag.idProjeto = auditoria.Details(idAuditoria).IdProjeto;
+            ViewBag.idAuditoria = idAuditoria;
+            ViewBag.Templates = auditoria.getAllTemplates();            
             return View();
         }
 

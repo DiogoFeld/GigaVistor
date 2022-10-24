@@ -56,6 +56,13 @@ namespace GigaVistor.Controllers
             return View(usuario.DeletePage(id));
         }
 
+        public IActionResult Details(int id)
+        {
+            return View(usuario.DeletePage(id));
+            //return Model
+        }
+
+
 
     }
 }

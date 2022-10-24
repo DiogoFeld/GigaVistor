@@ -1,12 +1,11 @@
 ﻿@model GigaVistor.Models.AuditoriaModel
 
 @{
-    ViewData["Title"] = "CreatePage";
+    ViewData["Title"] = "Criar Auditoria";
 }
 
-<h1>CreatePage</h1>
+<h1>Criar Auditoria</h1>
 
-<h4>AuditoriaModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,24 +26,25 @@
                 <input asp-for="IdProjeto" class="form-control" value="@ViewBag.ProjetoId" />
                 <span asp-validation-for="IdProjeto" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn buttonFooterElement" asp-controller="Projeto" asp-action="Details" asp-route-id="@ViewBag.ProjetoId" style="margin-right:15px">Retornar ao projeto</a>
+    <a asp-controller="Auditoria" asp-action="CreatePageTemplate" asp-route-id="@ViewBag.ProjetoId">
+        <btn class="btn buttonFooterElement">
+            Importar Templates
+        </btn>
+    </a>
 </div>
 
 <br />
 
-<a asp-controller="Auditoria" asp-action="CreatePageTemplate" asp-route-id="@ViewBag.ProjetoId">
-    <btn class="btn buttonFooterElement">
-        Importar Templates
-    </btn>
-</a>
 
 
 <br />

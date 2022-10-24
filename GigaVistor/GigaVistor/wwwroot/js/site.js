@@ -454,8 +454,6 @@ function ShowEmail(id) {
     let name = selectorUser.options[selectorUser.selectedIndex].innerHTML;
     document.getElementById("userEmail").innerHTML = name;
 
-
-
     let nameTask = document.getElementById("name_" + id).innerHTML;
     document.getElementById("taskEmail").innerHTML = nameTask;
 
