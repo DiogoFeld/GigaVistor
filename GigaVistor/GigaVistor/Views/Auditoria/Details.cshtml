@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detail</h1>
+<h1>Detalhes</h1>
 
 <div>
     <hr />
@@ -74,7 +74,8 @@
     <a class="btn buttonFooterElement" asp-action="DeletePage" asp-route-id="@Model.Id">Deletar</a>
     <a class="btn buttonFooterElement" asp-area="" asp-controller="Template" asp-action="CreatePageTemplate" asp-route-id="@Model.Id">Criar Template</a>
     @*pegue todas as tarefas no BackEnd para criar uma nova pagina para o template*@
-    <a class="btn buttonFooterElement" asp-controller="Projeto" asp-action="Index">Retornar aos projetos</a>
+    <a class="btn buttonFooterElement" asp-controller="Projeto" asp-action="Details" asp-route-id="@Model.IdProjeto">Retornar ao projeto</a>
+
 </div>
 
 

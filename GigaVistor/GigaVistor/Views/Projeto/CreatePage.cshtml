@@ -4,9 +4,8 @@
     ViewData["Title"] = "CreatePage";
 }
 
-<h1>CreatePage</h1>
+<h1>Criar Projeto</h1>
 
-<h4>ProjetoModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -32,6 +31,7 @@
                 <input asp-for="status" class="form-control" value="0" />
                 <span asp-validation-for="status" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -40,7 +40,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retornar aos projetos</a>
 </div>
 
 @section Scripts {

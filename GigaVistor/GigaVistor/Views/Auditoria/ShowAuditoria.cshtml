@@ -4,6 +4,11 @@
 
 <h1>Realizar Auditoria</h1>
 
+<br />
+<a class="btn buttonFooterElement" asp-controller="Auditoria" asp-action="Details" asp-route-id="@Model.Id">Retornar a auditoria</a>
+
+<div style="height:10px"></div>
+
 <div class="mainDivContentShow">
     @foreach (var item in ViewBag.Tarefas)
     {

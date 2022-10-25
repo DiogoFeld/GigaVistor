@@ -21,6 +21,13 @@ namespace GigaVistor.Controllers
             return View(template.getAllTemplates());
         }
 
+        public IActionResult Details(int id)
+        {
+            ViewBag.Tarefas = template.getAllTarefasByAuditoria(id);
+            return View(template.EditPage(id));
+        }
+
+
         public IActionResult Delete(int id)
         {
             template.Delete(id);

@@ -1,23 +1,26 @@
 ﻿@model GigaVistor.Models.TemplateModel
 
 @{
-    ViewData["Title"] = "CreatePageTemplate";
+    ViewData["Title"] = "Criar template";
 }
 
-<h1>CreatePageTemplate</h1>
+<h1>Criar template</h1>
 
-<h4>TemplateModel</h4>
 <hr />
+<a class="btn buttonFooterElement" asp-controller="Auditoria" asp-action="Details" asp-route-id="@ViewBag.AuditoriaId">Retornar a auditoria</a>
+
+<div style="height:10px"></div>
+
 <div class="row">
     <div class="col-md-4">
 
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
+            <label asp-for="Name" class="control-label">Nome</label>
             <input asp-for="Name" id="templateName" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Description" class="control-label"></label>
+            <label asp-for="Description" class="control-label">Descrição</label>
             <input asp-for="Description" id="templateDescript" class=" form-control" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
@@ -38,7 +41,6 @@
 </div>
 <div style="height:10px"></div>
 
-<div style="height:20px"></div>
 
 <div style="display: flex;
     flex-direction: row;
@@ -51,6 +53,7 @@
     </button>
 </div>
 
+<div style="height:10px"></div>
 
 <div class="mainDivContent" id="TarefaTemplateDiv">
     @foreach (var item in ViewBag.Tarefas)
@@ -71,9 +74,7 @@
 
 
 <div class="centerIten" style="margin-top:10px">
-    <button onclick="createTemplateImport()" class="buttonFooterElement">
-     
-            Criar Template
-     
+    <button onclick="createTemplateImport()" class="buttonFooterElement">     
+            Criar Template     
     </button>
 </div>
