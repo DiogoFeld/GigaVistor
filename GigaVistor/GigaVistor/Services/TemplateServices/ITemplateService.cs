@@ -13,6 +13,7 @@ namespace GigaVistor.Services.TemplateServices
         public TemplateModel EditPage(int id);
         public IEnumerable<TarefaModel> getTarefasByAuditoria(int id);
         public bool CreateTemplateExport(List<TarefaTemplateModel> tarefas, TemplateModel template);
+        public IEnumerable<TarefaTemplateModel> getAllTarefasByAuditoria(int id);        
 
     }
 }
