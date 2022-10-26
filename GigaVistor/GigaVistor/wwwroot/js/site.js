@@ -340,16 +340,14 @@ function CreateAudiriaByTemplate() {
 
     let result = true;
 
-    //if (nome != "" || nome == null) {
-
-    //    result = false;
-    //    alert("insira um nome");
-    //}
-
-    //if (descric != "" || descric == null) {
-    //    result = false;
-    //    alert("insira uma descrição");
-    //}
+    if (nome != "" || nome == null) {
+        result = false;
+        alert("insira um nome");
+    }
+    if (descric != "" || descric == null) {
+        result = false;
+        alert("insira uma descrição");
+    }
 
     if (result) {
         let stringNames = "";
@@ -385,27 +383,32 @@ function CreateAudiriaByTemplate() {
             }
         }
 
-        $.ajax({
-            type: "GET",
-            url: "/Auditoria/CreateAuditoriaByTemplate",
-            data: {
-                nameAuditoria: nomeAuditoria,
-                idProjeto: projetoId,
-                descricAuditoria: descricAditoria,
-                listNames: name,
-                listDescric: descri,
-                listReponsavel: responsavel,
-                listSetores: setor
-            },
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            complete: function (result) {
+        if (name != "") {
+            $.ajax({
+                type: "GET",
+                url: "/Auditoria/CreateAuditoriaByTemplate",
+                data: {
+                    nameAuditoria: nomeAuditoria,
+                    idProjeto: projetoId,
+                    descricAuditoria: descricAditoria,
+                    listNames: name,
+                    listDescric: descri,
+                    listReponsavel: responsavel,
+                    listSetores: setor
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                complete: function (result) {
 
-            },
-            error: function (response) {
+                },
+                error: function (response) {
 
-            },
-        });
+                },
+            });
+        }
+        else {
+            alert("Escolha algum template");
+        }
     }
     else {
         alert("preencha todos os campos de Auditoria")
@@ -414,7 +417,7 @@ function CreateAudiriaByTemplate() {
 
 function SendEmail(id) {
     if (id != null) {
-        let selector = document.getElementById("user_" + id);        
+        let selector = document.getElementById("user_" + id);
         let userId = selector.options[selector.selectedIndex].value;
 
         let emailTitle = document.getElementById("emailTitle").value;
@@ -462,8 +465,8 @@ function ShowEmail(id) {
 }
 
 function closeEmail() {
-    document.getElementById("emailTitle").value = ""; 
-    document.getElementById("emailDescrip").value = ""; 
+    document.getElementById("emailTitle").value = "";
+    document.getElementById("emailDescrip").value = "";
 
     document.getElementById("userEmail").innerHTML = "";
     document.getElementById("taskEmail").innerHTML = "";
