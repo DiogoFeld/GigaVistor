@@ -64,6 +64,9 @@ namespace GigaVistor.Controllers
             IEnumerable<TarefaModel> tarefas = auditoria.getTarefasByAuditoria(id);
             ViewBag.auditoriaResultado = auditoria.processAuditoria(tarefas);
             ViewBag.Tarefas = tarefas;
+            ViewBag.Checklists = auditoria.getCheckListsByAuditoria(id);
+            
+
 
             return View(auditoriaModel);
         }

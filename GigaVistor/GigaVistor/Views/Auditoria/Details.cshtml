@@ -6,6 +6,7 @@
 
 <h1>Detalhes</h1>
 
+
 <div>
     <hr />
     <div style="display:flex;justify-content: center;">
@@ -126,6 +127,43 @@
 
             <div class="mainElementFooter">
                 <a class="btn buttonFooterElement" asp-controller="Tarefa" asp-action="EditPage" asp-route-id="@item.Id">Selecionar</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div style="display: flex;
+    flex-direction: row;
+    gap: 100px;">
+    <h2>
+        CheckLists Listadas
+    </h2>
+    <b>
+        <a class="btn buttonFooterElement elementCheckList" asp-controller="CheckList" asp-route-idAuditoria="@Model.Id" asp-action="Create">Criar CheckList</a>
+    </b>
+</div>
+
+<div style="height:15px">
+    
+</div>
+
+
+
+<div class="mainDivContent">
+    @foreach (var item in ViewBag.Checklists)
+    {
+        <div class="mainElementSelection elementCheckList" style="height:180px">
+            <h3 class="titleSection">
+                @item.Name
+            </h3>
+
+            <span class="auditoriaSection">
+                @item.Descricao
+            </span>
+
+            <div class="mainElementFooter">
+                <a class="btn buttonFooterElement elementCheckList" style="background-color:#7fbeff40" asp-controller="Checklist" asp-action="Details" asp-route-id="@item.Id">Selecionar</a>
             </div>
         </div>
     }

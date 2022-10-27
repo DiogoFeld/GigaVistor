@@ -1,0 +1,13 @@
+﻿@model GigaVistor.Models.ChecklistModel
+
+@{
+    ViewData["Title"] = "Check";
+}
+
+<h1>Checar</h1>
+<h2>@Model.Name</h2>
+<h4>@Model.Descricao</h4>
+
+<div>
+    <a asp-controller="auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Voltar a auditoria</a>
+</div>
