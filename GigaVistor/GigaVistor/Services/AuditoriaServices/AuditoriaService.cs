@@ -110,6 +110,16 @@ namespace GigaVistor.Services.AuditoriaServices
             return query.ToList();
         }
 
+        public IEnumerable<ChecklistModel> getCheckListsByAuditoria(int id)
+        {
+
+            var query = from checklist in db.checklists
+                        where checklist.IdAuditoria == id
+                        select checklist;
+
+            return query.ToList();
+        }
+
         public List<double> processAuditoria(IEnumerable<TarefaModel> tarefas)
         {
             double total = tarefas.ToList().Count;

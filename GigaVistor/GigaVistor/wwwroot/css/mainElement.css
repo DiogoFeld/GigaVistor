@@ -1,3 +1,7 @@
+a {
+    color:darkblue;
+}
+
 .mainElementSelection {
     display: flex;
     flex-direction: column;
@@ -368,3 +372,9 @@
     .sendEmail:hover {
         background-color: darkgreen;
     }
+
+
+.elementCheckList {
+    background-color: lightblue;
+    border: 0.6px solid #6aa8bb;
+}
