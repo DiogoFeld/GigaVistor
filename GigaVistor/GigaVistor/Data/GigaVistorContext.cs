@@ -17,6 +17,7 @@ namespace GigaVistor.Data
         public DbSet<TarefaTemplateModel> TarefasTemplate { get; set; }
         public DbSet<TemplateModel> Templates{ get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
+        public DbSet<ChecklistModel> checklists{ get; set; }
 
 
     }

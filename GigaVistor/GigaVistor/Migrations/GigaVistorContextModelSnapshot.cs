@@ -81,6 +81,30 @@ namespace GigaVistor.Migrations
                     b.ToTable("Auditorias");
                 });
 
+            modelBuilder.Entity("GigaVistor.Models.ChecklistModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("IdAuditoria")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("checklists");
+                });
+
             modelBuilder.Entity("GigaVistor.Models.ProjetoModel", b =>
                 {
                     b.Property<long>("Id")

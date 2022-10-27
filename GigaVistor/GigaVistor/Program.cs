@@ -2,6 +2,7 @@ using GigaVistor.Data;
 using GigaVistor.Models;
 using GigaVistor.Services.AgendamentoServices;
 using GigaVistor.Services.AuditoriaServices;
+using GigaVistor.Services.ChecklistService;
 using GigaVistor.Services.LoginService;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.SetorServices;
@@ -30,6 +31,8 @@ builder.Services.AddScoped<IAgendamentoService, AgendamentoService>();
 builder.Services.AddScoped<ITarefaTemplateService, TarefaTemplateService>();
 builder.Services.AddScoped<ITemplateService, TemplateService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ICheckListService, CheckListService>();
+
 
 var app = builder.Build();
 

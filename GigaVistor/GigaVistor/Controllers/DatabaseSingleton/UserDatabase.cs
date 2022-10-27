@@ -41,8 +41,8 @@ namespace GigaVistor.Controllers.DatabaseSingleton
             if(this.UsuarioModelActive == null)
             {   
                 UsuarioModel u = new UsuarioModel();
-                u.Nome = "Tiago";
-                u.Id = 2;
+                u.Nome = "Admin";
+                u.Id = 1;
 
                 return u;
             }
