@@ -108,6 +108,138 @@ namespace GigaVistor.Migrations
                     b.ToTable("checklists");
                 });
 
+            modelBuilder.Entity("GigaVistor.Models.ItemCheckModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<int>("Aderente")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DatePrazo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DatePrazoEscalonado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Escalonado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ExplicacaoNaoConformidade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("IdCheckList")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdCriador")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdNaoConformidade")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdResponsavel")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("NaoConformidade")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NivelNaoConformidade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusPosEscalonado")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("itensCheckList");
+                });
+
+            modelBuilder.Entity("GigaVistor.Models.NaoConformidadeModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<int>("Aderente")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Classificao")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DatePrazo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DatePrazoEscalonado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Explicação")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("IdCheckList")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdCriador")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdEscalonamento")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("IdEscalonamentoResponsavel")
+                        .HasColumnType("int");
+
+                    b.Property<long>("IdResponsavel")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdTarefa")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("PrazoCumprido")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PrazoEscalonadoCumprido")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PrazoResolucao")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusPosEscalonado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusPosEscalonamento")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("naoConformidades");
+                });
+
             modelBuilder.Entity("GigaVistor.Models.ProjetoModel", b =>
                 {
                     b.Property<long>("Id")

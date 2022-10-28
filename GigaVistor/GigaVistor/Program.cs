@@ -4,6 +4,7 @@ using GigaVistor.Services.AgendamentoServices;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ChecklistService;
 using GigaVistor.Services.LoginService;
+using GigaVistor.Services.NaoConformidadeService;
 using GigaVistor.Services.ProjetoServices;
 using GigaVistor.Services.SetorServices;
 using GigaVistor.Services.TarefaServices;
@@ -32,6 +33,9 @@ builder.Services.AddScoped<ITarefaTemplateService, TarefaTemplateService>();
 builder.Services.AddScoped<ITemplateService, TemplateService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ICheckListService, CheckListService>();
+
+builder.Services.AddScoped<INaoConformidadeService, NaoConformidadeService>();
+//builder.Services.AddScoped<ICheckListService, CheckListService>();
 
 
 var app = builder.Build();
