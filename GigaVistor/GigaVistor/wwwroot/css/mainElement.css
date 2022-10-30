@@ -402,3 +402,12 @@ a {
 .CheckListItens {
     margin-top: 15px;
 }
+
+.checkBoxList {
+    width: 20px;
+    height: 22px;  
+}
+
+.checklistTable td{
+    text-align:center;
+}

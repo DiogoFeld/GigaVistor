@@ -58,7 +58,7 @@
             <tr>
                 <th style="text-align:center;" header="Default">DESCRIÇÃO</th>
                 <th style="text-align:center;" header="Default">RESPONSÁVEL</th>
-                <th style="text-align:center;" header="Default">ADERENTE</th>
+                <th style="text-align:center;" header="Default">ATENDE</th>
                 <th style="text-align:center;" header="Default">STATUS</th>
                 <th style="text-align:center;" header="Default">PRAZO
                 <th style="text-align:center;">N/C</th>
@@ -80,6 +80,15 @@
         </tfoot>
 
     </table>
+
+
+
+    <select hidden id="selectUsers">
+        @foreach (var user in ViewBag.Usuarios)
+        {
+            <option value="@user.Id">@user.Nome</option>
+        }
+    </select>
 
 
 </div>

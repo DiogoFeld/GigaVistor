@@ -36,6 +36,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult Details(int id)
         {
+            ViewBag.Usuarios = checkListService.GetUsers();
             ChecklistModel model = checkListService.GetChecklist(id);
 
             return View(model);

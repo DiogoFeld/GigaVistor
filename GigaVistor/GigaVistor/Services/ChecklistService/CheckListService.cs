@@ -42,6 +42,15 @@ namespace GigaVistor.Services.ChecklistService
             return model;
         }
 
+        public IEnumerable<UsuarioModel> GetUsers()
+        {
+            var query = from usuarios in db.Usuarios
+                        where usuarios.Id != 1
+                        select usuarios;
+            //usuario mestre
+
+            return query.ToList();
+        }
 
     }
 }
