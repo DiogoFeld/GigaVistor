@@ -14,23 +14,74 @@
     </a>
 </div>
 
-<div>    
+<div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            Nome:            
+        <dt class="col-sm-2">
+            Nome:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Descrição
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Descricao)
-        </dd>        
+        </dd>
     </dl>
 </div>
 <div>
     <a asp-controller="auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Voltar a auditoria</a>
 </div>
+
+<h3>
+    Itens Do CheckList
+</h3>
+
+<div id="CheckListItens">
+    <div class="menuChecklist">
+        <button>
+            Limpar Lista
+        </button>
+        <button onclick="addItemToList()">
+            Adicionar Item
+        </button>
+        <button>
+            Salvar Lista
+        </button>
+    </div>
+
+    <table style="border-collapse: unset;
+    border-spacing: 15px 2px;">
+        <thead>
+            <tr>
+                <th style="text-align:center;" header="Default">DESCRIÇÃO</th>
+                <th style="text-align:center;" header="Default">RESPONSÁVEL</th>
+                <th style="text-align:center;" header="Default">ADERENTE</th>
+                <th style="text-align:center;" header="Default">STATUS</th>
+                <th style="text-align:center;" header="Default">PRAZO
+                <th style="text-align:center;">N/C</th>
+                <th style="text-align:center;" header="naoFonformidade">SERIEDADE DA N/C</th>
+                <th style="text-align:center;" header="naoFonformidade">DESCRIÇÃO DE N/C</th>
+                <th style="text-align:center;" header="naoFonformidade">ESCALONADO PARA</th>
+                <th style="text-align:center;" header="naoFonformidade">STATUS PÓS ESCALONAMENTO</th>
+                <th style="text-align:center;" header="naoFonformidade">PRAZO DE N/C</th>
+                <th></th>@*Button of escalonamento*@
+            </tr>
+        </thead>
+
+        <tbody id="checklistTable">
+        </tbody>
+        <tfoot>
+            <tr>
+                <b>Itens Listados</b>
+            </tr>
+        </tfoot>
+
+    </table>
+
+
+</div>
+
+

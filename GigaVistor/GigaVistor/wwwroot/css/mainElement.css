@@ -1,5 +1,5 @@
 a {
-    color:darkblue;
+    color: darkblue;
 }
 
 .mainElementSelection {
@@ -377,4 +377,28 @@ a {
 .elementCheckList {
     background-color: lightblue;
     border: 0.6px solid #6aa8bb;
+}
+
+.menuChecklist {
+    display: flex;
+    gap: 50px;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-bottom:20px;
+}
+
+    .menuChecklist button {
+        background-color: white;
+        border: 4px solid grey;
+        padding: 5px;
+        border-radius: 18px;
+    }
+
+        .menuChecklist button:hover {
+            background-color: grey;
+            color: white;
+        }
+
+.CheckListItens {
+    margin-top: 15px;
 }
