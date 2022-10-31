@@ -47,7 +47,7 @@
         <button onclick="addItemToList()">
             Adicionar Item
         </button>
-        <button>
+        <button onclick="SendList()">
             Salvar Lista
         </button>
     </div>
@@ -82,6 +82,7 @@
     </table>
 
 
+    <input id="idCheckList" hidden value="@Model.Id"/>
 
     <select hidden id="selectUsers">
         @foreach (var user in ViewBag.Usuarios)

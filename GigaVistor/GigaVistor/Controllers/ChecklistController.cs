@@ -30,7 +30,7 @@ namespace GigaVistor.Controllers
             else
             {
                 return RedirectToAction("Create", new { id = (int)model.IdAuditoria });
-                
+
             }
         }
 
@@ -45,8 +45,8 @@ namespace GigaVistor.Controllers
         public IActionResult Check(int id)
         {
             ChecklistModel model = checkListService.GetChecklist(id);
-            return View(model);            
-        }      
+            return View(model);
+        }
 
         private bool EditChecklist(string name, string descrip)
         {
@@ -55,6 +55,12 @@ namespace GigaVistor.Controllers
             return result;
         }
 
+        public JsonResult AddNewItens(string descricoes,string responsaveis,string prazos,string escalonamentoResponsaveis)
+        {
+            int f = 9;
+
+            return Json(new());
+        }
 
     }
 }

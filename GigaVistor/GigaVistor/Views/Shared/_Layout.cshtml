@@ -45,12 +45,12 @@
          z-index: 600;">
         <div id="innerSideBar">
 
-          @*  <a class="nav-link aColor" asp-area="" asp-controller="Agendamento" asp-action="Index">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>Agendamento</span>
+            @*  <a class="nav-link aColor" asp-area="" asp-controller="Agendamento" asp-action="Index">
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Agendamento</span>
             </a>*@
 
             @*<a class="nav-link aColor" asp-area="" asp-controller="Auditoria" asp-action="Index">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>Auditoria</span>
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Auditoria</span>
             </a>*@
             <a class="nav-link aColor" asp-area="" asp-controller="Projeto" asp-action="Index">
                 <i class="fas fa-regular fa-sitemap"></i><span style="margin-left: 17px;">Projeto</span>
@@ -59,16 +59,16 @@
                 <i class="fas fa-light fa-vector-square"></i><span style="margin-left: 17px;">Setor</span>
             </a>
             @*<a class="nav-link aColor" asp-area="" asp-controller="Tarefa" asp-action="Index">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>Tarefa</span>
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Tarefa</span>
             </a>*@
             @*<a class="nav-link aColor" asp-area="" asp-controller="TarefaTemplate" asp-action="Index">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>TarefaTemplate</span>
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>TarefaTemplate</span>
             </a>*@
             <a class="nav-link aColor" asp-area="" asp-controller="Template" asp-action="Index">
                 <i class="fas fa-chart-area fa-fw me-3"></i><span>Template</span>
             </a>
             @*<a class="nav-link aColor" asp-area="" asp-controller="Usuario" asp-action="Index">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>Usuario</span>
+            <i class="fas fa-chart-area fa-fw me-3"></i><span>Usuario</span>
             </a>*@
         </div>
     </div>
@@ -89,6 +89,29 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/ItemCheckList.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <div id="divLabelInfo" hidden
+         style="width: 400px;
+                height: 200px;
+                z-index: 45;
+                background-color: whitesmoke;
+                right: 40%;
+                float: center;
+                position: fixed;
+                border: 5px solid #00000096;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+                top: 45%;">
+        <label id="labelInfo" style="font-size:24px">
+
+        </label>
+
+    </div>
+
+
 
 </body>
 </html>
