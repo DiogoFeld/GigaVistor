@@ -188,7 +188,7 @@ function selectorGetUser(parentElement) {
 function SendList() {
     showMessage("Carregando");
 
-    let checkListId = document.getElementById("idCheckList");
+    let checkListId = document.getElementById("idCheckList").value;
     let checklistTable = document.getElementById("checklistTable");
     let rows = checklistTable.getElementsByTagName("tr");
 
@@ -227,17 +227,14 @@ function SendList() {
             descricoes: descricoes,
             responsaveis :responsaveis,
             prazos :prazos,
-            escalonamentoResponsaveis :escalonamentoResponsaveis
-
+            escalonamentoResponsaveis: escalonamentoResponsaveis,
+            idCheckList: checkListId
         },
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         complete: function (result) {
-
-
         },
         error: function (response) {
-
         },
     });
     hideMessage();

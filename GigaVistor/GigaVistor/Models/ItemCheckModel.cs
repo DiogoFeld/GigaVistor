@@ -7,7 +7,6 @@
         public int Aderente { get; set; }
         public int Status { get; set; }
 
-
         public bool Escalonado{ get; set; }//default 0, só pra checar se nao esta em conformidade.
         public string ExplicacaoNaoConformidade { get; set; }//qual é o da nao conformidade
         public bool NaoConformidade { get; set; } //esta ou nao conforme

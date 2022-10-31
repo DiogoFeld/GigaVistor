@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ChecklistService;
 using Microsoft.AspNetCore.Mvc;
@@ -55,12 +56,52 @@ namespace GigaVistor.Controllers
             return result;
         }
 
-        public JsonResult AddNewItens(string descricoes,string responsaveis,string prazos,string escalonamentoResponsaveis)
+        public JsonResult AddNewItens(string descricoes, string responsaveis, string prazos, string escalonamentoResponsaveis, int idCheckList)
         {
-            int f = 9;
 
+            List<ItemCheckModel> itens = new List<ItemCheckModel>();
+
+            string[] descricoesArray = { };
+            string[] responsaveisArray = { };
+            string[] prazosArray = { };
+            string[] escalonamentoResponsaveisArray = { };
+
+            descricoesArray = descricoes.Split("//");
+            responsaveisArray = responsaveis.Split("//");
+            prazosArray = prazos.Split("//");
+            escalonamentoResponsaveisArray = escalonamentoResponsaveis.Split("//");
+
+            for (int i = 0; i < descricoesArray.Length; i++)
+            {
+                if (descricoesArray[i] != "")
+                {
+
+                    ItemCheckModel item = new ItemCheckModel()
+                    {
+                        Id = 0,
+                        Descricao = descricoesArray[i],
+                        Aderente = 0,
+                        Status = 0,
+                        Escalonado = false,
+                        ExplicacaoNaoConformidade = "",
+                        NaoConformidade = false,
+                        NivelNaoConformidade = 0,
+                        DateCriacao = DateTime.Now,
+                        DatePrazo = DateTime.Parse(prazosArray[i]),
+                        DatePrazoEscalonado = DateTime.Now,
+                        StatusPosEscalonado = 0,
+                        IdCriador = UserDatabase.Instance.getUsuario().Id,
+                        IdResponsavel = int.Parse(responsaveisArray[i]),
+                        IdCheckList = idCheckList,
+                        IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
+
+                    };
+                    itens.Add(item);
+                }
+            }
             return Json(new());
         }
+
 
     }
 }
