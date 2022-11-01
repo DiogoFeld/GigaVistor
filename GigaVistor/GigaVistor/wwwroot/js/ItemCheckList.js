@@ -204,41 +204,44 @@ function SendList() {
 
     for (let r in rows) {
         if (typeof rows[r] == 'object') {
-            let checkListItem = {};
-            checkListItem.Id = 0;
-            descricao = rows[r].querySelectorAll("[tipo='descricao']")[0].value;
-            descricao = descricao == "" ? "NUlO" : descricao;
-            descricoes += descricao + "//";
+            if (rows[r].getAttribute("tipo") == "newRow") {
 
-            responsavel = rows[r].querySelectorAll("[tipo='responsavel']")[0].value;            
-            responsaveis += responsavel + "//";
+                let checkListItem = {};
+                checkListItem.Id = 0;
+                descricao = rows[r].querySelectorAll("[tipo='descricao']")[0].value;
+                descricao = descricao == "" ? "NUlO" : descricao;
+                descricoes += descricao + "//";
 
-            prazo = rows[r].querySelectorAll("[tipo='Prazo']")[0].value;
-            prazo = prazo == "" ? returnDatetime() : prazo;
-            prazos += prazo + "//";
+                responsavel = rows[r].querySelectorAll("[tipo='responsavel']")[0].value;
+                responsaveis += responsavel + "//";
 
-            escalonamentoResponsavel = rows[r].querySelectorAll("[tipo='NCStatusResponsavel']")[0].value;
-            escalonamentoResponsaveis += escalonamentoResponsavel + "//";
+                prazo = rows[r].querySelectorAll("[tipo='Prazo']")[0].value;
+                prazo = prazo == "" ? returnDatetime() : prazo;
+                prazos += prazo + "//";
+
+                escalonamentoResponsavel = rows[r].querySelectorAll("[tipo='NCStatusResponsavel']")[0].value;
+                escalonamentoResponsaveis += escalonamentoResponsavel + "//";
+            }
         }
     }
 
-    //$.ajax({
-    //    type: "GET",
-    //    url: "/ItemCheck/AddNewItens",
-    //    data: {
-    //        descricoes: descricoes,
-    //        responsaveis: responsaveis,
-    //        prazos: prazos,
-    //        escalonamentoResponsaveis: escalonamentoResponsaveis,
-    //        idCheckList: checkListId
-    //    },
-    //    contentType: "application/json;charset=utf-8",
-    //    dataType: "json",
-    //    complete: function (result) {
-    //    },
-    //    error: function (response) {
-    //    },
-    //});
+    $.ajax({
+        type: "GET",
+        url: "/ItemCheck/AddNewItens",
+        data: {
+            descricoes: descricoes,
+            responsaveis: responsaveis,
+            prazos: prazos,
+            escalonamentoResponsaveis: escalonamentoResponsaveis,
+            idCheckList: checkListId
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+        },
+        error: function (response) {
+        },
+    });
     hideMessage();
 }
 

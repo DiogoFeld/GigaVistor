@@ -70,7 +70,7 @@
         <tbody id="checklistTable">
             @foreach (var item in ViewBag.ItensCheckList)
             {
-                <tr>
+                <tr tipo="oldRow">
                     <td><input value="@item.Descricao" readonly /></td>@*Descicao*@
                     <td>
                         <select disabled>
@@ -129,8 +129,7 @@
                     </td>@*STATUS*@
                     <td><input readonly type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
                     <td><input readonly type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
-                    <td>
-                        NivelNaoConformidade
+                    <td>                        
                         <select disabled id="selectUsers">
                             @if (item.NivelNaoConformidade == 0)
                             {
@@ -140,7 +139,6 @@
                             {
                                 <option value="0">Baixa</option>
                             }
-
                             @if (item.NivelNaoConformidade == 1)
                             {
                                 <option selected value="1">Média</option>
@@ -149,7 +147,6 @@
                             {
                                 <option value="1">Média</option>
                             }
-
                             @if (item.NivelNaoConformidade == 2)
                             {
                                 <option selected value="2">Alta</option>
