@@ -38,7 +38,8 @@ namespace GigaVistor.Controllers
         public IActionResult Details(int id)
         {
             ViewBag.Usuarios = checkListService.GetUsers();
-            ChecklistModel model = checkListService.GetChecklist(id);
+            ViewBag.ItensCheckList = checkListService.getItensByCheckList(id);
+            ChecklistModel model = checkListService.GetChecklist(id);       
 
             return View(model);
         }
@@ -48,60 +49,6 @@ namespace GigaVistor.Controllers
             ChecklistModel model = checkListService.GetChecklist(id);
             return View(model);
         }
-
-        private bool EditChecklist(string name, string descrip)
-        {
-            bool result = false;
-
-            return result;
-        }
-
-        public JsonResult AddNewItens(string descricoes, string responsaveis, string prazos, string escalonamentoResponsaveis, int idCheckList)
-        {
-
-            List<ItemCheckModel> itens = new List<ItemCheckModel>();
-
-            string[] descricoesArray = { };
-            string[] responsaveisArray = { };
-            string[] prazosArray = { };
-            string[] escalonamentoResponsaveisArray = { };
-
-            descricoesArray = descricoes.Split("//");
-            responsaveisArray = responsaveis.Split("//");
-            prazosArray = prazos.Split("//");
-            escalonamentoResponsaveisArray = escalonamentoResponsaveis.Split("//");
-
-            for (int i = 0; i < descricoesArray.Length; i++)
-            {
-                if (descricoesArray[i] != "")
-                {
-
-                    ItemCheckModel item = new ItemCheckModel()
-                    {
-                        Id = 0,
-                        Descricao = descricoesArray[i],
-                        Aderente = 0,
-                        Status = 0,
-                        Escalonado = false,
-                        ExplicacaoNaoConformidade = "",
-                        NaoConformidade = false,
-                        NivelNaoConformidade = 0,
-                        DateCriacao = DateTime.Now,
-                        DatePrazo = DateTime.Parse(prazosArray[i]),
-                        DatePrazoEscalonado = DateTime.Now,
-                        StatusPosEscalonado = 0,
-                        IdCriador = UserDatabase.Instance.getUsuario().Id,
-                        IdResponsavel = int.Parse(responsaveisArray[i]),
-                        IdCheckList = idCheckList,
-                        IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
-
-                    };
-                    itens.Add(item);
-                }
-            }
-            return Json(new());
-        }
-
 
     }
 }

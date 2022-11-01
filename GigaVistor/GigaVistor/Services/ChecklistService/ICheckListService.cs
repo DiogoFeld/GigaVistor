@@ -8,6 +8,6 @@ namespace GigaVistor.Services.ChecklistService
         public bool EditChecklist(string name, string descrip,int id);
         public bool CreateAction(ChecklistModel model);
         public IEnumerable<UsuarioModel> GetUsers();
-
+        public IEnumerable<ItemCheckModel> getItensByCheckList(int id);
     }
 }
