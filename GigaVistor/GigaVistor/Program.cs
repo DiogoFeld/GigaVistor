@@ -4,6 +4,8 @@ using GigaVistor.Models;
 using GigaVistor.Services.AgendamentoServices;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ChecklistService;
+using GigaVistor.Services.CheckListTemplate;
+using GigaVistor.Services.CheckListTemplateService;
 using GigaVistor.Services.ItemCheckServices;
 using GigaVistor.Services.LoginService;
 using GigaVistor.Services.NaoConformidadeService;
@@ -37,6 +39,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ICheckListService, CheckListService>();
 builder.Services.AddScoped<IItemCheckService, ItemCheckService>();
 builder.Services.AddScoped<INaoConformidadeService, NaoConformidadeService>();
+builder.Services.AddScoped<ICheckListTemplateServices, CheckListTemplateServices>();
 
 
 

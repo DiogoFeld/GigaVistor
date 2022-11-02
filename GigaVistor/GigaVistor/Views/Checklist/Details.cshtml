@@ -9,13 +9,14 @@
 
 
 <div>
-    <a asp-action="check" asp-route-id="@Model.Id">
-        Realizar Check
-    </a>
-</div>
 
-<div>
     <hr />
+    <div style="margin-bottom:20px">
+        <a class="checkCheckButton" asp-action="check" asp-route-id="@Model.Id">
+            Realizar Check
+        </a>
+    </div>
+
     <dl class="row">
         <dt class="col-sm-2">
             Nome:
@@ -129,7 +130,7 @@
                     </td>@*STATUS*@
                     <td><input readonly type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
                     <td><input readonly type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
-                    <td>                        
+                    <td>
                         <select disabled id="selectUsers">
                             @if (item.NivelNaoConformidade == 0)
                             {
@@ -187,10 +188,12 @@
                     </td>@*STATUS PÓS ESCALONAMENTO*@
                     <td><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
                     <td>
-                        @if (@item.Escalonado){
+                        @if (@item.Escalonado)
+                        {
                             <button>Mostrar Escalonamento</button>
                         }
-                        else{
+                        else
+                        {
                             <button hidden>Mostrar Escalonamento</button>
                         }
                     </td>
