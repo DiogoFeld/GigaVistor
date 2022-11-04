@@ -128,6 +128,32 @@ namespace GigaVistor.Migrations
                     b.ToTable("checkListTemplates");
                 });
 
+            modelBuilder.Entity("GigaVistor.Models.ItemChecklistTemplateModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("IdCheckList")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("IdCriador")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("itemCheckListTemplates");
+                });
+
             modelBuilder.Entity("GigaVistor.Models.ItemCheckModel", b =>
                 {
                     b.Property<long>("Id")

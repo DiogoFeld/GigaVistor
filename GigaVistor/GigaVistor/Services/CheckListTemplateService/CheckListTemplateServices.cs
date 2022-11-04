@@ -1,18 +1,55 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Data;
+using GigaVistor.Models;
 using GigaVistor.Services.CheckListTemplateService;
 
 namespace GigaVistor.Services.CheckListTemplate
 {
     public class CheckListTemplateServices : ICheckListTemplateServices
     {
-        public bool AddTemplate(CheckListTemplateModel model)
+
+        GigaVistorContext db;
+        public CheckListTemplateServices(GigaVistorContext _db)
         {
-            throw new NotImplementedException();
+            db = _db;
         }
 
-        public bool GetAllTemplate(CheckListTemplateModel model)
+        public bool AddTemplate(CheckListTemplateModel model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (model.Id == 0)
+                {
+                    db.checkListTemplates.Add(model);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
+
+        public IEnumerable<CheckListTemplateModel> GetAllTemplate()
+        {
+            IEnumerable<CheckListTemplateModel> templates = new List<CheckListTemplateModel>();
+            try{
+                templates = db.checkListTemplates.Select(s => s).ToList();
+                return templates;
+            }
+            catch{
+                return templates;
+            }
+        }
+
+        public CheckListTemplateModel GetTemplate(int id)
+        {
+            CheckListTemplateModel model = new CheckListTemplateModel();
+            model = db.checkListTemplates.FirstOrDefault(s => s.Id == id);
+
+            return model;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GigaVistor.Models;
+using GigaVistor.Services.ItemChecklistTemplateService;
 using Microsoft.EntityFrameworkCore;
 
 namespace GigaVistor.Data
@@ -21,5 +22,7 @@ namespace GigaVistor.Data
         public DbSet<NaoConformidadeModel> naoConformidades { get; set; }
         public DbSet<ItemCheckModel> itensCheckList{ get; set; }
         public DbSet<CheckListTemplateModel> checkListTemplates { get; set; }
+        public DbSet<ItemChecklistTemplateModel> itemCheckListTemplates { get; set; }
+        
     }
 }

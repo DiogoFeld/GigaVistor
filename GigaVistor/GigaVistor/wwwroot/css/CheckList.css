@@ -1,0 +1,30 @@
+﻿body {
+}
+
+
+
+#conformidadeCheckList {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+    #conformidadeCheckList label {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    #conformidadeCheckList textarea {
+        width: 350px;
+        height: 45px;
+        cursor: pointer;
+        border-radius: 4px;
+        border:3px solid lightgrey;
+    }
+
+    #conformidadeCheckList div {
+        display: flex;
+        align-items: flex-start;
+        gap:10px;
+    }

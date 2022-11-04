@@ -266,3 +266,17 @@ function returnDatetime() {
 
     return datetime;
 }
+
+
+function addChecklistTemplateItem() {
+    let conformidadeCheckList = document.getElementById("conformidadeCheckList");
+
+    let mainDiv = document.createElement("div");
+    conformidadeCheckList.appendChild(mainDiv);
+    let LabelDiv = document.createElement("label");
+    LabelDiv.innerHTML = "Descrição";
+    mainDiv.appendChild(LabelDiv);
+    let inputDiv = document.createElement("textarea");    
+    inputDiv.setAttribute("tipo", "Descricao");
+    mainDiv.appendChild(inputDiv);
+}
