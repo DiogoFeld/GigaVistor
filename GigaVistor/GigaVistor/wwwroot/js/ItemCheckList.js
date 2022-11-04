@@ -276,7 +276,25 @@ function addChecklistTemplateItem() {
     let LabelDiv = document.createElement("label");
     LabelDiv.innerHTML = "Descrição";
     mainDiv.appendChild(LabelDiv);
-    let inputDiv = document.createElement("textarea");    
-    inputDiv.setAttribute("tipo", "Descricao");
+    let inputDiv = document.createElement("textarea");
+    inputDiv.setAttribute("tipo", "descricao");
     mainDiv.appendChild(inputDiv);
+}
+
+
+
+function saveCheckList() {
+    let conformidadeCheckList = document.getElementById("conformidadeCheckList");
+    let descricoes = conformidadeCheckList.querySelectorAll("[tipo='descricao']").value;
+    let conformidadesValue = "";
+
+    for (let desc in descricoes) {
+        conformidadesValue += conformidadeCheckList.querySelectorAll("[tipo='descricao']")[desc].value + "//";
+    }
+
+    if (conformidadesValue != "") {
+        conformidadesValue = conformidadesValue.substring(0, conformidadesValue.length - 2);
+    }
+
+
 }
