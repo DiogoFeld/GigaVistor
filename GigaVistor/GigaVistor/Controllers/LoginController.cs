@@ -21,7 +21,7 @@ namespace GigaVistor.Controllers
         {
             if (login.LoginValidation(logon,email))
             {
-                return RedirectToAction("Index", "Projeto");
+                return RedirectToAction("Index", "CheckListTemplate");
 
             }
             else

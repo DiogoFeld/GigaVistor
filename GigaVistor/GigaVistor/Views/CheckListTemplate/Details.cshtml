@@ -1,0 +1,47 @@
+﻿@model GigaVistor.Models.CheckListTemplateModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Descrição
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+    </dl>
+
+    <input hidden id="CheckListId" value="@Model.Id"/>
+</div>
+<div>
+    <a asp-action="Index">Retonar ao menu</a>
+</div>
+
+
+<div>
+    <h3>Lista de Conformidades:</h3>
+
+    <div class="menuChecklist">
+        <button onclick="addChecklistTemplateItem()">
+            Adicionar Item
+        </button>
+        <button onclick="saveCheckList()">
+            Salvar Lista
+        </button>
+    </div>
+
+    <div id="conformidadeCheckList">
+        @foreach (var item in ViewBag.itens){
+            <div>
+                <label>Descrição: </label>
+                <textarea readonly>@item.Descricao</textarea>
+            </div>
+        }
+    </div>
+</div>

@@ -47,8 +47,6 @@ namespace GigaVistor.Controllers.DatabaseSingleton
                 return u;
             }
             //delete on real  App
-
-
             return this.UsuarioModelActive;
         }
 

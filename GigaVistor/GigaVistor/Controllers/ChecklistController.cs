@@ -1,4 +1,5 @@
-﻿using GigaVistor.Models;
+﻿using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Models;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.ChecklistService;
 using Microsoft.AspNetCore.Mvc;
@@ -30,13 +31,15 @@ namespace GigaVistor.Controllers
             else
             {
                 return RedirectToAction("Create", new { id = (int)model.IdAuditoria });
-                
+
             }
         }
 
         public IActionResult Details(int id)
         {
-            ChecklistModel model = checkListService.GetChecklist(id);
+            ViewBag.Usuarios = checkListService.GetUsers();
+            ViewBag.ItensCheckList = checkListService.getItensByCheckList(id);
+            ChecklistModel model = checkListService.GetChecklist(id);       
 
             return View(model);
         }
@@ -44,16 +47,8 @@ namespace GigaVistor.Controllers
         public IActionResult Check(int id)
         {
             ChecklistModel model = checkListService.GetChecklist(id);
-            return View(model);            
-        }      
-
-        private bool EditChecklist(string name, string descrip)
-        {
-            bool result = false;
-
-            return result;
+            return View(model);
         }
-
 
     }
 }

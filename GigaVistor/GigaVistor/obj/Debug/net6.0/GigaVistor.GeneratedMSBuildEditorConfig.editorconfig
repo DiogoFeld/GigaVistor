@@ -63,6 +63,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRvcmlhXFNob3dBdWRpdG9yaWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/CheckListTemplate/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tMaXN0VGVtcGxhdGVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/CheckListTemplate/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tMaXN0VGVtcGxhdGVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/CheckListTemplate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tMaXN0VGVtcGxhdGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PUCPR/GigaVistor/GigaVistor/GigaVistor/Views/Checklist/Check.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0XENoZWNrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

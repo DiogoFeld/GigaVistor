@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GigaVistor.Models.CheckListTemplateModel>
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Lista de templates</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div style="height:20px">
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

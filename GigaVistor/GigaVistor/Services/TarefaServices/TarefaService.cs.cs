@@ -106,7 +106,7 @@ namespace GigaVistor.Services.TarefaServices
         public IEnumerable<UsuarioModel> getFuncionarios()
         {
             var query = from usuarios in db.Usuarios
-                        where usuarios.Id != 2
+                        where usuarios.Id != 1
                         select usuarios;
             //usuario mestre
 
