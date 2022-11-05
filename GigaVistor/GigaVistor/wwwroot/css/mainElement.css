@@ -128,14 +128,6 @@ a {
             font-weight: 700;
         }
 
-.templatesDiv {
-    min-height: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #ffd880b3;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
 .funcionariosDivUni {
     display: flex;
