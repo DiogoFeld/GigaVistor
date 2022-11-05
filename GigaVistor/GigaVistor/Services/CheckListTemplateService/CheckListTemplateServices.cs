@@ -43,6 +43,15 @@ namespace GigaVistor.Services.CheckListTemplate
             }
         }
 
+        public IEnumerable<ItemChecklistTemplateModel> GetItensOfChecklist(int id)
+        {
+            var query = from itens in db.itemCheckListTemplates
+                        where itens.IdCheckList == id
+                        select itens;
+
+            return query.ToList();
+        }
+
         public CheckListTemplateModel GetTemplate(int id)
         {
             CheckListTemplateModel model = new CheckListTemplateModel();

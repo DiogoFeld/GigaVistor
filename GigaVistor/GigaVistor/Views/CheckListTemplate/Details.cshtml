@@ -37,6 +37,11 @@
     </div>
 
     <div id="conformidadeCheckList">
-
+        @foreach (var item in ViewBag.itens){
+            <div>
+                <label>Descrição: </label>
+                <textarea readonly>@item.Descricao</textarea>
+            </div>
+        }
     </div>
 </div>

@@ -25,6 +25,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult Details(int id)
         {
+            ViewBag.itens = template.GetItensOfChecklist(id);
             CheckListTemplateModel model = template.GetTemplate(id);
 
             return View(model);
