@@ -1,5 +1,6 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using System.Drawing;
 
 namespace GigaVistor.Services.ItemCheckServices
 {
@@ -10,7 +11,14 @@ namespace GigaVistor.Services.ItemCheckServices
         {
             db = _db;
         }
-        public bool addNewIten(IEnumerable<ItemCheckModel> itens)
+
+        public IEnumerable<ItemChecklistTemplateModel> GetItens()
+        {
+            IEnumerable<ItemChecklistTemplateModel> checklistTemplateItens = db.itemCheckListTemplates.Select(s => s).ToList();
+            return checklistTemplateItens;
+        }
+
+        public bool addList(IEnumerable<ItemCheckModel> itens)
         {
             try
             {
@@ -28,8 +36,17 @@ namespace GigaVistor.Services.ItemCheckServices
         }
 
 
-
-
+        public bool addIten(ItemCheckModel item)
+        {
+            try{
+                db.itensCheckList.Add(item);
+                db.SaveChanges();
+            }
+            catch{
+                return false;
+            }
+            return true;
+        }
 
 
     }

@@ -8,21 +8,22 @@ namespace GigaVistor.Controllers
 {
     public class ItemCheckController : Controller
     {
-        IItemCheckService itemCheckServicecheckListService;
+        IItemCheckService itemCheckServiceCheckListService;
         public ItemCheckController(IItemCheckService _itemCheckServicecheckListService)
         {
-            itemCheckServicecheckListService = _itemCheckServicecheckListService;
+            itemCheckServiceCheckListService = _itemCheckServicecheckListService;
         }
 
 
         public IActionResult Index()
         {
+            ViewBag.Itens = itemCheckServiceCheckListService.GetItens();
             return View();
         }
 
-        public bool addIten(IEnumerable<ItemCheckModel> itens)
+        public bool addIten(ItemCheckModel iten)
         {
-            itemCheckServicecheckListService.addNewIten(itens);
+            itemCheckServiceCheckListService.addIten(iten);
             
             return false;
         }
@@ -66,13 +67,13 @@ namespace GigaVistor.Controllers
                         IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
 
                     };
+                    addIten(item);
                     itens.Add(item);
                 }
             }
-            bool result = addIten(itens);
-
-            return Json(result);
+            return Json(itens);
         }
+
 
     }
 }

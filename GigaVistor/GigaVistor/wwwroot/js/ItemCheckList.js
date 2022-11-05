@@ -281,20 +281,35 @@ function addChecklistTemplateItem() {
     mainDiv.appendChild(inputDiv);
 }
 
-
-
 function saveCheckList() {
     let conformidadeCheckList = document.getElementById("conformidadeCheckList");
-    let descricoes = conformidadeCheckList.querySelectorAll("[tipo='descricao']").value;
-    let conformidadesValue = "";
+    let descricoes = conformidadeCheckList.querySelectorAll("[tipo='descricao']");
+    let conformidades = "";
 
     for (let desc in descricoes) {
-        conformidadesValue += conformidadeCheckList.querySelectorAll("[tipo='descricao']")[desc].value + "//";
+        if (typeof descricoes[desc] == 'object') {
+            conformidades += conformidadeCheckList.querySelectorAll("[tipo='descricao']")[desc].value + "//";
+        }
+    }
+    if (conformidades != "") {
+        conformidades = conformidades.substring(0, conformidades.length - 2);
     }
 
-    if (conformidadesValue != "") {
-        conformidadesValue = conformidadesValue.substring(0, conformidadesValue.length - 2);
-    }
+    let checkListId = document.getElementById("CheckListId").value;
 
-
+    $.ajax({
+        type: "GET",
+        url: "/ItemChecklistTemplate/AddDescricoes",
+        data: {
+            conformidades: conformidades,
+            checkListId: checkListId 
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+        },
+        error: function (response) {
+        },
+    });
 }
+
