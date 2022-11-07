@@ -3,28 +3,66 @@
 
 
 
-#conformidadeCheckList {
+#conformidadeCheckList, #TemplatesTarefas {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-    #conformidadeCheckList label {
+    #conformidadeCheckList div, #TemplatesTarefas div {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #conformidadeCheckList label, #TemplatesTarefas label {
         font-size: 1.2em;
         font-weight: bold;
         margin-right: 5px;
     }
 
-    #conformidadeCheckList textarea {
+    #conformidadeCheckList textarea, #TemplatesTarefas textarea {
         width: 350px;
         height: 45px;
         cursor: pointer;
         border-radius: 4px;
-        border:3px solid lightgrey;
+        border: 3px solid lightgrey;
     }
 
     #conformidadeCheckList div {
         display: flex;
         align-items: flex-start;
-        gap:10px;
+        gap: 10px;
     }
+
+
+.optionsChecklist {
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+    background-color: #d3d3d33b;
+    width: 47%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+    .optionsChecklist label {
+        cursor: pointer;
+    }
+
+    .optionsChecklist:hover {
+        background-color: #d3d3d3c2;
+    }
+
+#TemplatesCheckListDiv {
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#TemplatesCheckListDiv > div{
+    display: flex;
+    align-items: center;
+}

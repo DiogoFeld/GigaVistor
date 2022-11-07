@@ -45,8 +45,8 @@ namespace GigaVistor.Controllers
 
         public IActionResult CreatePage(int id)
         {
-            ViewBag.ProjetoId = id;
-            ViewBag.IdAuditoria= id;
+            ViewBag.ProjetoId = id;            
+            ViewBag.Template = auditoria.getTemplatesCheckList();
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace GigaVistor.Controllers
             ViewBag.auditoriaResultado = auditoria.processAuditoria(tarefas);
             ViewBag.Tarefas = tarefas;
             ViewBag.Checklists = auditoria.getCheckListsByAuditoria(id);
-            
+
 
 
             return View(auditoriaModel);
@@ -85,7 +85,7 @@ namespace GigaVistor.Controllers
         public IActionResult CreatePageTemplate(int id)
         {
             ViewBag.idProjeto = id;
-            ViewBag.Templates = auditoria.getAllTemplates();            
+            ViewBag.Templates = auditoria.getAllTemplates();
             return View();
         }
 

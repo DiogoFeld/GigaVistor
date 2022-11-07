@@ -52,13 +52,22 @@
 
 <div id="templateDiv">
     <h3>ChecklLists</h3>
-    <div id="Templates">
+    <div id="TemplatesCheckListDiv">
 
+        @foreach (var item in ViewBag.Template)
+        {
+            <div>
+                <div id="item.Id" onclick="clickChecklist(this)" selecionado="naoSelecionado" class="optionsChecklist">
+                    <label>Descrição:</label>
+                    <label>@item.Descricao</label>
+                </div>
+
+                <i id="checkbox_@item.Id" onclick="functionLoadTarefas(@item.Id)" tipo="selecionadorTarefa" class="fas fa-solid fa-check"></i>
+            </div>
+        }
     </div>
-    <h4>Tarefas Do Template</h4>
+    <h4>Tarefas dos Template</h4>
     <div id="TemplatesTarefas">
-
-
     </div>
 </div>
 @section Scripts {

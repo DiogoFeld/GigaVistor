@@ -199,6 +199,18 @@ namespace GigaVistor.Services.AuditoriaServices
             return usuario;
         }
 
-
+        public IEnumerable<CheckListTemplateModel> getTemplatesCheckList()
+        {
+            IEnumerable<CheckListTemplateModel> templates = new List<CheckListTemplateModel>();
+            try
+            {
+                templates = db.checkListTemplates.Select(s => s).ToList();
+                return templates;
+            }
+            catch
+            {
+                return templates;
+            }
+        }
     }
 }
