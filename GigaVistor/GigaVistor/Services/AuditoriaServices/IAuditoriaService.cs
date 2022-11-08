@@ -21,5 +21,6 @@ namespace GigaVistor.Services.AuditoriaServices
         public UsuarioModel getUsuarioById(int id);
         public IEnumerable<ChecklistModel> getCheckListsByAuditoria(int id);
         public IEnumerable<CheckListTemplateModel> getTemplatesCheckList();
+        bool SaveAuditoriaWithTemplate(AuditoriaModel auditoriaModel, List<CheckListTemplateModel> list);
     }
 }

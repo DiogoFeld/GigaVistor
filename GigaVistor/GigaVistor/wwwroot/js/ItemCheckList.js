@@ -340,7 +340,6 @@ function loadTarefasByTemplate(elementId) {
     let templatesTarefas = document.getElementById("TemplatesTarefas");
     templatesTarefas.innerHTML = "";
 
-
     $.ajax({
         type: "GET",
         url: "/CheckListTemplate/getChecklistItens",
@@ -369,3 +368,55 @@ function loadTarefasByTemplate(elementId) {
 
 }
 
+function SaveAuditoriaWithTemplate() {
+    let nome = document.getElementById("auditoriaName").value;
+    let descricao = document.getElementById("auditoriaDescricao").value;
+    let dateAuditoria = document.getElementById("auditoriaDate").value;
+    let projetoAuditoria = document.getElementById("projetoIdAuditoria").value;
+
+    let templatesSelecionados = document.querySelectorAll("[selecionado='selecionado']");
+    let templates = "";
+    for (let t in templatesSelecionados) {
+        if (typeof templatesSelecionados[t] == 'object') {
+            templates += templatesSelecionados[t].id + "//"
+        }
+    }
+
+    let result = true;
+
+    if (!!!nome)
+        result = false
+    if (!!!dateAuditoria)
+        result = false
+    if (!!!templates)
+        result = false
+
+
+    if (result) {
+        showMessage("carregando");
+
+        $.ajax({
+            type: "GET",
+            url: "/Auditoria/SaveAuditoriaWithTemplate",
+            data: {
+
+                nome: nome,
+                descricao: descricao,
+                dateAuditoria: dateAuditoria,
+                projetoAuditoria: projetoAuditoria,
+                templates: templates
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            complete: function (result) {
+                hideMessage();
+            },
+            error: function (response) {
+                hideMessage();
+            },
+        });
+    }
+    else {
+        alert("Campos invalidos");
+    }
+}

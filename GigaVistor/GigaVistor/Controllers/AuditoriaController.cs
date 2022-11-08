@@ -3,6 +3,7 @@ using GigaVistor.Models;
 using GigaVistor.Services.AuditoriaServices;
 using GigaVistor.Services.SetorServices;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.NetworkInformation;
 
 namespace GigaVistor.Controllers
 {
@@ -45,7 +46,7 @@ namespace GigaVistor.Controllers
 
         public IActionResult CreatePage(int id)
         {
-            ViewBag.ProjetoId = id;            
+            ViewBag.ProjetoId = id;
             ViewBag.Template = auditoria.getTemplatesCheckList();
             return View();
         }
@@ -65,8 +66,6 @@ namespace GigaVistor.Controllers
             ViewBag.auditoriaResultado = auditoria.processAuditoria(tarefas);
             ViewBag.Tarefas = tarefas;
             ViewBag.Checklists = auditoria.getCheckListsByAuditoria(id);
-
-
 
             return View(auditoriaModel);
         }
@@ -132,6 +131,35 @@ namespace GigaVistor.Controllers
 
             var result = EmailController.Instance.SendEmail(body, EmailTo, header);
             return result;
+        }
+
+        public JsonResult SaveAuditoriaWithTemplate(string nome,string descricao,string dateAuditoria,string projetoAuditoria,string templates)
+        {
+            //templates == idTemplates
+            AuditoriaModel auditoriaModel = new AuditoriaModel() { 
+                Name = nome,
+                Descricao = descricao,
+                IdCriador = UserDatabase.Instance.getUsuario().Id,
+                IdProjeto = int.Parse(projetoAuditoria),
+                AuditoriaDate = DateTime.Parse(dateAuditoria)
+            };
+
+            List<CheckListTemplateModel> list = new List<CheckListTemplateModel>();
+            string[] templateArray = templates.Split("//");
+            foreach(string s in templateArray)
+            {
+                if(s != "")
+                {
+                    CheckListTemplateModel newTemplate = new CheckListTemplateModel()
+                    {
+                        Id = int.Parse(s)
+                    };
+                    list.Add(newTemplate);
+                }
+            }
+
+            bool result = auditoria.SaveAuditoriaWithTemplate(auditoriaModel, list);
+            return Json("string");
         }
 
 
