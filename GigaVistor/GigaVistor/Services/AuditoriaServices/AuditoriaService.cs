@@ -222,6 +222,7 @@ namespace GigaVistor.Services.AuditoriaServices
             //id Template - ItensChecklist-> not Template
             Dictionary<long, List<ItemCheckModel>> dictionaryItens = new Dictionary<long, List<ItemCheckModel>>();
             int idAuditoria = 0;
+            int idCheckList = 0;
 
             try
             {
@@ -274,28 +275,43 @@ namespace GigaVistor.Services.AuditoriaServices
                 //get checklist id.
                 //input itens on CheckList.
 
-
-
-
                 //auditoria
-                //if (auditoriaModel.Id == 0)
-                //{
-                //    if (auditoriaModel.Name == null)
-                //        auditoriaModel.Name = "nulo";
-                //    if (auditoriaModel.Descricao == null)
-                //        auditoriaModel.Descricao = "nulo";
-                //
-                //    db.Auditorias.Add(auditoriaModel);
-                //    db.SaveChanges();
-                //
-                //    idAuditoria = (int)auditoriaModel.Id;
-                //}
+                if (auditoriaModel.Id == 0)
+                {
+                    if (auditoriaModel.Name == null)
+                        auditoriaModel.Name = "nulo";
+                    if (auditoriaModel.Descricao == null)
+                        auditoriaModel.Descricao = "nulo";
+
+                    db.Auditorias.Add(auditoriaModel);
+                    db.SaveChanges();
+
+                    idAuditoria = (int)auditoriaModel.Id;
+                }
+                foreach (KeyValuePair<long, ChecklistModel> models in dictionaryTemplates)
+                {
+                    ChecklistModel checklistNew = models.Value;
+                    checklistNew.IdAuditoria = idAuditoria;
+
+                    db.checklists.Add(checklistNew);
+                    db.SaveChanges();
+                    idCheckList = checklistNew.Id;
+
+                    foreach (ItemCheckModel item in dictionaryItens[models.Key])
+                    {
+                        ItemCheckModel itemNew = item;
+                        itemNew.IdCheckList = idCheckList;
+
+                        db.itensCheckList.Add(itemNew);
+                        db.SaveChanges();
+                    }
+                }
+                return true;
             }
             catch
             {
-
+                return false;
             }
-            return false;
         }
 
 

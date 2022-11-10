@@ -1,6 +1,6 @@
 USE [GigaVistor]
 GO
-/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 08/11/2022 20:06:30 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AgendamentosAuditoria]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[AgendamentosAuditoria]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[AgendamentosAuditoria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Auditorias]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[Auditorias]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +50,7 @@ CREATE TABLE [dbo].[Auditorias](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[checklists]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[checklists]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -60,13 +60,106 @@ CREATE TABLE [dbo].[checklists](
 	[Name] [nvarchar](max) NOT NULL,
 	[Descricao] [nvarchar](max) NOT NULL,
 	[IdAuditoria] [bigint] NOT NULL,
+	[Status] [int] NOT NULL,
  CONSTRAINT [PK_checklists] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Projetos]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[checkListTemplates]    Script Date: 08/11/2022 20:06:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[checkListTemplates](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Descricao] [nvarchar](max) NOT NULL,
+	[IdCriador] [bigint] NOT NULL,
+ CONSTRAINT [PK_checkListTemplates] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[itemCheckListTemplates]    Script Date: 08/11/2022 20:06:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[itemCheckListTemplates](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Descricao] [nvarchar](max) NOT NULL,
+	[IdCheckList] [bigint] NOT NULL,
+	[DateCriacao] [datetime2](7) NOT NULL,
+	[IdCriador] [bigint] NOT NULL,
+ CONSTRAINT [PK_itemCheckListTemplates] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[itensCheckList]    Script Date: 08/11/2022 20:06:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[itensCheckList](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[Descricao] [nvarchar](max) NOT NULL,
+	[Aderente] [int] NOT NULL,
+	[Status] [int] NOT NULL,
+	[Escalonado] [bit] NOT NULL,
+	[ExplicacaoNaoConformidade] [nvarchar](max) NOT NULL,
+	[NaoConformidade] [bit] NOT NULL,
+	[NivelNaoConformidade] [int] NOT NULL,
+	[DateCriacao] [datetime2](7) NOT NULL,
+	[DatePrazo] [datetime2](7) NOT NULL,
+	[DatePrazoEscalonado] [datetime2](7) NOT NULL,
+	[StatusPosEscalonado] [int] NOT NULL,
+	[IdCriador] [bigint] NOT NULL,
+	[IdResponsavel] [bigint] NOT NULL,
+	[IdCheckList] [bigint] NOT NULL,
+	[IdNaoConformidade] [bigint] NOT NULL,
+ CONSTRAINT [PK_itensCheckList] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[naoConformidades]    Script Date: 08/11/2022 20:06:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[naoConformidades](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[DateCriacao] [datetime2](7) NOT NULL,
+	[IdCriador] [bigint] NOT NULL,
+	[Descricao] [nvarchar](max) NOT NULL,
+	[Explicação] [nvarchar](max) NOT NULL,
+	[Classificao] [int] NOT NULL,
+	[PrazoResolucao] [int] NOT NULL,
+	[Aderente] [int] NOT NULL,
+	[Status] [int] NOT NULL,
+	[StatusPosEscalonamento] [int] NOT NULL,
+	[DatePrazo] [datetime2](7) NOT NULL,
+	[PrazoCumprido] [bit] NOT NULL,
+	[DatePrazoEscalonado] [datetime2](7) NOT NULL,
+	[PrazoEscalonadoCumprido] [bit] NOT NULL,
+	[IdEscalonamentoResponsavel] [int] NOT NULL,
+	[StatusPosEscalonado] [int] NOT NULL,
+	[IdEscalonamento] [bigint] NOT NULL,
+	[IdResponsavel] [bigint] NOT NULL,
+	[IdCheckList] [bigint] NOT NULL,
+	[IdTarefa] [bigint] NOT NULL,
+ CONSTRAINT [PK_naoConformidades] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Projetos]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +176,7 @@ CREATE TABLE [dbo].[Projetos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Setores]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[Setores]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +191,7 @@ CREATE TABLE [dbo].[Setores](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tarefas]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[Tarefas]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -119,7 +212,7 @@ CREATE TABLE [dbo].[Tarefas](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TarefasTemplate]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[TarefasTemplate]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +230,7 @@ CREATE TABLE [dbo].[TarefasTemplate](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Templates]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[Templates]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,7 +247,7 @@ CREATE TABLE [dbo].[Templates](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuarios]    Script Date: 26/10/2022 21:30:09 ******/
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 08/11/2022 20:06:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,15 +269,87 @@ CREATE TABLE [dbo].[Usuarios](
 GO
 INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221027002607_Fix', N'6.0.9')
 GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221027224518_statusCheckList', N'6.0.9')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221028021807_itenCheckLists-nonConformidade', N'6.0.9')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221102014040_checkListTemplate', N'6.0.9')
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20221104012725_itemChecklistTemplate', N'6.0.9')
+GO
+SET IDENTITY_INSERT [dbo].[Auditorias] ON 
+GO
+INSERT [dbo].[Auditorias] ([Id], [Name], [Descricao], [IdCriador], [AuditoriaDate], [IdProjeto]) VALUES (1, N'Nova Auditoria', N'Auditoria', 1, CAST(N'2022-10-26T21:50:18.5160285' AS DateTime2), 1)
+GO
+SET IDENTITY_INSERT [dbo].[Auditorias] OFF
+GO
+SET IDENTITY_INSERT [dbo].[checklists] ON 
+GO
+INSERT [dbo].[checklists] ([Id], [Name], [Descricao], [IdAuditoria], [Status]) VALUES (1, N'Checklist', N'descri', 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[checklists] OFF
+GO
+SET IDENTITY_INSERT [dbo].[checkListTemplates] ON 
+GO
+INSERT [dbo].[checkListTemplates] ([Id], [Descricao], [IdCriador]) VALUES (2, N'Nova Descrição', 1)
+GO
+INSERT [dbo].[checkListTemplates] ([Id], [Descricao], [IdCriador]) VALUES (3, N'Isto é uma descrição', 1)
+GO
+INSERT [dbo].[checkListTemplates] ([Id], [Descricao], [IdCriador]) VALUES (4, N'Decr2', 1)
+GO
+INSERT [dbo].[checkListTemplates] ([Id], [Descricao], [IdCriador]) VALUES (5, N'Template - Compras', 1)
+GO
+SET IDENTITY_INSERT [dbo].[checkListTemplates] OFF
+GO
+SET IDENTITY_INSERT [dbo].[itemCheckListTemplates] ON 
+GO
+INSERT [dbo].[itemCheckListTemplates] ([Id], [Descricao], [IdCheckList], [DateCriacao], [IdCriador]) VALUES (1, N'Descrição 1', 2, CAST(N'2022-11-05T00:13:17.1776364' AS DateTime2), 1)
+GO
+INSERT [dbo].[itemCheckListTemplates] ([Id], [Descricao], [IdCheckList], [DateCriacao], [IdCriador]) VALUES (2, N'Descrição 2', 2, CAST(N'2022-11-05T00:13:17.6601714' AS DateTime2), 1)
+GO
+INSERT [dbo].[itemCheckListTemplates] ([Id], [Descricao], [IdCheckList], [DateCriacao], [IdCriador]) VALUES (3, N'Conferencia de Bids', 5, CAST(N'2022-11-05T14:32:14.2629742' AS DateTime2), 1)
+GO
+INSERT [dbo].[itemCheckListTemplates] ([Id], [Descricao], [IdCheckList], [DateCriacao], [IdCriador]) VALUES (4, N'Conferencia de licenças', 5, CAST(N'2022-11-05T14:32:14.2848919' AS DateTime2), 1)
+GO
+INSERT [dbo].[itemCheckListTemplates] ([Id], [Descricao], [IdCheckList], [DateCriacao], [IdCriador]) VALUES (5, N'Aprovação dos fornecedores', 5, CAST(N'2022-11-05T14:32:14.2918814' AS DateTime2), 1)
+GO
+SET IDENTITY_INSERT [dbo].[itemCheckListTemplates] OFF
+GO
+SET IDENTITY_INSERT [dbo].[itensCheckList] ON 
+GO
+INSERT [dbo].[itensCheckList] ([Id], [Descricao], [Aderente], [Status], [Escalonado], [ExplicacaoNaoConformidade], [NaoConformidade], [NivelNaoConformidade], [DateCriacao], [DatePrazo], [DatePrazoEscalonado], [StatusPosEscalonado], [IdCriador], [IdResponsavel], [IdCheckList], [IdNaoConformidade]) VALUES (1, N'descr1', 0, 0, 0, N'', 0, 0, CAST(N'2022-10-31T18:55:15.2076237' AS DateTime2), CAST(N'2022-11-03T00:00:00.0000000' AS DateTime2), CAST(N'2022-10-31T18:55:15.2198594' AS DateTime2), 0, 1, 2, 1, 2)
+GO
+INSERT [dbo].[itensCheckList] ([Id], [Descricao], [Aderente], [Status], [Escalonado], [ExplicacaoNaoConformidade], [NaoConformidade], [NivelNaoConformidade], [DateCriacao], [DatePrazo], [DatePrazoEscalonado], [StatusPosEscalonado], [IdCriador], [IdResponsavel], [IdCheckList], [IdNaoConformidade]) VALUES (2, N'descr2', 0, 0, 0, N'', 0, 0, CAST(N'2022-10-31T18:55:15.2203015' AS DateTime2), CAST(N'2022-10-31T00:00:00.0000000' AS DateTime2), CAST(N'2022-10-31T18:55:15.2203058' AS DateTime2), 0, 1, 2, 1, 2)
+GO
+INSERT [dbo].[itensCheckList] ([Id], [Descricao], [Aderente], [Status], [Escalonado], [ExplicacaoNaoConformidade], [NaoConformidade], [NivelNaoConformidade], [DateCriacao], [DatePrazo], [DatePrazoEscalonado], [StatusPosEscalonado], [IdCriador], [IdResponsavel], [IdCheckList], [IdNaoConformidade]) VALUES (3, N'descr3', 0, 0, 0, N'', 0, 0, CAST(N'2022-11-01T19:39:28.0492718' AS DateTime2), CAST(N'2022-11-01T00:00:00.0000000' AS DateTime2), CAST(N'2022-11-01T19:39:28.0574241' AS DateTime2), 0, 1, 0, 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[itensCheckList] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Projetos] ON 
+GO
+INSERT [dbo].[Projetos] ([Id], [Name], [IdCriador], [criacao], [status]) VALUES (1, N'Projeto1', 1, CAST(N'2022-10-26T21:49:56.9937749' AS DateTime2), 0)
+GO
+SET IDENTITY_INSERT [dbo].[Projetos] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Setores] ON 
 GO
 INSERT [dbo].[Setores] ([Id], [Nome], [SupervisorId]) VALUES (1, N'Qualidade', 1)
 GO
 SET IDENTITY_INSERT [dbo].[Setores] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Tarefas] ON 
+GO
+INSERT [dbo].[Tarefas] ([Id], [Name], [Descricao], [IdResponsavel], [IdCriador], [IdSetor], [IdAuditoria], [Status], [NotasQualidade]) VALUES (1, N'Tarefa 1', N'Tarefa 1', 2, 1, 1, 1, 0, N'')
+GO
+SET IDENTITY_INSERT [dbo].[Tarefas] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Usuarios] ON 
 GO
 INSERT [dbo].[Usuarios] ([Id], [Nome], [Logon], [Cargo], [Email], [IdSuperVisor], [Setor], [Permissao]) VALUES (1, N'admin', N'admin', N'admin', N'admin@admin', 1, N'1', 20)
 GO
+INSERT [dbo].[Usuarios] ([Id], [Nome], [Logon], [Cargo], [Email], [IdSuperVisor], [Setor], [Permissao]) VALUES (2, N'Diogo', N'di@@feld', N'senior', N'cfeld.diogo@gmail.com', 1, N'1', 15)
+GO
 SET IDENTITY_INSERT [dbo].[Usuarios] OFF
+GO
+ALTER TABLE [dbo].[checklists] ADD  DEFAULT ((0)) FOR [Status]
 GO

@@ -409,6 +409,15 @@ function SaveAuditoriaWithTemplate() {
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             complete: function (result) {
+                if (result.responseJSON) {
+                    alert("Sucesso na criação");
+                    window.location.href = "/Projeto/Details/" + projetoAuditoria;
+                }
+                else
+                    alert("Falha na criação");
+
+
+
                 hideMessage();
             },
             error: function (response) {

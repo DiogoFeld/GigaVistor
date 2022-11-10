@@ -6,8 +6,6 @@
 
 <h1>Detalhes do CheckList</h1>
 
-
-
 <div>
 
     <hr />
@@ -33,23 +31,31 @@
     </dl>
 </div>
 <div>
-    <a asp-controller="auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Voltar a auditoria</a>
+    <a class="checkCheckButton" asp-controller="auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Voltar a auditoria</a>
 </div>
 
-<h3>
-    Itens Do CheckList
-</h3>
+
+<div style="height:20px"></div>
 
 <div id="CheckListItens">
-    <div class="menuChecklist">
-        <button onclick="addItemToList()">
-            Adicionar Item
-        </button>
-        <button onclick="SendList()">
-            Salvar Lista
-        </button>
-    </div>
+    @* <div class="menuChecklist">
+    <button onclick="addItemToList()">
+    Adicionar Item
+    </button>
+    <button onclick="SendList()">
+    Salvar Lista
+    </button>
+    </div>*@
 
+    @{
+        bool boolResult = true;
+    }
+    @foreach (var item in ViewBag.ItensCheckList)
+    {
+        @if (!@item.Escalonado){
+            boolResult = false;
+        }
+    }
     <table style="border-collapse: unset;
     border-spacing: 15px 2px;">
         <thead>
@@ -60,12 +66,15 @@
                 <th style="text-align:center;" header="Default">STATUS</th>
                 <th style="text-align:center;" header="Default">PRAZO
                 <th style="text-align:center;">N/C</th>
-                <th style="text-align:center;" header="naoFonformidade">SERIEDADE DA N/C</th>
-                <th style="text-align:center;" header="naoFonformidade">DESCRIÇÃO DE N/C</th>
-                <th style="text-align:center;" header="naoFonformidade">ESCALONADO PARA</th>
-                <th style="text-align:center;" header="naoFonformidade">STATUS PÓS ESCALONAMENTO</th>
-                <th style="text-align:center;" header="naoFonformidade">PRAZO DE N/C</th>
-                <th></th>@*Button of escalonamento*@
+                    @if (boolResult){
+                        <th style="text-align:center;" header="naoFonformidade">SERIEDADE DA N/C</th>
+                        <th style="text-align:center;" header="naoFonformidade">DESCRIÇÃO DE N/C</th>
+                        <th style="text-align:center;" header="naoFonformidade">ESCALONADO PARA</th>
+                        <th style="text-align:center;" header="naoFonformidade">STATUS PÓS ESCALONAMENTO</th>
+                        <th style="text-align:center;" header="naoFonformidade">PRAZO DE N/C</th>
+                        <th></th>
+                        @*Button of escalonamento*@
+                    }
             </tr>
         </thead>
         <tbody id="checklistTable">
@@ -130,73 +139,157 @@
                     </td>@*STATUS*@
                     <td><input readonly type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
                     <td><input readonly type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
-                    <td>
-                        <select disabled id="selectUsers">
-                            @if (item.NivelNaoConformidade == 0)
-                            {
-                                <option selected value="0">Baixa</option>
-                            }
-                            else
-                            {
-                                <option value="0">Baixa</option>
-                            }
-                            @if (item.NivelNaoConformidade == 1)
-                            {
-                                <option selected value="1">Média</option>
-                            }
-                            else
-                            {
-                                <option value="1">Média</option>
-                            }
-                            @if (item.NivelNaoConformidade == 2)
-                            {
-                                <option selected value="2">Alta</option>
-                            }
-                            else
-                            {
-                                <option value="2">Alta</option>
-                            }
-                        </select>
-                    </td>@*SERIEDADE NC *@
-                    <td><input readonly value="@item.ExplicacaoNaoConformidade" /></td>@*DESCRIÇÃO NC*@
-                    <td>
-                        <select disabled>
-                            @foreach (var user in ViewBag.Usuarios)
-                            {
-                                @if (user.Id == @item.IdNaoConformidade)
+                    @if (@item.Escalonado)
+                    {
+                        <td>
+                            <select disabled id="selectUsers">
+                                @if (item.NivelNaoConformidade == 0)
                                 {
-                                    <option selected value="@user.Id">@user.Nome</option>
+                                    <option selected value="0">Baixa</option>
                                 }
                                 else
                                 {
-                                    <option value="@user.Id">@user.Nome</option>
+                                    <option value="0">Baixa</option>
                                 }
+                                @if (item.NivelNaoConformidade == 1)
+                                {
+                                    <option selected value="1">Média</option>
+                                }
+                                else
+                                {
+                                    <option value="1">Média</option>
+                                }
+                                @if (item.NivelNaoConformidade == 2)
+                                {
+                                    <option selected value="2">Alta</option>
+                                }
+                                else
+                                {
+                                    <option value="2">Alta</option>
+                                }
+                            </select>
+                        </td>
+                        @*SERIEDADE NC *@
+                        <td><input readonly value="@item.ExplicacaoNaoConformidade" /></td>
+                        @*DESCRIÇÃO NC*@
+                        <td>
+                            <select disabled>
+                                @foreach (var user in ViewBag.Usuarios)
+                                {
+                                    @if (user.Id == @item.IdNaoConformidade)
+                                    {
+                                        <option selected value="@user.Id">@user.Nome</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@user.Id">@user.Nome</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        @*ESCALONADO PARA*@
+                        <td>
+                            <select disabled>
+                                if(@item.StatusPosEscalonado == 0){
+                                <option selected value="0">Não</option>
+                                <option value="1">Não</option>
+                                }
+                                else{
+                                <option value="0">Sim</option>
+                                <option selected value="1">Sim</option>
+                                }
+                            </select>
+                        </td>
+                        @*STATUS PÓS ESCALONAMENTO*@
+                        <td><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>
+                        @*PRAZO DE N/C*@
+                        <td>
+                            @if (@item.Escalonado)
+                            {
+                                <button>Mostrar Escalonamento</button>
                             }
-                        </select>
-                    </td>@*ESCALONADO PARA*@
-                    <td>
-                        <select disabled>
-                            if(@item.StatusPosEscalonado == 0){
-                            <option selected value="0">Não</option>
-                            <option value="1">Não</option>
+                            else
+                            {
+                                <button hidden>Mostrar Escalonamento</button>
                             }
-                            else{
-                            <option value="0">Sim</option>
-                            <option selected value="1">Sim</option>
+                        </td>
+                    }
+                    @*nao escalonado*@
+                    else
+                    {
+                        <td hidden>
+                            <select disabled id="selectUsers">
+                                @if (item.NivelNaoConformidade == 0)
+                                {
+                                    <option selected value="0">Baixa</option>
+                                }
+                                else
+                                {
+                                    <option value="0">Baixa</option>
+                                }
+                                @if (item.NivelNaoConformidade == 1)
+                                {
+                                    <option selected value="1">Média</option>
+                                }
+                                else
+                                {
+                                    <option value="1">Média</option>
+                                }
+                                @if (item.NivelNaoConformidade == 2)
+                                {
+                                    <option selected value="2">Alta</option>
+                                }
+                                else
+                                {
+                                    <option value="2">Alta</option>
+                                }
+                            </select>
+                        </td>
+                        @*SERIEDADE NC *@
+                        <td hidden><input readonly value="@item.ExplicacaoNaoConformidade" /></td>
+                        @*DESCRIÇÃO NC*@
+                        <td hidden>
+                            <select disabled>
+                                @foreach (var user in ViewBag.Usuarios)
+                                {
+                                    @if (user.Id == @item.IdNaoConformidade)
+                                    {
+                                        <option selected value="@user.Id">@user.Nome</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@user.Id">@user.Nome</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        @*ESCALONADO PARA*@
+                        <td hidden>
+                            <select disabled>
+                                if(@item.StatusPosEscalonado == 0){
+                                <option selected value="0">Não</option>
+                                <option value="1">Não</option>
+                                }
+                                else{
+                                <option value="0">Sim</option>
+                                <option selected value="1">Sim</option>
+                                }
+                            </select>
+                        </td>
+                        @*STATUS PÓS ESCALONAMENTO*@
+                        <td hidden><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>
+                        @*PRAZO DE N/C*@
+                        <td>
+                            @if (@item.Escalonado)
+                            {
+                                <button>Mostrar Escalonamento</button>
                             }
-                        </select>
-                    </td>@*STATUS PÓS ESCALONAMENTO*@
-                    <td><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
-                    <td>
-                        @if (@item.Escalonado)
-                        {
-                            <button>Mostrar Escalonamento</button>
-                        }
-                        else
-                        {
-                            <button hidden>Mostrar Escalonamento</button>
-                        }
-                    </td>
+                            else
+                            {
+                                <button hidden>Mostrar Escalonamento</button>
+                            }
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

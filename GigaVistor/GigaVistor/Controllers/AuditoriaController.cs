@@ -159,7 +159,7 @@ namespace GigaVistor.Controllers
             }
 
             bool result = auditoria.SaveAuditoriaWithTemplate(auditoriaModel, list);
-            return Json("string");
+            return Json(result);
         }
 
 
