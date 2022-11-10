@@ -302,7 +302,7 @@ function saveCheckList() {
         url: "/ItemChecklistTemplate/AddDescricoes",
         data: {
             conformidades: conformidades,
-            checkListId: checkListId 
+            checkListId: checkListId
         },
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -313,3 +313,119 @@ function saveCheckList() {
     });
 }
 
+function clickChecklist(element) {
+    if (element.getAttribute("selecionado") != "selecionado") {
+        element.setAttribute("selecionado", "selecionado");
+        element.style.background = "lightGrey";
+    }
+    else {
+        element.setAttribute("selecionado", "naoSelecionado");
+        element.style.background = "#d3d3d33b";
+    }
+}
+
+function functionLoadTarefas(elementId) {
+    let checkbox = document.querySelectorAll("[tipo='selecionadorTarefa']");
+    for (let c in checkbox) {
+        if (typeof checkbox[c] == "object") {
+            checkbox[c].style.color = "black";
+        }
+    }
+    let idCheckBox = document.getElementById("checkbox_" + elementId);
+    idCheckBox.style.color = "firebrick";
+    loadTarefasByTemplate(elementId);
+}
+
+function loadTarefasByTemplate(elementId) {
+    let templatesTarefas = document.getElementById("TemplatesTarefas");
+    templatesTarefas.innerHTML = "";
+
+    $.ajax({
+        type: "GET",
+        url: "/CheckListTemplate/getChecklistItens",
+        data: {
+            idCheckList: elementId
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+            let itens = result.responseJSON;
+            for (let i in itens) {
+                let div = document.createElement("div");
+                templatesTarefas.appendChild(div);
+                let label = document.createElement("label");
+                label.innerHTML = "Descrição: ";
+                div.appendChild(label);
+                let value = document.createElement("textarea");
+                value.readOnly = true;
+                value.innerHTML = itens[i].descricao;
+                div.appendChild(value);
+            }
+        },
+        error: function (response) {
+        },
+    });
+
+}
+
+function SaveAuditoriaWithTemplate() {
+    let nome = document.getElementById("auditoriaName").value;
+    let descricao = document.getElementById("auditoriaDescricao").value;
+    let dateAuditoria = document.getElementById("auditoriaDate").value;
+    let projetoAuditoria = document.getElementById("projetoIdAuditoria").value;
+
+    let templatesSelecionados = document.querySelectorAll("[selecionado='selecionado']");
+    let templates = "";
+    for (let t in templatesSelecionados) {
+        if (typeof templatesSelecionados[t] == 'object') {
+            templates += templatesSelecionados[t].id + "//"
+        }
+    }
+
+    let result = true;
+
+    if (!!!nome)
+        result = false
+    if (!!!dateAuditoria)
+        result = false
+    if (!!!templates)
+        result = false
+
+
+    if (result) {
+        showMessage("carregando");
+
+        $.ajax({
+            type: "GET",
+            url: "/Auditoria/SaveAuditoriaWithTemplate",
+            data: {
+
+                nome: nome,
+                descricao: descricao,
+                dateAuditoria: dateAuditoria,
+                projetoAuditoria: projetoAuditoria,
+                templates: templates
+            },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            complete: function (result) {
+                if (result.responseJSON) {
+                    alert("Sucesso na criação");
+                    window.location.href = "/Projeto/Details/" + projetoAuditoria;
+                }
+                else
+                    alert("Falha na criação");
+
+
+
+                hideMessage();
+            },
+            error: function (response) {
+                hideMessage();
+            },
+        });
+    }
+    else {
+        alert("Campos invalidos");
+    }
+}

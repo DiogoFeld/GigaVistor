@@ -65,7 +65,6 @@ namespace GigaVistor.Controllers
                         IdResponsavel = int.Parse(responsaveisArray[i]),
                         IdCheckList = int.Parse(idCheckList),
                         IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
-
                     };
                     addIten(item);
                     itens.Add(item);

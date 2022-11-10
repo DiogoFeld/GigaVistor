@@ -42,7 +42,14 @@ namespace GigaVistor.Controllers
             return View(templates);            
         }
 
+        public JsonResult getChecklistItens(string idCheckList)
+        {
+            int check = int.Parse(idCheckList);
 
+            IEnumerable<ItemChecklistTemplateModel> itens = template.GetItensOfChecklist(check);
+
+            return Json(itens);
+        }
 
 
     }

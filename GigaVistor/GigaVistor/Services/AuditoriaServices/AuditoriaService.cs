@@ -1,6 +1,8 @@
 ﻿using GigaVistor.Controllers.DatabaseSingleton;
 using GigaVistor.Data;
 using GigaVistor.Models;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace GigaVistor.Services.AuditoriaServices
 {
@@ -195,8 +197,121 @@ namespace GigaVistor.Services.AuditoriaServices
         public UsuarioModel getUsuarioById(int id)
         {
             UsuarioModel usuario = db.Usuarios.FirstOrDefault(s => s.Id == id);
-            
+
             return usuario;
+        }
+
+        public IEnumerable<CheckListTemplateModel> getTemplatesCheckList()
+        {
+            IEnumerable<CheckListTemplateModel> templates = new List<CheckListTemplateModel>();
+            try
+            {
+                templates = db.checkListTemplates.Select(s => s).ToList();
+                return templates;
+            }
+            catch
+            {
+                return templates;
+            }
+        }
+
+        public bool SaveAuditoriaWithTemplate(AuditoriaModel auditoriaModel, List<CheckListTemplateModel> list)
+        {
+            //id template - idChecklist->not Template
+            Dictionary<long, ChecklistModel> dictionaryTemplates = new Dictionary<long, ChecklistModel>();
+            //id Template - ItensChecklist-> not Template
+            Dictionary<long, List<ItemCheckModel>> dictionaryItens = new Dictionary<long, List<ItemCheckModel>>();
+            int idAuditoria = 0;
+            int idCheckList = 0;
+
+            try
+            {
+                foreach (CheckListTemplateModel check in list)
+                {
+                    CheckListTemplateModel newTemplate = db.checkListTemplates.FirstOrDefault(s => s.Id == check.Id);
+                    ChecklistModel newChecklist = new ChecklistModel()
+                    {
+                        Id = 0,
+                        Status = 0,
+                        Name = newTemplate.Descricao,
+                        Descricao = "",
+                    };
+                    dictionaryTemplates.Add(newTemplate.Id, newChecklist);
+
+                    //loadItens
+                    List<ItemChecklistTemplateModel> itensTemplate = (from itens in db.itemCheckListTemplates
+                                                                      where itens.IdCheckList == newTemplate.Id
+                                                                      select itens).ToList();
+
+
+
+                    List<ItemCheckModel> listItemCheckModel = new List<ItemCheckModel>();
+                    foreach (ItemChecklistTemplateModel itemTemplateModel in itensTemplate)
+                    {
+                        ItemCheckModel itemCheckModel = new ItemCheckModel()
+                        {
+                            Id = 0,
+                            Descricao = itemTemplateModel.Descricao,
+                            Aderente = 0,
+                            Status = 0,
+                            Escalonado = false,
+                            ExplicacaoNaoConformidade = "",
+                            NaoConformidade = false,
+                            NivelNaoConformidade = 0,
+                            DateCriacao = DateTime.Now,
+                            DatePrazo = DateTime.Now,
+                            DatePrazoEscalonado = DateTime.Now,
+                            StatusPosEscalonado = 0,
+                            IdCriador = UserDatabase.Instance.getUsuario().Id,
+                            IdResponsavel = 0,
+                            IdCheckList = 0,
+                            IdNaoConformidade = 0,
+                        };
+                        listItemCheckModel.Add(itemCheckModel);
+                    }
+                    dictionaryItens.Add(newTemplate.Id, listItemCheckModel);
+                }
+                //get auditoria id.
+                //get checklist id.
+                //input itens on CheckList.
+
+                //auditoria
+                if (auditoriaModel.Id == 0)
+                {
+                    if (auditoriaModel.Name == null)
+                        auditoriaModel.Name = "nulo";
+                    if (auditoriaModel.Descricao == null)
+                        auditoriaModel.Descricao = "nulo";
+
+                    db.Auditorias.Add(auditoriaModel);
+                    db.SaveChanges();
+
+                    idAuditoria = (int)auditoriaModel.Id;
+                }
+                foreach (KeyValuePair<long, ChecklistModel> models in dictionaryTemplates)
+                {
+                    ChecklistModel checklistNew = models.Value;
+                    checklistNew.IdAuditoria = idAuditoria;
+
+                    db.checklists.Add(checklistNew);
+                    db.SaveChanges();
+                    idCheckList = checklistNew.Id;
+
+                    foreach (ItemCheckModel item in dictionaryItens[models.Key])
+                    {
+                        ItemCheckModel itemNew = item;
+                        itemNew.IdCheckList = idCheckList;
+
+                        db.itensCheckList.Add(itemNew);
+                        db.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
 
