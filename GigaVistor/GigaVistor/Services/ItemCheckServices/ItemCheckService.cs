@@ -1,6 +1,7 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
 using System.Drawing;
+using System.Linq;
 
 namespace GigaVistor.Services.ItemCheckServices
 {
@@ -38,14 +39,45 @@ namespace GigaVistor.Services.ItemCheckServices
 
         public bool addIten(ItemCheckModel item)
         {
-            try{
+            try
+            {
                 db.itensCheckList.Add(item);
                 db.SaveChanges();
             }
-            catch{
+            catch
+            {
                 return false;
             }
             return true;
+        }
+
+        public bool updateConformidade(ItemCheckModel _conformidade)
+        {
+            try
+            {
+                ItemCheckModel conformidade = db.itensCheckList.FirstOrDefault(s => s.Id == _conformidade.Id);
+
+                conformidade.Aderente = _conformidade.Aderente;
+                conformidade.Status = _conformidade.Status;
+                conformidade.Escalonado = _conformidade.Escalonado;
+                conformidade.ExplicacaoNaoConformidade = _conformidade.ExplicacaoNaoConformidade != null ? _conformidade.ExplicacaoNaoConformidade: " ";
+                conformidade.NaoConformidade = _conformidade.NaoConformidade;
+                conformidade.NivelNaoConformidade = _conformidade.NivelNaoConformidade;
+                conformidade.DatePrazo = _conformidade.DatePrazo;
+                conformidade.DatePrazoEscalonado = _conformidade.DatePrazoEscalonado;
+                conformidade.StatusPosEscalonado = _conformidade.StatusPosEscalonado;
+                conformidade.IdResponsavel = _conformidade.IdResponsavel;
+                conformidade.IdNaoConformidade = _conformidade.IdNaoConformidade;
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+
+            }
+            return false;
         }
 
 

@@ -1,1 +1,60 @@
-﻿
+﻿function updateConformidade(id) {
+
+    let responsavelSelect = document.getElementById("responsavel_" + id);//select
+    let responsavel = parseInt(responsavelSelect.options[responsavelSelect.selectedIndex].value);
+
+    let atendeSelect = document.getElementById("atende_" + id);//select
+    let atende = parseInt(atendeSelect.options[atendeSelect.selectedIndex].value);
+
+    let statusSelect = document.getElementById("status_" + id);//select
+    let status = parseInt(atendeSelect.options[atendeSelect.selectedIndex].value);
+
+    let prazo = document.getElementById("prazo_" + id).value;
+    let nConformidade = document.getElementById("nConformidade_" + id).checked;//CheckBox
+    let complexidadeNConformidade = document.getElementById("complexidadeNConformidade_" + id).value;
+
+    let explicacaoNConformidade = document.getElementById("explicacaoNConformidade_" + id).value;
+
+    let usuarioNConformidadeSelect = document.getElementById("usuarioNConformidade_" + id);//select
+    let usuarioNConformidade = parseInt(usuarioNConformidadeSelect.options[usuarioNConformidadeSelect.selectedIndex].value);
+
+    let statusNConformidadeSelect = document.getElementById("statusNConformidade_" + id);//select
+    let statusNConformidade = parseInt(statusNConformidadeSelect.options[statusNConformidadeSelect.selectedIndex].value);
+
+    let dateNConformidade = document.getElementById("dateNConformidade_" + id).value;
+
+
+    showMessage("carregando");
+    $.ajax({
+        type: "GET",
+        url: "/ItemCheck/uptadeConformidade",
+        data: {
+            id: id,
+            responsavel: responsavel,
+            atende: atende,
+            status: status,
+            prazo: prazo,
+            nConformidade: nConformidade,
+            complexidadeNConformidade: complexidadeNConformidade,
+            explicacaoNConformidade: explicacaoNConformidade,
+            usuarioNConformidade: usuarioNConformidade,
+            statusNConformidade: statusNConformidade,
+            dateNConformidade: dateNConformidade
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+            if (result.responseJSON) {
+                alert("Sucesso na atualização");
+                hideMessage();
+            }
+            else
+                alert("Falha no atualização");
+            hideMessage();
+        },
+        error: function (response) {
+
+        },
+    });
+
+}

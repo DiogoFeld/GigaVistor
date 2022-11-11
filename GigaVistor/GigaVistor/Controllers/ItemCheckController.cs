@@ -24,7 +24,7 @@ namespace GigaVistor.Controllers
         public bool addIten(ItemCheckModel iten)
         {
             itemCheckServiceCheckListService.addIten(iten);
-            
+
             return false;
         }
 
@@ -73,6 +73,31 @@ namespace GigaVistor.Controllers
             return Json(itens);
         }
 
+        public JsonResult uptadeConformidade(string id, string responsavel, string atende, string status, string prazo, string nConformidade, string complexidadeNConformidade,
+            string explicacaoNConformidade, string usuarioNConformidade, string statusNConformidade, string dateNConformidade)
+        {
+            bool result = false;
+
+            ItemCheckModel conformidade = new ItemCheckModel()
+            {
+                Id = long.Parse(id),
+                Aderente = int.Parse(atende),
+                Status = int.Parse(status),
+                Escalonado = bool.Parse(nConformidade),
+                ExplicacaoNaoConformidade = explicacaoNConformidade,
+                NaoConformidade = bool.Parse(nConformidade),
+                NivelNaoConformidade = int.Parse(complexidadeNConformidade),
+                DatePrazo = DateTime.Parse(prazo),
+                DatePrazoEscalonado = DateTime.Parse(dateNConformidade),
+                StatusPosEscalonado = int.Parse(statusNConformidade),
+                IdResponsavel = int.Parse(responsavel),
+                IdNaoConformidade = int.Parse(usuarioNConformidade),
+            };
+
+            result = itemCheckServiceCheckListService.updateConformidade(conformidade);
+
+            return Json(result);
+        }
 
     }
 }

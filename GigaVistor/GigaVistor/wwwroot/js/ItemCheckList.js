@@ -416,8 +416,6 @@ function SaveAuditoriaWithTemplate() {
                 else
                     alert("Falha na criação");
 
-
-
                 hideMessage();
             },
             error: function (response) {
