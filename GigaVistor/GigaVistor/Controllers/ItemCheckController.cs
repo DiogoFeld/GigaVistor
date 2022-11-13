@@ -24,7 +24,7 @@ namespace GigaVistor.Controllers
         public bool addIten(ItemCheckModel iten)
         {
             itemCheckServiceCheckListService.addIten(iten);
-            
+
             return false;
         }
 
@@ -64,7 +64,7 @@ namespace GigaVistor.Controllers
                         IdCriador = UserDatabase.Instance.getUsuario().Id,
                         IdResponsavel = int.Parse(responsaveisArray[i]),
                         IdCheckList = int.Parse(idCheckList),
-                        IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
+                        IdNaoConformidade = 0,
                     };
                     addIten(item);
                     itens.Add(item);
@@ -72,6 +72,47 @@ namespace GigaVistor.Controllers
             }
             return Json(itens);
         }
+
+        public JsonResult uptadeConformidade(string id, string responsavel, string atende, string status, string prazo, string nConformidade, string complexidadeNConformidade,
+            string explicacaoNConformidade, string usuarioNConformidade, string statusNConformidade, string dateNConformidade)
+        {
+            bool result = false;
+
+            ItemCheckModel conformidade = new ItemCheckModel()
+            {
+                Id = long.Parse(id),
+                Aderente = int.Parse(atende),
+                Status = int.Parse(status),
+                Escalonado = bool.Parse(nConformidade),
+                ExplicacaoNaoConformidade = explicacaoNConformidade,
+                NaoConformidade = bool.Parse(nConformidade),
+                NivelNaoConformidade = int.Parse(complexidadeNConformidade),
+                DatePrazo = DateTime.Parse(prazo),
+                DatePrazoEscalonado = DateTime.Parse(dateNConformidade),
+                StatusPosEscalonado = int.Parse(statusNConformidade),
+                IdResponsavel = int.Parse(responsavel),
+                IdNaoConformidadeResponsavel = int.Parse(usuarioNConformidade),
+            };
+
+            result = itemCheckServiceCheckListService.updateConformidade(conformidade);
+
+            bool naoConformidadeResult = false;
+            if (conformidade.NaoConformidade)
+            {               
+                naoConformidadeResult = itemCheckServiceCheckListService.getNaoConformidade(conformidade.Id);                
+            }
+            if (naoConformidadeResult)
+            {
+                itemCheckServiceCheckListService.CreateNaoConformidade(conformidade.Id);
+
+                //crete NaoConformidade // pegar os detalhes da tarefa
+            }
+            return Json(result);
+        }
+
+
+
+
 
 
     }

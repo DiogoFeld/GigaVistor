@@ -266,6 +266,7 @@ namespace GigaVistor.Services.AuditoriaServices
                             IdResponsavel = 0,
                             IdCheckList = 0,
                             IdNaoConformidade = 0,
+                            IdNaoConformidadeResponsavel = 0
                         };
                         listItemCheckModel.Add(itemCheckModel);
                     }

@@ -8,12 +8,12 @@ namespace GigaVistor.Controllers
 {
     public class ItemChecklistTemplateController : Controller
     {
-     
+
         IItemChecklistTemplateService itemChecklistTemplateService;
         public ItemChecklistTemplateController(IItemChecklistTemplateService _itemChecklistTemplateService)
         {
             itemChecklistTemplateService = _itemChecklistTemplateService;
-        }      
+        }
         public JsonResult AddDescricoes(string conformidades, string checkListId)
         {
             bool result = false;
@@ -35,12 +35,14 @@ namespace GigaVistor.Controllers
                             IdCriador = UserDatabase.Instance.getUsuario().Id
                         };
                         itemChecklistTemplateService.addIten(item);
-                        
+
                     }
                 }
             }
             return Json(result);
         }
+
+        
 
     }
 }

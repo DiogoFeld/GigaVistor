@@ -194,6 +194,9 @@ namespace GigaVistor.Migrations
                     b.Property<long>("IdNaoConformidade")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("IdNaoConformidadeResponsavel")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("IdResponsavel")
                         .HasColumnType("bigint");
 

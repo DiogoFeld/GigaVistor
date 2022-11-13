@@ -18,14 +18,7 @@
 <h1>Detalhes do CheckList</h1>
 
 <div>
-
     <hr />
-    <div style="margin-bottom:20px">
-        <a class="checkCheckButton" asp-action="check" asp-route-id="@Model.Id">
-            Realizar Check
-        </a>
-    </div>
-
     <dl class="row">
         <dt class="col-sm-2">
             Nome:
@@ -43,6 +36,7 @@
 </div>
 <div>
     <a class="checkCheckButton" asp-controller="auditoria" asp-action="Details" asp-route-id="@Model.IdAuditoria">Voltar a auditoria</a>
+    <button class="checkCheckButton" onclick="updateCheckList()"> Atualizar CheckList</button>
 </div>
 
 
@@ -79,10 +73,10 @@
         <tbody id="checklistTable">
             @foreach (var item in ViewBag.ItensCheckList)
             {
-                <tr tipo="oldRow">
-                    <td><input value="@item.Descricao" readonly /></td>@*Descicao*@
+                <tr tipo="row" id="@item.Id">
+                    <td><input readonly value="@item.Descricao" /></td>@*Descicao*@
                     <td>
-                        <select disabled>
+                        <select id="responsavel_@item.Id">
                             @foreach (var user in ViewBag.Usuarios)
                             {
                                 @if (user.Id == @item.IdResponsavel)
@@ -97,19 +91,19 @@
                         </select>
                     </td>@*RESPONSÁVEL*@
                     <td>
-                        <select disabled>
-                            if(@item.Aderente == 0){
-                            <option selected value="0">Não</option>
-                            <option value="1">Não</option>
+                        <select id="atende_@item.Id">
+                            @if(@item.Aderente == 0){
+                                <option selected value="0">Não</option>
+                                <option value="1">Sim</option>
                             }
                             else{
-                            <option value="0">Sim</option>
+                            <option value="0">Não</option>
                             <option selected value="1">Sim</option>
                             }
                         </select>
                     </td>@*ATENDE*@
                     <td>
-                        <select disabled>
+                        <select id="status_@item.Id">
                             @if (@item.Status == 0)
                             {
                                 <option selected value="0">Não</option>
@@ -136,10 +130,10 @@
                             }
                         </select>
                     </td>@*STATUS*@
-                    <td><input readonly type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
-                    <td><input readonly type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
+                    <td><input id="prazo_@item.Id" type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
+                    <td><input id="nConformidade_@item.Id" type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
                     <td>
-                        <select disabled id="selectUsers">
+                        <select id="complexidadeNConformidade_@item.Id">
                             @if (item.NivelNaoConformidade == 0)
                             {
                                 <option selected value="0">Baixa</option>
@@ -166,12 +160,12 @@
                             }
                         </select>
                     </td>@*SERIEDADE NC *@
-                    <td><input readonly value="@item.ExplicacaoNaoConformidade" /></td>@*DESCRIÇÃO NC*@
+                    <td><input id="explicacaoNConformidade_@item.Id" value="@item.ExplicacaoNaoConformidade" /></td>@*DESCRIÇÃO NC*@
                     <td>
-                        <select disabled>
+                        <select id="usuarioNConformidade_@item.Id">
                             @foreach (var user in ViewBag.Usuarios)
                             {
-                                @if (user.Id == @item.IdNaoConformidade)
+                                @if (user.Id == @item.IdNaoConformidadeResponsavel)
                                 {
                                     <option selected value="@user.Id">@user.Nome</option>
                                 }
@@ -183,27 +177,27 @@
                         </select>
                     </td>@*ESCALONADO PARA*@
                     <td>
-                        <select disabled>
-                            if(@item.StatusPosEscalonado == 0){
+                        <select id="statusNConformidade_@item.Id">
+                            @if(@item.StatusPosEscalonado == 0){
                             <option selected value="0">Não</option>
-                            <option value="1">Não</option>
+                            <option value="1">Sim</option>
                             }
                             else{
-                            <option value="0">Sim</option>
+                            <option value="0">Não</option>
                             <option selected value="1">Sim</option>
                             }
                         </select>
                     </td>@*STATUS PÓS ESCALONAMENTO*@
-                    <td><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
+                    <td><input id="dateNConformidade_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
                     <td>
-                        <button>Atualizar Comformidade</button>
+                        <button onclick="updateConformidade(@item.Id)" class="checkCheckButton">Atualizar Comformidade</button>
                     </td>
                 </tr>
             }
         </tbody>
         <tfoot>
             <tr>
-                <b>Itens Listados</b>
+                Itens Listados
             </tr>
         </tfoot>
 

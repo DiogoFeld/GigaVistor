@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hf3ueBbj0YXVLLDM8ZvWIprsHyVavAauRZ06/avipJw=",
+  "Hash": "JEkhNExhBIx4s2qlm1MWmWMRq2DEJ3JdTCMUqKx87G4=",
   "Source": "GigaVistor",
   "BasePath": "_content/GigaVistor",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\CheckList.css"
+    },
+    {
+      "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\css\\conformidade.css",
+      "SourceId": "GigaVistor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\",
+      "BasePath": "_content/GigaVistor",
+      "RelativePath": "css/conformidade.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\conformidade.css"
     },
     {
       "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\css\\Layout.css",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\js\\conformidade.js",
+      "SourceId": "GigaVistor",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\",
+      "BasePath": "_content/GigaVistor",
+      "RelativePath": "js/conformidade.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\conformidade.js"
     },
     {
       "Identity": "D:\\PUCPR\\GigaVistor\\GigaVistor\\GigaVistor\\wwwroot\\js\\site.js",
