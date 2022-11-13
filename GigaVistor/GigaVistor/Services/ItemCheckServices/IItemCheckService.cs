@@ -8,5 +8,7 @@ namespace GigaVistor.Services.ItemCheckServices
         public bool addIten(ItemCheckModel item);
         public IEnumerable<ItemChecklistTemplateModel> GetItens();
         bool updateConformidade(ItemCheckModel conformidade);
+        bool getNaoConformidade(long id);
+        void CreateNaoConformidade(long id);
     }
 }

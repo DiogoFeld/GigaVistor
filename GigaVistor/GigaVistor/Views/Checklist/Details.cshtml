@@ -176,7 +176,7 @@
                             <select disabled>
                                 @foreach (var user in ViewBag.Usuarios)
                                 {
-                                    @if (user.Id == @item.IdNaoConformidade)
+                                    @if (user.Id == @item.IdNaoConformidadeResponsavel)
                                     {
                                         <option selected value="@user.Id">@user.Nome</option>
                                     }
@@ -252,7 +252,7 @@
                             <select disabled>
                                 @foreach (var user in ViewBag.Usuarios)
                                 {
-                                    @if (user.Id == @item.IdNaoConformidade)
+                                    @if (user.Id == @item.IdNaoConformidadeResponsavel)
                                     {
                                         <option selected value="@user.Id">@user.Nome</option>
                                     }

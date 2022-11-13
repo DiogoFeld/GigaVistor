@@ -64,7 +64,7 @@ namespace GigaVistor.Controllers
                         IdCriador = UserDatabase.Instance.getUsuario().Id,
                         IdResponsavel = int.Parse(responsaveisArray[i]),
                         IdCheckList = int.Parse(idCheckList),
-                        IdNaoConformidade = int.Parse(escalonamentoResponsaveisArray[i]),
+                        IdNaoConformidade = 0,
                     };
                     addIten(item);
                     itens.Add(item);
@@ -91,13 +91,29 @@ namespace GigaVistor.Controllers
                 DatePrazoEscalonado = DateTime.Parse(dateNConformidade),
                 StatusPosEscalonado = int.Parse(statusNConformidade),
                 IdResponsavel = int.Parse(responsavel),
-                IdNaoConformidade = int.Parse(usuarioNConformidade),
+                IdNaoConformidadeResponsavel = int.Parse(usuarioNConformidade),
             };
 
             result = itemCheckServiceCheckListService.updateConformidade(conformidade);
 
+            bool naoConformidadeResult = false;
+            if (conformidade.NaoConformidade)
+            {               
+                naoConformidadeResult = itemCheckServiceCheckListService.getNaoConformidade(conformidade.Id);                
+            }
+            if (naoConformidadeResult)
+            {
+                itemCheckServiceCheckListService.CreateNaoConformidade(conformidade.Id);
+
+                //crete NaoConformidade // pegar os detalhes da tarefa
+            }
             return Json(result);
         }
+
+
+
+
+
 
     }
 }

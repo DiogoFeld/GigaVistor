@@ -1,7 +1,10 @@
-﻿using GigaVistor.Data;
+﻿using GigaVistor.Controllers;
+using GigaVistor.Controllers.DatabaseSingleton;
+using GigaVistor.Data;
 using GigaVistor.Models;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace GigaVistor.Services.ItemCheckServices
 {
@@ -60,14 +63,14 @@ namespace GigaVistor.Services.ItemCheckServices
                 conformidade.Aderente = _conformidade.Aderente;
                 conformidade.Status = _conformidade.Status;
                 conformidade.Escalonado = _conformidade.Escalonado;
-                conformidade.ExplicacaoNaoConformidade = _conformidade.ExplicacaoNaoConformidade != null ? _conformidade.ExplicacaoNaoConformidade: " ";
+                conformidade.ExplicacaoNaoConformidade = _conformidade.ExplicacaoNaoConformidade != null ? _conformidade.ExplicacaoNaoConformidade : " ";
                 conformidade.NaoConformidade = _conformidade.NaoConformidade;
                 conformidade.NivelNaoConformidade = _conformidade.NivelNaoConformidade;
                 conformidade.DatePrazo = _conformidade.DatePrazo;
                 conformidade.DatePrazoEscalonado = _conformidade.DatePrazoEscalonado;
                 conformidade.StatusPosEscalonado = _conformidade.StatusPosEscalonado;
                 conformidade.IdResponsavel = _conformidade.IdResponsavel;
-                conformidade.IdNaoConformidade = _conformidade.IdNaoConformidade;
+                conformidade.IdNaoConformidadeResponsavel = _conformidade.IdNaoConformidadeResponsavel;
 
                 db.SaveChanges();
 
@@ -79,6 +82,64 @@ namespace GigaVistor.Services.ItemCheckServices
             }
             return false;
         }
+
+        public bool getNaoConformidade(long id)
+        {
+            bool result = false;
+            NaoConformidadeModel model = new NaoConformidadeModel();
+            try
+            {
+                model = db.naoConformidades.FirstOrDefault(s => s.IdTarefa == id);
+
+                if (model == null)
+                {
+                    result = true;
+                }
+            }
+            catch { }
+            return result;
+        }
+
+        public void CreateNaoConformidade(long id)
+        {
+            //meake new one and update the value of idNConformidade
+            try
+            {
+                ItemCheckModel conformidade = db.itensCheckList.FirstOrDefault(s => s.Id == id);
+                if (conformidade.IdNaoConformidade == 0)
+                {
+                    NaoConformidadeModel naoConformidadeModel = new NaoConformidadeModel
+                    {
+                        DateCriacao = DateTime.Now,
+                        IdCriador = UserDatabase.Instance.getUsuario().Id,
+                        Descricao = "",
+                        Explicação = "",
+                        Classificao = conformidade.NivelNaoConformidade,
+                        DatePrazoEscalonado = conformidade.DatePrazoEscalonado,
+                        Aderente = 0,
+                        Status = 0,
+                        StatusPosEscalonamento = 0,
+                        DatePrazo = conformidade.DatePrazoEscalonado,
+                        PrazoCumprido = false,
+                        PrazoEscalonadoCumprido = false,
+                        IdEscalonamentoResponsavel = (int)conformidade.IdNaoConformidadeResponsavel,
+                        StatusPosEscalonado = 0,
+                        IdEscalonamento = (int)conformidade.IdNaoConformidadeResponsavel,
+                        IdResponsavel = (int)conformidade.IdNaoConformidadeResponsavel,
+                        IdCheckList = (int)conformidade.IdCheckList,
+                        IdTarefa = (int)conformidade.Id,
+                    };
+
+                    db.naoConformidades.Add(naoConformidadeModel);
+                    db.SaveChanges();
+
+                    conformidade.IdNaoConformidade = naoConformidadeModel.Id;
+                    db.SaveChanges();
+                }
+            }
+            catch { }
+        }
+
 
 
     }

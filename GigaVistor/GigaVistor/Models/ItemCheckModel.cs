@@ -22,5 +22,7 @@
         public long IdResponsavel{ get; set; }
         public long IdCheckList{ get; set; }
         public long IdNaoConformidade{ get; set; }
+        public long IdNaoConformidadeResponsavel{ get; set; }
+
     }
 }
