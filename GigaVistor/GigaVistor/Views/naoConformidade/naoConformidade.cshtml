@@ -1,0 +1,204 @@
+﻿@model IEnumerable<GigaVistor.Models.NaoConformidadeModel>
+
+@{
+    ViewData["Title"] = "lista";
+}
+
+<h1>Lista da Não Conformida</h1>
+
+
+<input value="@ViewBag.idNaoConformidade" hidden id="idNaoConformidade" />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Responsavel
+            </th>
+            <th>
+                Explicação
+            </th>
+            <th>
+                Seriedade:
+            </th>
+            <th>
+                Atende:
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Escalonamento
+            </th>
+            <th>
+                Esc. Status
+            </th>
+            <th>
+                Prazo de esc.
+            </th>
+            <th>
+                Responsavel de esc.
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input readonly value="@item.Descricao" id="descricao_@item.Id" />
+                    @*@Html.DisplayFor(modelItem => item.Descricao)*@
+                </td>
+                <td>
+                    <select id="responsavel_@item.Id">
+                        @foreach (var user in ViewBag.Usuarios)
+                        {
+                            @if (user.Id == @item.IdResponsavel)
+                            {
+                                <option selected value="@user.Id">@user.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@user.Id">@user.Nome</option>
+                            }
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.IdResponsavel)*@
+                </td>
+                <td>
+                    <input value="@item.Explicação" id="explicacao_@item.Id" />
+                    @*@Html.DisplayFor(modelItem => item.Explicação)*@
+                </td>
+                <td>
+                    <select id="complexidadeNConformidade_@item.Id">
+                        @if (item.Classificao == 0)
+                        {
+                            <option selected value="0">Baixa</option>
+                        }
+                        else
+                        {
+                            <option value="0">Baixa</option>
+                        }
+                        @if (item.Classificao == 1)
+                        {
+                            <option selected value="1">Média</option>
+                        }
+                        else
+                        {
+                            <option value="1">Média</option>
+                        }
+                        @if (item.Classificao == 2)
+                        {
+                            <option selected value="2">Alta</option>
+                        }
+                        else
+                        {
+                            <option value="2">Alta</option>
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.Classificao)*@
+                </td>
+                <td>
+                    <select id="statusNConformidade_@item.Id">
+                        @if (@item.PrazoResolucao == 0)
+                        {
+                            <option selected value="0">Não</option>
+                            <option value="1">Sim</option>
+                        }
+                        else
+                        {
+                            <option value="0">Não</option>
+                            <option selected value="1">Sim</option>
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.PrazoResolucao)*@
+                </td>
+                <td>
+                    <select id="status_@item.Id">
+                        @if (@item.Status == 0)
+                        {
+                            <option selected value="0">Não</option>
+                        }
+                        else
+                        {
+                            <option value="0">Não</option>
+                        }
+                        @if (@item.Status == 1)
+                        {
+                            <option selected value="1">Sim</option>
+                        }
+                        else
+                        {
+                            <option value="1">Sim</option>
+                        }
+                        @if (@item.Status == 2)
+                        {
+                            <option selected value="2">Não se Aplica</option>
+                        }
+                        else
+                        {
+                            <option value="2">Não se Aplica</option>
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.Status)*@
+                </td>
+                <td>
+                    <input id="prazoCumprido_@item.Id" type="checkbox" checked="@item.PrazoCumprido" />
+                    @*@Html.DisplayFor(modelItem => item.PrazoCumprido)*@
+                    @*checa se esta de acordo com o prazo colocado*@
+                </td>
+                <td>
+                    <select id="statusPosNConformidade_@item.Id">
+                        @if (@item.StatusPosEscalonamento == 0)
+                        {
+                            <option selected value="0">Não</option>
+                            <option value="1">Sim</option>
+                        }
+                        else
+                        {
+                            <option value="0">Não</option>
+                            <option selected value="1">Sim</option>
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.StatusPosEscalonamento)*@
+                </td>
+                <td>
+                    <input id="prazoPos_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" />
+                    @*@Html.DisplayFor(modelItem => item.DatePrazoEscalonado)*@
+                </td>
+                <td>
+                    <select id="usuarioNConformidade_@item.Id">
+                        @foreach (var user in ViewBag.Usuarios)
+                        {
+                            @if (user.Id == @item.IdEscalonamentoResponsavel)
+                            {
+                                <option selected value="@user.Id">@user.Nome</option>
+                            }
+                            else
+                            {
+                                <option value="@user.Id">@user.Nome</option>
+                            }
+                        }
+                    </select>
+                    @*@Html.DisplayFor(modelItem => item.IdEscalonamentoResponsavel)*@
+                </td>
+                <td>
+                    <div style="display:flex;flex-direction: row;">
+                        @if (@item.PrazoCumprido){
+                            <button disabled class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
+                        }
+                        else{
+                            <button class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
+                        }
+                        <button class="checkCheckButton">Escalar</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

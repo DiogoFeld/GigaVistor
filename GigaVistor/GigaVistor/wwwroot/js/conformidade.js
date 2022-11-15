@@ -73,7 +73,7 @@ function updateCheckList() {
         for (let r in rows) {
             if (typeof rows[r] == 'object') {
                 id = rows[r].id;
-                updateByid(id);                
+                updateByid(id);
             }
         }
         alert("Sucesso na atualização");
@@ -126,7 +126,7 @@ function updateByid(id) {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         complete: function (result) {
-            
+
         },
         error: function (response) {
 
@@ -135,3 +135,64 @@ function updateByid(id) {
 
 }
 
+function updatePosConformidade(id) {
+
+    let responsavelSelect = document.getElementById("responsavel_" + id);
+    let responsavel = parseInt(responsavelSelect.options[responsavelSelect.selectedIndex].value);
+
+    let explicacao = document.getElementById("explicacao_" + id).value;
+
+    let complexidadeNConformidadeSelect = document.getElementById("complexidadeNConformidade_" + id);
+    let complexidadeNConformidade = parseInt(complexidadeNConformidadeSelect.options[complexidadeNConformidadeSelect.selectedIndex].value);
+
+    let statusNConformidadeSelect = document.getElementById("statusNConformidade_" + id);
+    let statusNConformidade = parseInt(statusNConformidadeSelect.options[statusNConformidadeSelect.selectedIndex].value);
+
+    let statusSelect = document.getElementById("status_" + id);
+    let status = parseInt(statusSelect.options[statusSelect.selectedIndex].value);
+
+    let prazoCumprido = document.getElementById("prazoCumprido_" + id).checked;//checkbox
+
+    let statusPosNConformidadeSelect = document.getElementById("statusPosNConformidade_" + id);
+    let statusPosNConformidade = parseInt(statusPosNConformidadeSelect.options[statusPosNConformidadeSelect.selectedIndex].value);
+
+    let prazoPos = document.getElementById("prazoPos_" + id).value;
+
+    let usuarioNConformidadeSelect = document.getElementById("usuarioNConformidade_" + id);
+    let usuarioNConformidade = parseInt(usuarioNConformidadeSelect.options[usuarioNConformidadeSelect.selectedIndex].value);
+
+
+    showMessage("carregando");
+    //update conformidade
+    $.ajax({
+        type: "GET",
+        url: "/NaoConformidade/updateConformidade",
+        data: {
+            id: id,
+            responsavel: responsavel,
+            explicacao: explicacao,
+            complexidadeNConformidade: complexidadeNConformidade,
+            statusNConformidade: statusNConformidade,
+            status: status,
+            prazoCumprido: prazoCumprido,
+            statusPosNConformidade: statusPosNConformidade,
+            prazoPos: prazoPos,
+            usuarioNConformidade: usuarioNConformidade
+        },
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        complete: function (result) {
+            if (result.responseJSON) {
+                alert("Sucesso na atualização");
+                window.location.reload();
+            }
+            else
+                alert("Falha na atualização");
+
+            hideMessage();
+        },
+        error: function (response) {
+
+        },
+    });
+}

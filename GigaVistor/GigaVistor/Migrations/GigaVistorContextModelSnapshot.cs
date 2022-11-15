@@ -266,6 +266,9 @@ namespace GigaVistor.Migrations
                     b.Property<long>("IdTarefa")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("NivelEscalonamento")
+                        .HasColumnType("int");
+
                     b.Property<bool>("PrazoCumprido")
                         .HasColumnType("bit");
 
