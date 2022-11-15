@@ -48,14 +48,14 @@
     </div>*@
 
     @{
-        bool boolResult = true;
+        bool boolResult = false;
     }
     @foreach (var item in ViewBag.ItensCheckList)
     {
-        @if (!@item.Escalonado)
+        @if (@item.Escalonado)
         {
-            boolResult = false;
-        }
+            boolResult = true;
+        }        
     }
     <table style="border-collapse: unset;
     border-spacing: 15px 2px;">
@@ -285,7 +285,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <b>Itens Listados</b>
+                <b>Conformidades Listadas</b>
             </tr>
         </tfoot>
 

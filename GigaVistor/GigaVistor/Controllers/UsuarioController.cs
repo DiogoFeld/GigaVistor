@@ -10,7 +10,7 @@ namespace GigaVistor.Controllers
 
         IUsuarioService usuario;
         public UsuarioController(IUsuarioService _usuario)
-        {
+        {            
             usuario = _usuario;
         }
 
@@ -47,7 +47,8 @@ namespace GigaVistor.Controllers
 
         public IActionResult Create(int id)
         {
-            ViewBag.idSetor = id;            
+            ViewBag.Usuarios = usuario.getAllUsuarios();
+            ViewBag.idSetor = id;
             return View();
         }
 

@@ -474,3 +474,11 @@ function closeEmail() {
     let emailDiv = document.getElementById("emailDiv");
     emailDiv.hidden = true;
 }
+
+
+function changeUserCreate(element) {
+    
+    let superVisorId = document.getElementById("superVisorId");
+    superVisorId.value = parseInt(element.value);
+
+}

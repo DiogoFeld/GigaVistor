@@ -1,5 +1,6 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace GigaVistor.Services.NaoConformidadeService
 {
@@ -70,10 +71,13 @@ namespace GigaVistor.Services.NaoConformidadeService
                 {
                     booolResult = true;
 
-                    if (naoConformidade.PrazoCumprido)
+                    if (naoConformidade.PrazoResolucao == 1)
+                    {
+                        updateTarefaToTrue(naoConformidade.IdTarefa);
+                    }
+                    else if (naoConformidade.PrazoCumprido)
                     {
                         EscalonarTarefa(naoConformidade);
-
                     }
                 }
                 else
@@ -84,11 +88,27 @@ namespace GigaVistor.Services.NaoConformidadeService
             return booolResult;
         }
 
-        public void updateTarefaToTrue(int idtarefa)
+        public void updateTarefaToTrue(long idtarefa)
         {
             //update nao conformidade -> uptade escalonada
+            try
+            {
 
+                IEnumerable<NaoConformidadeModel> conformidades = (from nComdormidade in db.naoConformidades
+                                                                   where nComdormidade.IdTarefa == idtarefa
+                                                                   select nComdormidade).ToList();
 
+                foreach (NaoConformidadeModel nConformidade in conformidades)
+                {
+                    nConformidade.StatusPosEscalonamento = 1;
+                }
+
+                ItemCheckModel itemCheckModel = db.itensCheckList.FirstOrDefault(s => s.Id == idtarefa);
+                itemCheckModel.StatusPosEscalonado = 1;
+
+                db.SaveChanges();
+            }
+            catch { }
             //update tarefa -> escalonada
         }
 
