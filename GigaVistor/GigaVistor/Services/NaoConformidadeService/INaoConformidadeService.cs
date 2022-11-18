@@ -7,6 +7,7 @@ namespace GigaVistor.Services.NaoConformidadeService
     {
         public IEnumerable<NaoConformidadeModel> getAllNaoConformidades();
         public IEnumerable<NaoConformidadeModel> getConformidadesByTarefa(int idTarefa);
+        ItemCheckModel getItemChecklist(int id);
         IEnumerable<UsuarioModel> GetUsers();
         bool updateNaoConformidade(NaoConformidadeModel naoConformidade);
     }

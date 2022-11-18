@@ -4,11 +4,16 @@
     ViewData["Title"] = "lista";
 }
 
-<h1>Lista da Não Conformida</h1>
+<h1>Lista da Não Conformidade</h1>
+
+
+<div style="height:20px"> </div>
+<a class="checkCheckButton" asp-controller="Checklist" asp-action="Details" asp-route-id="@ViewBag.checklist">Retonar ao Checklist</a>
+
+
 
 
 <input value="@ViewBag.idNaoConformidade" hidden id="idNaoConformidade" />
-
 
 <table class="table">
     <thead>
@@ -148,12 +153,12 @@
                     @*@Html.DisplayFor(modelItem => item.Status)*@
                 </td>
                 <td>
-                    <input id="prazoCumprido_@item.Id" type="checkbox" checked="@item.PrazoCumprido" />
+                    <input id="prazoCumprido_@item.Id" type="checkbox" onchange="naoConformidadePermitEdition(this)" checked="@item.PrazoCumprido" />
                     @*@Html.DisplayFor(modelItem => item.PrazoCumprido)*@
                     @*checa se esta de acordo com o prazo colocado*@
                 </td>
                 <td>
-                    <select id="statusPosNConformidade_@item.Id">
+                    <select disabled id="statusPosNConformidade_@item.Id">
                         @if (@item.StatusPosEscalonamento == 0)
                         {
                             <option selected value="0">Não</option>
@@ -168,11 +173,11 @@
                     @*@Html.DisplayFor(modelItem => item.StatusPosEscalonamento)*@
                 </td>
                 <td>
-                    <input id="prazoPos_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" />
+                    <input disabled id="prazoPos_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" />
                     @*@Html.DisplayFor(modelItem => item.DatePrazoEscalonado)*@
                 </td>
                 <td>
-                    <select id="usuarioNConformidade_@item.Id">
+                    <select disabled id="usuarioNConformidade_@item.Id">
                         @foreach (var user in ViewBag.Usuarios)
                         {
                             @if (user.Id == @item.IdEscalonamentoResponsavel)
@@ -195,7 +200,11 @@
                         else{
                             <button class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
                         }
-                        <button class="checkCheckButton">Escalar</button>
+                        <button style="margin-left: 4px;" class="checkCheckButton" onclick="showEmailEscalado(@item.Id)">
+                            <i style="margin-left: 0px;" class="fas fa-envelope">
+
+                            </i>
+                        </button>
                     </div>
                 </td>
             </tr>

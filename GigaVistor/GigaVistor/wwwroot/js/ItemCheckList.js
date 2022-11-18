@@ -238,6 +238,7 @@ function SendList() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         complete: function (result) {
+            alert("Itens inseridos");
         },
         error: function (response) {
         },
@@ -307,6 +308,7 @@ function saveCheckList() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         complete: function (result) {
+            window.location.reload();
         },
         error: function (response) {
         },

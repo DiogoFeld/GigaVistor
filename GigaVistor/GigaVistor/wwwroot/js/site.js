@@ -480,5 +480,8 @@ function changeUserCreate(element) {
     
     let superVisorId = document.getElementById("superVisorId");
     superVisorId.value = parseInt(element.value);
+}
+
+function showEmailEscalado(id) {
 
 }

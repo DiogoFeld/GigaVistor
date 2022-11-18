@@ -148,6 +148,16 @@ namespace GigaVistor.Services.NaoConformidadeService
             //precisa ser escalonado
         }
 
+        public ItemCheckModel getItemChecklist(int id)
+        {
+            ItemCheckModel itemChecklist = new ItemCheckModel();
+            try
+            {
+                itemChecklist = db.itensCheckList.FirstOrDefault(s => s.Id == id);
+            }
+            catch { }
+            return itemChecklist;
+        }
 
 
     }

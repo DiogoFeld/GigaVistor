@@ -18,7 +18,8 @@ namespace GigaVistor.Controllers
 
 
         public IActionResult naoConformidade(int id)
-        {
+        {            
+            ViewBag.checklist = nConformidade.getItemChecklist(id).IdCheckList;
             ViewBag.Usuarios = nConformidade.GetUsers();
             ViewBag.idNaoConformidade = id;
 

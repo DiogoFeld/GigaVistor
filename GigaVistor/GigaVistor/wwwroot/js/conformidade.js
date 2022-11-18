@@ -196,3 +196,50 @@ function updatePosConformidade(id) {
         },
     });
 }
+
+function checkListNCpermit(element) {
+    let boolV = element.checked;
+    let id = element.id.split("_")[1];
+
+    let complexidadeNConformidade = document.getElementById("complexidadeNConformidade_" + id);
+    let explicacaoNConformidade = document.getElementById("explicacaoNConformidade_" + id);
+    let usuarioNConformidade = document.getElementById("usuarioNConformidade_" + id);
+    let statusNConformidade = document.getElementById("statusNConformidade_" + id);
+    let dateNConformidade = document.getElementById("dateNConformidade_" + id);
+
+    if (boolV) {
+        complexidadeNConformidade.disabled = false;
+        explicacaoNConformidade.disabled = false;
+        usuarioNConformidade.disabled = false;
+        statusNConformidade.disabled = false;
+        dateNConformidade.disabled = false;
+    }
+    else {
+        complexidadeNConformidade.disabled = true;
+        explicacaoNConformidade.disabled = true;
+        usuarioNConformidade.disabled = true;
+        statusNConformidade.disabled = true;
+        dateNConformidade.disabled = true;
+    }
+}
+
+function naoConformidadePermitEdition(element) {
+
+    let boolV = element.checked;
+    let id = element.id.split("_")[1];
+
+    let statusPosNConformidade = document.getElementById("statusPosNConformidade_" + id);
+    let prazoPos = document.getElementById("prazoPos_" + id);
+    let usuarioNConformidade = document.getElementById("usuarioNConformidade_" + id);
+
+    if (boolV) {
+        statusPosNConformidade.disabled = false;
+        prazoPos.disabled = false;
+        usuarioNConformidade.disabled = false;        
+    }
+    else {
+        statusPosNConformidade.disabled = true;
+        prazoPos.disabled = true;
+        usuarioNConformidade.disabled = true;      
+    }
+}
