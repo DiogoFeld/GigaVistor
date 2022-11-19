@@ -277,8 +277,8 @@ a {
     position: fixed;
     height: 300px;
     top: 40%;
-    background-color: #f5ddb2;
-    color: wheat;
+    background-color: lightgray;
+    color: lightgray;
     display: flex;
     width: 600px;
     flex-direction: column;
@@ -292,7 +292,7 @@ a {
 }
 
 .emailDivMain {
-    background-color: darksalmon;
+    background-color: grey;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -327,10 +327,10 @@ a {
 }
 
 .emailDiv input {
-    background-color: darksalmon;
+    background-color: grey;
     width: 100%;
     margin-bottom: 2px;
-    border: 1px solid #f5ddb2;
+    border: 1px solid lightgray;
     color: #FFF;
 }
 

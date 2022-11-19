@@ -80,7 +80,7 @@
                     @*@Html.DisplayFor(modelItem => item.Explicação)*@
                 </td>
                 <td>
-                    <select id="complexidadeNConformidade_@item.Id">
+                    <select id="complexidadeNConformidade_@item.Id" onchange="updateSeriedade(this)">
                         @if (item.Classificao == 0)
                         {
                             <option selected value="0">Baixa</option>
@@ -194,20 +194,47 @@
                 </td>
                 <td>
                     <div style="display:flex;flex-direction: row;">
-                        @if (@item.PrazoCumprido){
+                        @if (@item.PrazoCumprido)
+                        {
                             <button disabled class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
                         }
-                        else{
-                            <button class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
+                        else
+                        {
+                            <button id="updateButton_@item.Id" class="checkCheckButton" onclick="updatePosConformidade(@item.Id)">Atualizar</button>
+                            <button id="buttonMail_@item.Id" style="margin-left: 4px;" class="checkCheckButton" onclick="ShowEmail(@item.Id)">
+                                <i style="margin-left: 0px;" class="fas fa-envelope"></i>
+                            </button>
                         }
-                        <button style="margin-left: 4px;" class="checkCheckButton" onclick="showEmailEscalado(@item.Id)">
-                            <i style="margin-left: 0px;" class="fas fa-envelope">
-
-                            </i>
-                        </button>
                     </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+<div class="emailDiv" id="emailDiv" hidden>
+    <div class="emailDivMain">
+
+        <h3>
+            Enviar Email
+        </h3>
+
+        <div>
+            <p><b> Usuario</b></p>
+            <select style="color: lightgrey;background-color: grey;" id="userEmail"></select>
+        </div>
+
+        <div>
+            <input class="emailTitle" id="emailTitle" placeholder="Titulo do Email" />
+        </div>
+
+        <input class="emailDescrip" id="emailDescrip" placeholder="Descrição do Email" />
+
+        <div>
+            <button id="emailSender" class="sendEmail" onclick="SendEmail()">Enviar</button>
+            <button class="emailButton" onclick="closeEmail()">Fechar</button>
+        </div>
+
+    </div>
+</div>

@@ -235,11 +235,32 @@ function naoConformidadePermitEdition(element) {
     if (boolV) {
         statusPosNConformidade.disabled = false;
         prazoPos.disabled = false;
-        usuarioNConformidade.disabled = false;        
+        usuarioNConformidade.disabled = false;
     }
     else {
         statusPosNConformidade.disabled = true;
         prazoPos.disabled = true;
-        usuarioNConformidade.disabled = true;      
+        usuarioNConformidade.disabled = true;
     }
+}
+
+function updateSeriedade(element) {
+    let id = element.id.split("_")[1];
+    let buttonMail = document.getElementById("buttonMail_" + id);
+    let updateButton = document.getElementById("updateButton_" + id);
+
+
+
+    if (element.value > 1) {
+        buttonMail.style.backgroundColor = "firebrick";
+        buttonMail.style.border = "4px solid darkred;";
+        updateButton.disabled = true;
+    }
+    else {
+
+        buttonMail.style.backgroundColor = "";
+        buttonMail.style.border = "4px solid grey;";
+        updateButton.disabled = false;
+    }
+
 }
