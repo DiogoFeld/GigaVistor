@@ -49,7 +49,7 @@
 <div class="mainDivContent">
     @foreach (var item in ViewBag.Auditorias)
     {
-        <div class="mainElementSelection" style="height:250px">
+        <div class="mainElementSelection" style="height:250px" onmouseover="showReport(@item.Id)" onmouseout="hideReport(@item.Id)">
             <h3 class="titleSection">
                 @item.Name
             </h3>
@@ -57,6 +57,25 @@
             <span class="auditoriaSection">
                 @item.Descricao
             </span>
+
+            <div id="report_@item.Id" class="divResultReport">
+                <div class="row">
+                    <div class="col" style="color:#ffc107">
+                        Total:
+                    </div>
+                    <div class="col" style="color:green">
+                        Realizadas:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="color:firebrick">
+                        N/Realizadas:
+                    </div>
+                    <div class="col" style="color:#f14646">
+                        N/Conformidades:
+                    </div>
+                </div>
+            </div>
 
             <div class="mainElementFooter">
                 <a class="btn buttonFooterElement" asp-controller="Auditoria" asp-action="Details" asp-route-id="@item.Id">Selecionar</a>

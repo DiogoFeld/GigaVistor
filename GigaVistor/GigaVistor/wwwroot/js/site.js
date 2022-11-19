@@ -503,3 +503,15 @@ function changebuttonEmail(id) {
     let updateButton = document.getElementById("updateButton_" + id);
     updateButton.disabled = false;
 }
+
+
+function showReport(id){
+    let report = document.getElementById("report_" + id);
+    report.style.display = "block";
+}
+
+
+function hideReport(id) {
+    let report = document.getElementById("report_" + id);
+    report.style.display = "none";
+}

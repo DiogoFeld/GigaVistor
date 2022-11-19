@@ -126,7 +126,7 @@
 <div class="mainDivContent">
     @foreach (var item in ViewBag.Checklists)
     {
-        <div class="mainElementSelection elementCheckList" style="height:180px">
+        <div class="mainElementSelection elementCheckList" style="height:180px" onmouseover="showReport(@item.Id)" onmouseout="hideReport(@item.Id)">
             <h3 class="titleSection">
                 @item.Name
             </h3>
@@ -134,6 +134,26 @@
             <span class="auditoriaSection">
                 @item.Descricao
             </span>
+
+
+            <div id="report_@item.Id" class="divResultReport">
+                <div class="row">
+                    <div class="col" style="color:goldenrod">
+                        Total:
+                    </div>
+                    <div class="col" style="color:green">
+                        Realizadas:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="color:firebrick">
+                        N/Realizadas:
+                    </div>
+                    <div class="col" style="color:#f14646">
+                        N/Conformidades:
+                    </div>
+                </div>
+            </div>
 
             <div class="mainElementFooter">
                 <a class="btn buttonFooterElement elementCheckList" style="background-color:#7fbeff40" asp-controller="Checklist" asp-action="Details" asp-route-id="@item.Id">Selecionar</a>
