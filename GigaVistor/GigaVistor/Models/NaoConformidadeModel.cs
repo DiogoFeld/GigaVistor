@@ -23,7 +23,8 @@
 
         public int IdEscalonamentoResponsavel{ get; set; }//quem será o prox responsavel
         public int StatusPosEscalonado { get; set; }
-                
+        public int NivelEscalonamento { get; set; }
+
         public long IdEscalonamento { get; set; }
         public long IdResponsavel { get; set; }
         public long IdCheckList { get; set; }

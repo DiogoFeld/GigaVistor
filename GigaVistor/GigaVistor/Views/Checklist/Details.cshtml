@@ -48,13 +48,14 @@
     </div>*@
 
     @{
-        bool boolResult = true;
+        bool boolResult = false;
     }
     @foreach (var item in ViewBag.ItensCheckList)
     {
-        @if (!@item.Escalonado){
-            boolResult = false;
-        }
+        @if (@item.Escalonado)
+        {
+            boolResult = true;
+        }        
     }
     <table style="border-collapse: unset;
     border-spacing: 15px 2px;">
@@ -66,13 +67,14 @@
                 <th style="text-align:center;" header="Default">STATUS</th>
                 <th style="text-align:center;" header="Default">PRAZO
                 <th style="text-align:center;">N/C</th>
-                    @if (boolResult){
-                        <th style="text-align:center;" header="naoFonformidade">SERIEDADE DA N/C</th>
-                        <th style="text-align:center;" header="naoFonformidade">DESCRIÇÃO DE N/C</th>
-                        <th style="text-align:center;" header="naoFonformidade">ESCALONADO PARA</th>
-                        <th style="text-align:center;" header="naoFonformidade">STATUS PÓS ESCALONAMENTO</th>
-                        <th style="text-align:center;" header="naoFonformidade">PRAZO DE N/C</th>
-                        <th></th>
+                    @if (boolResult)
+                    {
+                    <th style="text-align:center;" header="naoFonformidade">SERIEDADE DA N/C</th>
+                    <th style="text-align:center;" header="naoFonformidade">DESCRIÇÃO DE N/C</th>
+                    <th style="text-align:center;" header="naoFonformidade">ESCALONADO PARA</th>
+                    <th style="text-align:center;" header="naoFonformidade">STATUS PÓS ESCALONAMENTO</th>
+                    <th style="text-align:center;" header="naoFonformidade">PRAZO DE N/C</th>
+                    <th></th>
                         @*Button of escalonamento*@
                     }
             </tr>
@@ -99,7 +101,7 @@
                     </td>@*RESPONSÁVEL*@
                     <td>
                         <select disabled>
-                            if(@item.Aderente == 0){
+                            @if(@item.Aderente == 0){
                             <option selected value="0">Não</option>
                             <option value="1">Não</option>
                             }
@@ -203,16 +205,11 @@
                         @*STATUS PÓS ESCALONAMENTO*@
                         <td><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>
                         @*PRAZO DE N/C*@
-                        <td>
-                            @if (@item.Escalonado)
-                            {
-                                <button style="width: 185px;" class="checkCheckButton">Mostrar Escalonamento</button>
-                            }
-                            else
-                            {
-                                <button style="width: 185px;" class="checkCheckButton" hidden>Mostrar Escalonamento</button>
-                            }
+                       <td>
+                            <a class="checkCheckButton" asp-controller="NaoConformidade" asp-action="naoConformidade" asp-route-id="@item.Id">n/Conformidade</a>
                         </td>
+                        //Ir para nao escalonamento
+
                     }
                     @*nao escalonado*@
                     else
@@ -280,14 +277,6 @@
                         <td hidden><input readonly type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>
                         @*PRAZO DE N/C*@
                         <td>
-                            @if (@item.Escalonado)
-                            {
-                                <button style="width: 185px;" class="checkCheckButton">Mostrar Escalonamento</button>
-                            }
-                            else
-                            {
-                                <button style="width: 185px;" class="checkCheckButton" hidden>Mostrar Escalonamento</button>
-                            }
                         </td>
                     }
                 </tr>
@@ -295,7 +284,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <b>Itens Listados</b>
+                <b>Conformidades Listadas</b>
             </tr>
         </tfoot>
 

@@ -131,9 +131,9 @@
                         </select>
                     </td>@*STATUS*@
                     <td><input id="prazo_@item.Id" type="date" value="@item.DatePrazo.ToString("yyyy-MM-dd")" /></td>@*PRAZO*@
-                    <td><input id="nConformidade_@item.Id" type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
+                    <td><input id="nConformidade_@item.Id" onchange="checkListNCpermit(this)" type="checkbox" checked="@item.Escalonado" /></td>@*N/C*@
                     <td>
-                        <select id="complexidadeNConformidade_@item.Id">
+                        <select disabled id="complexidadeNConformidade_@item.Id">
                             @if (item.NivelNaoConformidade == 0)
                             {
                                 <option selected value="0">Baixa</option>
@@ -160,9 +160,9 @@
                             }
                         </select>
                     </td>@*SERIEDADE NC *@
-                    <td><input id="explicacaoNConformidade_@item.Id" value="@item.ExplicacaoNaoConformidade" /></td>@*DESCRIÇÃO NC*@
+                    <td><input disabled id="explicacaoNConformidade_@item.Id" value="@item.ExplicacaoNaoConformidade" /></td>@*DESCRIÇÃO NC*@
                     <td>
-                        <select id="usuarioNConformidade_@item.Id">
+                        <select disabled id="usuarioNConformidade_@item.Id">
                             @foreach (var user in ViewBag.Usuarios)
                             {
                                 @if (user.Id == @item.IdNaoConformidadeResponsavel)
@@ -177,7 +177,7 @@
                         </select>
                     </td>@*ESCALONADO PARA*@
                     <td>
-                        <select id="statusNConformidade_@item.Id">
+                        <select disabled id="statusNConformidade_@item.Id">
                             @if(@item.StatusPosEscalonado == 0){
                             <option selected value="0">Não</option>
                             <option value="1">Sim</option>
@@ -188,7 +188,7 @@
                             }
                         </select>
                     </td>@*STATUS PÓS ESCALONAMENTO*@
-                    <td><input id="dateNConformidade_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
+                    <td><input disabled id="dateNConformidade_@item.Id" type="date" value="@item.DatePrazoEscalonado.ToString("yyyy-MM-dd")" /></td>@*PRAZO DE N/C*@
                     <td>
                         <button onclick="updateConformidade(@item.Id)" class="checkCheckButton">Atualizar Comformidade</button>
                     </td>

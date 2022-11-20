@@ -112,8 +112,8 @@ namespace GigaVistor.Services.ItemCheckServices
                     {
                         DateCriacao = DateTime.Now,
                         IdCriador = UserDatabase.Instance.getUsuario().Id,
-                        Descricao = "",
-                        Explicação = "",
+                        Descricao = conformidade.Descricao,
+                        Explicação = conformidade.ExplicacaoNaoConformidade,
                         Classificao = conformidade.NivelNaoConformidade,
                         DatePrazoEscalonado = conformidade.DatePrazoEscalonado,
                         Aderente = 0,

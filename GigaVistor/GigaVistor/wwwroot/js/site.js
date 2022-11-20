@@ -416,9 +416,11 @@ function CreateAudiriaByTemplate() {
 }
 
 function SendEmail(id) {
+
     if (id != null) {
-        let selector = document.getElementById("user_" + id);
-        let userId = selector.options[selector.selectedIndex].value;
+        changebuttonEmail(id);
+
+        let userId = document.getElementById("userEmail").value;
 
         let emailTitle = document.getElementById("emailTitle").value;
         let emailDescrip = document.getElementById("emailDescrip").value;
@@ -452,13 +454,25 @@ function ShowEmail(id) {
     let emailDiv = document.getElementById("emailDiv");
     let emailSender = document.getElementById("emailSender");
 
-    //improve email Div
-    let selectorUser = document.getElementById("user_" + id);
-    let name = selectorUser.options[selectorUser.selectedIndex].innerHTML;
-    document.getElementById("userEmail").innerHTML = name;
+    let responsavelSelect = document.getElementById("responsavel_" + id);
+    let responsavel = responsavelSelect.options[responsavelSelect.selectedIndex];
+    let reponsavelConformidadeSelect = document.getElementById("responsavel_" + id);
+    let reponsavelConformidade = reponsavelConformidadeSelect.options[reponsavelConformidadeSelect.selectedIndex];
 
-    let nameTask = document.getElementById("name_" + id).innerHTML;
-    document.getElementById("taskEmail").innerHTML = nameTask;
+    let usuarioSelect = document.getElementById("userEmail");
+    //add Users - both of them
+    usuarioSelect.appendChild(responsavel.cloneNode(true));
+    if (responsavel.value != reponsavelConformidade.value)
+        usuarioSelect.appendChild(reponsavelConformidade.cloneNode(true));
+    //--------------
+
+    let emailDescrip = document.getElementById("emailDescrip");
+    let explicacao = document.getElementById("explicacao_" + id).value;
+    emailDescrip.value = explicacao;
+
+    let emailTitle = document.getElementById("emailTitle");
+    let descricao = document.getElementById("descricao_" + id).value;
+    emailTitle.value = descricao;
 
     emailSender.onclick = function () { SendEmail(id) };
     emailDiv.hidden = false;
@@ -468,9 +482,36 @@ function closeEmail() {
     document.getElementById("emailTitle").value = "";
     document.getElementById("emailDescrip").value = "";
 
-    document.getElementById("userEmail").innerHTML = "";
-    document.getElementById("taskEmail").innerHTML = "";
-
     let emailDiv = document.getElementById("emailDiv");
     emailDiv.hidden = true;
+}
+
+
+function changeUserCreate(element) {
+
+    let superVisorId = document.getElementById("superVisorId");
+    superVisorId.value = parseInt(element.value);
+}
+
+function showEmailEscalado(id) {
+
+}
+
+function changebuttonEmail(id) {
+    let buttonMail = document.getElementById("buttonMail_" + id);
+    buttonMail.style.backgroundColor = "";
+    let updateButton = document.getElementById("updateButton_" + id);
+    updateButton.disabled = false;
+}
+
+
+function showReport(id){
+    let report = document.getElementById("report_" + id);
+    report.style.display = "block";
+}
+
+
+function hideReport(id) {
+    let report = document.getElementById("report_" + id);
+    report.style.display = "none";
 }
