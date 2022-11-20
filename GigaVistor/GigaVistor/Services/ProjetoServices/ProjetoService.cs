@@ -96,8 +96,6 @@ namespace GigaVistor.Services.ProjetoServices
         }
 
 
-
-
         public Dictionary<long, int[]> getReport(int id)
         {
             Dictionary<long, int[]> results = new Dictionary<long, int[]>(); 
@@ -120,6 +118,8 @@ namespace GigaVistor.Services.ProjetoServices
                     checklistResult = (from checklist in db.checklists
                                                        where checklist.IdAuditoria == auditoriaModel.Id
                                                        select checklist).ToList();
+
+
 
                     List<ItemCheckModel> itemResult = new List<ItemCheckModel>();
                     foreach (ChecklistModel check in checklistResult)

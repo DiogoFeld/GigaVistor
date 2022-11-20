@@ -315,6 +315,59 @@ namespace GigaVistor.Services.AuditoriaServices
             }
         }
 
+        public Dictionary<long, int[]> getReportByAuditoria(int id)
+        {
+            Dictionary<long, int[]> results = new Dictionary<long, int[]>();
+            try{
+                List<ChecklistModel> checklistResult = new List<ChecklistModel>();
+            
+                checklistResult = (from checklist in db.checklists
+                                   where checklist.IdAuditoria == id
+                                   select checklist).ToList();
+
+                foreach (ChecklistModel check in checklistResult)
+                {
+
+                    List<ItemCheckModel> itemlist = (from items in db.itensCheckList
+                                                      where items.IdCheckList == check.Id
+                                                      select items).ToList();
+
+                    List<NaoConformidadeModel> naoConformidadeList = (from naoConformidades in db.naoConformidades
+                                                         where naoConformidades.IdCheckList == check.Id
+                                                         select naoConformidades).ToList();
+
+                    int[] resultValue = new int[4];
+                    //[0] - total De Tarefas
+                    resultValue[0] = itemlist.Count;
+                    //[1] - total De cumpridas
+                    resultValue[1] = getDoneItens(itemlist);
+                    //[2] - total de Nao Cumpridas
+                    resultValue[2] = resultValue[0] - resultValue[1];
+                    //[3] - total De n/Conformidades
+                    resultValue[3] = naoConformidadeList.Count;
+
+                    results.Add(check.Id, resultValue);
+                }
+            }
+            catch { };
+
+            return results;
+        }
+
+        private int getDoneItens(List<ItemCheckModel> itens)
+        {
+            int result = 0;
+            foreach (ItemCheckModel item in itens)
+            {
+                if (item.Aderente == 1)
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
+
+
 
     }
 }
