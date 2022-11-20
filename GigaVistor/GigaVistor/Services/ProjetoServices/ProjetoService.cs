@@ -1,5 +1,6 @@
 ﻿using GigaVistor.Data;
 using GigaVistor.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using System;
 
@@ -94,6 +95,83 @@ namespace GigaVistor.Services.ProjetoServices
             return nameResult;
         }
 
+
+
+
+        public Dictionary<long, int[]> getReport(int id)
+        {
+            Dictionary<long, int[]> results = new Dictionary<long, int[]>(); 
+            try
+            {                
+                var query = from auditorias in db.Auditorias
+                            where auditorias.IdProjeto == id
+                            select auditorias;
+
+                List<AuditoriaModel> auditoriasQ = query.ToList();
+
+                foreach (AuditoriaModel auditoriaModel in auditoriasQ)
+                {
+                    List<ChecklistModel> checklistResult = new List<ChecklistModel>();
+
+                    if (auditoriaModel.Id == 10005){
+                        int hfewfewf = 8;
+                    }
+
+                    checklistResult = (from checklist in db.checklists
+                                                       where checklist.IdAuditoria == auditoriaModel.Id
+                                                       select checklist).ToList();
+
+                    List<ItemCheckModel> itemResult = new List<ItemCheckModel>();
+                    foreach (ChecklistModel check in checklistResult)
+                    {
+                        List<ItemCheckModel> itemlistQ = (from items in db.itensCheckList
+                                                          where items.IdCheckList == check.Id
+                                                          select items).ToList();
+
+                        itemResult.AddRange(itemlistQ);
+                    }
+                    //nao Conformidades
+                    List<NaoConformidadeModel> naoConformidadeResult = new List<NaoConformidadeModel>();
+                    foreach (ChecklistModel check in checklistResult)
+                    {
+                        List<NaoConformidadeModel> checkQ = (from naoConformidades in db.naoConformidades
+                                                             where naoConformidades.IdCheckList == check.Id
+                                                             select naoConformidades).ToList();
+
+                        naoConformidadeResult.AddRange(checkQ);
+                    }
+                    int[] resultValue = new int[4];
+                    //[0] - total De Tarefas
+                    resultValue[0] = itemResult.Count;
+                    //[1] - total De cumpridas
+                    resultValue[1] = getDoneItens(itemResult);
+                    //[2] - total de Nao Cumpridas
+                    resultValue[2] = resultValue[0] - resultValue[1];
+                    //[3] - total De n/Conformidades
+                    resultValue[3] = naoConformidadeResult.Count;                   
+
+                    results.Add(auditoriaModel.Id, resultValue);
+                }
+            }
+            catch { };
+
+            return results;
+        }
+
+
+
+        private int getDoneItens(List<ItemCheckModel> itens)
+        {
+            int result = 0;
+            foreach(ItemCheckModel item in itens)
+            {
+                if(item.Aderente == 1)
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
 
 
     }

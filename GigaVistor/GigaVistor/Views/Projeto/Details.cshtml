@@ -61,18 +61,18 @@
             <div id="report_@item.Id" class="divResultReport">
                 <div class="row">
                     <div class="col" style="color:#ffc107">
-                        Total:
+                        Total: @ViewBag.Report[item.Id][0]
                     </div>
                     <div class="col" style="color:green">
-                        Realizadas:
+                        Realizadas: @ViewBag.Report[item.Id][1]
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="color:firebrick">
-                        N/Realizadas:
+                        N/Realizadas: @ViewBag.Report[item.Id][2]
                     </div>
                     <div class="col" style="color:#f14646">
-                        N/Conformidades:
+                        N/Conformidades: @ViewBag.Report[item.Id][3]
                     </div>
                 </div>
             </div>

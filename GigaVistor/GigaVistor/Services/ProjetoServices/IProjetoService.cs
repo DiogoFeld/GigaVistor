@@ -13,6 +13,6 @@ namespace GigaVistor.Services.ProjetoServices
         public ProjetoModel Details(int id);
         public IEnumerable<AuditoriaModel> getAuditoriaByProject(long id);
         public string getCriadorId(int idProjeto);
-
+        Dictionary<long, int[]> getReport(int id);
     }
 }

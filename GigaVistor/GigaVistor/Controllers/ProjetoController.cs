@@ -59,6 +59,8 @@ namespace GigaVistor.Controllers
 
         public IActionResult Details(int id)
         {
+            Dictionary<long, int[]>  reports = projeto.getReport(id);
+            ViewBag.Report = reports;
             ViewBag.Criador = projeto.getCriadorId(id);
             ViewBag.Auditorias = projeto.getAuditoriaByProject(id);
             return View(projeto.Details(id));
